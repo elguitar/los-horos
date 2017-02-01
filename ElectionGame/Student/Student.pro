@@ -22,8 +22,7 @@ SOURCES +=\
 #    ../Course/settingsreader.cpp \
 #    ../Course/stateexception.cpp \
     main.cpp \
-    game.cpp \
-    location.cpp
+    agent.cpp
 
 HEADERS  += \
     agent.h
