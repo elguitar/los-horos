@@ -4,6 +4,7 @@
 #include "location.h"
 
 #include <QApplication>
+#include <QWidget>
 
 using Interface::Game;
 using Interface::Influence;
@@ -56,6 +57,7 @@ int main(int argc, char* argv[])
     }
 
     // TODO: open the main window
-
+    QWidget window;
+    window.show();
     a.exec();
 }
