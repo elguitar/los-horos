@@ -1,6 +1,11 @@
 #include "agent.h"
 
 
+Agent::~Agent()
+{
+
+}
+
 QString Agent::typeName() const
 {
 
