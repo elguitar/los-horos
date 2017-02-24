@@ -18,13 +18,6 @@ class ControlException: public GameException
 {
 public:
     /**
-     * @brief Oletusrakentaja.
-     * @pre -
-     * @post Luo hallintavirheen ControlException ilman viestiä.
-     */
-    explicit ControlException() = default;
-
-    /**
      * @brief Rakentaja.
      * @param msg Poikkeuksen syytä selventävä viesti.
      * @pre -

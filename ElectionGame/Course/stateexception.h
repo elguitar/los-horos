@@ -18,13 +18,6 @@ class StateException : public GameException
 {
 public:
     /**
-     * @brief Oletusrakentaja.
-     * @pre -
-     * @post Luo laittoman tilan käytön StateException ilman viestiä.
-     */
-    explicit StateException() = default;
-
-    /**
      * @brief Rakentaja.
      * @param msg Poikkeuksen syytä selventävä viesti.
      * @pre -
