@@ -17,14 +17,6 @@ namespace Interface
 class GameException
 {
 public:
-
-    /**
-     * @brief Oletusrakentaja.
-     * @pre -
-     * @post Luo pelivirheen GameException ilman viestiä.
-     */
-    explicit GameException() = default;
-
     /**
      * @brief Rakentaja.
      * @param msg Poikkeuksen syytä selventävä viesti.

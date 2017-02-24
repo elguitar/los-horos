@@ -17,14 +17,6 @@ namespace Interface
 class RangeException : public GameException
 {
 public:
-
-    /**
-     * @brief Oletusrakentaja.
-     * @pre -
-     * @post Luo yli-indekstointivirheen RangeException ilman viestiä.
-     */
-    explicit RangeException() = default;
-
     /**
      * @brief Rakentaja.
      * @param msg Poikkeuksen syytä selventävä viesti.

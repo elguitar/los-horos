@@ -17,14 +17,6 @@ namespace Interface
 class FormatException : public GameException
 {
 public:
-
-    /**
-     * @brief Oletusrakentaja.
-     * @pre -
-     * @post Luo rakennevirheen FormatException ilman viestiä.
-     */
-    explicit FormatException() = default;
-
     /**
      * @brief Rakentaja.
      * @param msg Poikkeuksen syytä selventävä viesti.

@@ -15,13 +15,6 @@ namespace Interface
 class KeyException : public GameException
 {
 public:
-    /**
-     * @brief Oletusrakentaja.
-     * @pre -
-     * @post Luo tuntemattoman hakuavainvirheen KeyException ilman viestiä.
-     */
-    explicit KeyException() = default;
-
      /**
       * @brief Rakentaja.
       * @param msg Poikkeuksen syytä selventävä viesti.

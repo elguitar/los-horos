@@ -17,13 +17,6 @@ class IoException : public GameException
 {
 public:
     /**
-     * @brief Oletusrakentaja.
-     * @pre -
-     * @post Luo tiedostovirheen IOException ilman viestiä.
-     */
-    explicit IoException() = default;
-
-    /**
      * @brief Rakentaja.
      * @param msg Poikkeuksen syytä selventävä viesti.
      * @pre -
