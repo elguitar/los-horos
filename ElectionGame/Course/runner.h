@@ -55,7 +55,7 @@ public:
      * @brief playerControl palauttaa pelaajalle asetetun hallintaolion
      * @pre player != nullptr
      * @param player pelaaja
-     * @return hallintaolio, tai nullptr jos sellaista ei ole pelaajalle asetettu
+     * @return hallintaolio, tai tyhjä osoitin jos sellaista ei ole pelaajalle asetettu
      * @post Poikkeustakuu: nothrow
      */
     std::shared_ptr<ControlInterface> playerControl(std::shared_ptr<const Player> player) const;
@@ -73,7 +73,7 @@ public:
     /**
      * @brief run pyytää kulloinkin vuorossa olevan pelaajan hallintaoliolta siirtoja ja suorittaa niitä.
      * @pre -
-     * @return hallintaolio, joka ei kyennyt antamaan seuraavaa siirtoa, tai nullptr, jos peli on saatu päätökseen.
+     * @return hallintaolio, joka ei kyennyt antamaan seuraavaa siirtoa, tai tyhjä osoitin, jos peli on saatu päätökseen.
      * @post Kustakin suoritetusta siirrosta on signaloitu (signaali actionPerformed). Olio on valmis jatkamaan suoritusta.
      * @post Poikkeustakuu: perus (olio on heti valmis jatkamaan suoritusta)
      * @exception ControlException siirron tuottamisessa tapahtui virhe

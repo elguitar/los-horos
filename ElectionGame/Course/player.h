@@ -35,7 +35,7 @@ class Player: public std::enable_shared_from_this<Player>
 public:
     /**
      * @brief Player rakentaja
-     * @pre game != nullptr; id ei ole ennestään tunnisteena yhdelläkään pelaajalla
+     * @pre game.lock() != nullptr; id ei ole ennestään tunnisteena yhdelläkään pelaajalla
      * @param game peliolio
      * @param id tunniste pelaajalle
      * @param name pelaajan nimi
@@ -71,7 +71,7 @@ public:
     /**
      * @brief councilor palauttaa neuvoston jäsenen (kortin), jonka roolissa pelaaja on
      * @pre -
-     * @return pelaajan neuvoskortti, tai nullptr jos sellaista ei ole asetettu
+     * @return pelaajan neuvoskortti, tai tyhjä osoitin jos sellaista ei ole asetettu
      * @post Poikkeustakuu: nothrow
      */
     virtual std::shared_ptr<Interface::Councilor> councilor();

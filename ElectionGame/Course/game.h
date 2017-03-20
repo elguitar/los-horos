@@ -151,7 +151,7 @@ public:
     /**
      * @brief notify ilmoittaa vuorossa olevan pelaajan tilan muutoksesta
      * @pre -
-     * @param prevPlayer jaettu osoitin vuoronsa päättäneeseen pelaajaan, tai nullptr (oletus) jos kyse ei ole vuoron vaihtumisesta
+     * @param prevPlayer jaettu osoitin vuoronsa päättäneeseen pelaajaan, tai tyhjä osoitin (oletus) jos kyse ei ole vuoron vaihtumisesta
      * @post signaali playerChanged on lähetetty
      * @post Poikkeustakuu: nothrow
      */
