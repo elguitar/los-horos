@@ -150,7 +150,7 @@ public:
     /**
      * @brief setCouncilor asettaa alueelle neuvoksen
      * @pre -
-     * @param councilor uusi neuvos, tai nullptr jos alue halutaan jättää ilman neuvosta
+     * @param councilor uusi neuvos, tai tyhjä osoitin jos alue halutaan jättää ilman neuvosta
      * @post neuvos on asetettu alueelle
      * @post Poikkeustakuu: nothrow
      */

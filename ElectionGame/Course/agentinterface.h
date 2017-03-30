@@ -45,7 +45,7 @@ public:
     /**
      * @brief placement palauttaa tiedon agentin sijainnista
      * @pre -
-     * @return heikko osoitin pelilaudan alueelle jossa agentti sijaitsee, tai nullptr jos se ei ole laudalla
+     * @return heikko osoitin pelilaudan alueelle jossa agentti sijaitsee, tai tyhjä osoitin jos se ei ole laudalla
      * @post Poikkeustakuu: nothrow
      */
     virtual std::weak_ptr<Location> placement() const = 0;
@@ -53,7 +53,7 @@ public:
     /**
      * @brief setPlacement kertoo agentille millä pelialueella se on
      * @pre -
-     * @param placement pelialue, tai nullptr jos agentti ei ole laudalla
+     * @param placement pelialue, tai tyhjä osoitin jos agentti ei ole laudalla
      * @post agentti tietää olevansa alueella
      * @post Poikkeustakuu: nothrow
      */

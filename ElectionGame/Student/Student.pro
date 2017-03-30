@@ -50,12 +50,18 @@ LIBS += -L$$OUT_PWD/../Course/
 LIBS += -L$$OUT_PWD/../Course/$${DESTDIR}/ -lCourse
 
 win32 {
-    copyfiles.commands += @echo NOW COPYING ADDITIONAL FILE(S) &
+    copyfiles.commands += @echo NOW COPYING ADDITIONAL FILE(S) for Windows &
     copyfiles.commands += @call xcopy ..\\..\\$$TARGET\\Assets Assets /i /s /e /y
 }
-unix {
-    copyfiles.commands += @echo \"NOW COPYING ADDITIONAL FILE(S)\" &&
+unix:!macx {
+    copyfiles.commands += @echo \"NOW COPYING ADDITIONAL FILE(S) for Linux\" &&
     copyfiles.commands += cp -r ../../$$TARGET/Assets $$DESTDIR
+}
+macx {
+    copyfiles.commands += @echo \"NOW COPYING ADDITIONAL FILE(S) for MacOS\" &&
+    copyfiles.commands += mkdir -p $$DESTDIR/ElectionGame.app/Contents/MacOS &&
+    copyfiles.commands += cp -r ../../$$TARGET/Assets $$DESTDIR &&
+    copyfiles.commands += cp -r ../../$$TARGET/Assets $$DESTDIR/ElectionGame.app/Contents/MacOS/
 }
 
 QMAKE_EXTRA_TARGETS += copyfiles

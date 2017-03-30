@@ -37,7 +37,7 @@ public:
     /**
      * @brief nextAction kertoo seuraavan suoritettavan siirron
      * @pre -
-     * @return jaettu osoitin seuraavaan siirtoon, tai nullptr jos siirtoa ei voi tuottaa
+     * @return jaettu osoitin seuraavaan siirtoon, tai tyhjä osoitin jos siirtoa ei voi tuottaa
      * @post Poikkeustakuu: minimi
      * @exception ControlException seuraavan siirron määrittämisessä tapahtui virhe
      */

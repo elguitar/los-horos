@@ -70,7 +70,7 @@ public:
     /**
      * @brief owner kertoo pelaajan, joka omistaa kortin
      * @pre -
-     * @return heikko osoitin kortin omistavaan pelaajaan, tai nullptr jos sitä ei omista kukaan
+     * @return heikko osoitin kortin omistavaan pelaajaan, tai tyhjä osoitin jos sitä ei omista kukaan
      * @post Poikkeustakuu: nothrow
      */
     std::weak_ptr<Player> owner() const;
@@ -78,7 +78,7 @@ public:
     /**
      * @brief setOwner asettaa kortille omistajan
      * @pre -
-     * @param owner heikko osoitin kortin omistajaan, tai nullptr jos sitä ei omista kukaan
+     * @param owner heikko osoitin kortin omistajaan, tai tyhjä osoitin jos sitä ei omista kukaan
      * @post Kortilla on uusi omistaja
      * @post Poikkeustakuu: nothrow
      */

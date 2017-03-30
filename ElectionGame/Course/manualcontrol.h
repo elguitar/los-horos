@@ -37,7 +37,7 @@ public:
     /**
      * @brief nextAction palauttaa seuraavan siirron
      * @pre -
-     * @return jaettu osoitin seuraavaan siirtoon, tai nullptr jos sitä ei ole asetettu
+     * @return jaettu osoitin seuraavaan siirtoon, tai tyhjä osoitin jos sitä ei ole asetettu
      * @post seuraavaa siirtoa ei ole asetettu
      * @post Poikkeustakuu: nothrow
      */

@@ -95,14 +95,19 @@ void Game::addLocation(std::shared_ptr<Location> location)
 
 std::shared_ptr<Player> Game::addPlayer(const QString &name)
 {
+    shared_ptr<Player> player = make_shared<Player>(shared_from_this(), players_.size(), name);
+    addPlayer(player);
+    return player;
+}
+
+void Game::addPlayer(std::shared_ptr<Player> player)
+{
     bool ok = true;
     uint maxPlayers = SettingsReader::READER.getValue("MAX_PLAYERS").toUInt(&ok);
     uint prevPlayers = players_.size();
     Q_ASSERT(ok && prevPlayers < maxPlayers);
 
-    shared_ptr<Player> player = make_shared<Player>(shared_from_this(), players_.size(), name);
     players_.push_back(player);
-    return player;
 }
 
 void Game::nextPlayer()
