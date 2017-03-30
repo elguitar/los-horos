@@ -128,9 +128,9 @@ public:
 
     /**
      * @brief addPlayer lisää peliin pelaajan
-     * @pre -
+     * @pre pelaajia ei ole luotu tämän luokan ulkopuolella
      * @param name lisättävän pelaajan nimi
-     * @return jattu osoitin lisättyyn pelaajaan
+     * @return jaettu osoitin lisättyyn pelaajaan
      * @post pelaaja lisätty peliin
      * @post Poikkeustakuu: vahva
      * @exception FormatException virhe asetusten lukemisessa (SettingsReader)
@@ -139,6 +139,19 @@ public:
      * @exception StateException pelaajien määrä ylittää asetuksissa määritetyn maksimin
      */
     std::shared_ptr<Player> addPlayer(const QString& name);
+
+    /**
+     * @brief addPlayer lisää peliin pelaajan
+     * @pre -
+     * @param player lisättävä pelaaja
+     * @post pelaaja lisätty peliin
+     * @post Poikkeustakuu: vahva
+     * @exception FormatException virhe asetusten lukemisessa (SettingsReader)
+     * @exception IOException virhe asetusten lukemisessa (SettingsReader)
+     * @exception KeyException pelaajien maksimimäärä ei selviä asetuksista (SettingsReader)
+     * @exception StateException pelaajien määrä ylittää asetuksissa määritetyn maksimin
+     */
+    void addPlayer(std::shared_ptr<Player> player);
 
     /**
      * @brief nextPlayer siirtää vuoron lisäysjärjestyksessä seuraavalle pelaajalle, kiertäen tarvittaessa alkuun
