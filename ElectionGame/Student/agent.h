@@ -11,6 +11,7 @@ class Player;
 class Agent: public Interface::AgentInterface
 {
 public:
+    Agent(const QString &name, const bool &common);
     virtual ~Agent() = default;
 
     virtual QString typeName() const;
@@ -28,6 +29,16 @@ public:
     virtual unsigned short connections() const;
     virtual void setConnections(unsigned short connections);
     virtual void modifyConnections(short amount);
+private:
+    QString name_;
+    QString title_;
+    QString typename_;
+    std::weak_ptr<Interface::Player> owner_;
+    unsigned short connections_;
+    bool common_;
+    std::weak_ptr<Interface::Location> lokaatio_;
+    std::weak_ptr<Interface::Location> pleismentti_;
+
 };
 
 #endif // AGENT_H
