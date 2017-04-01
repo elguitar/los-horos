@@ -1,5 +1,18 @@
 #include "agent.h"
 
+Agent::Agent(const QString &name, const bool &common):
+  name_(name),
+  common_(common),
+  connections_(0),
+  place_(),
+  owner_(),
+  title_(),
+  typename_()
+
+{
+
+}
+
 QString Agent::typeName() const
 {
 
@@ -7,7 +20,7 @@ QString Agent::typeName() const
 
 QString Agent::name() const
 {
-
+    return name_;
 }
 
 QString Agent::title() const
