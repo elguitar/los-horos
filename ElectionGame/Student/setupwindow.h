@@ -17,8 +17,14 @@ public:
     explicit SetupWindow(QWidget *parent = 0);
     ~SetupWindow();
 
+public slots:
+    void aloita_peli();
+
 private:
     Ui::SetupWindow *ui;
+    int pelaajat;
+    bool onkoPieni = false;
+    QString pelaajanNimi;
 };
 
 #endif // SETUPWINDOW_H

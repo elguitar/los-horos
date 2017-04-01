@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="Aloitabutton">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>200</y>
+     <x>170</x>
+     <y>230</y>
      <width>95</width>
      <height>31</height>
     </rect>
@@ -38,6 +38,101 @@
    <property name="text">
     <string>Aloita peli</string>
    </property>
+  </widget>
+  <widget class="QLabel" name="Pelaajat_label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pelaajien määrä:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Title_label">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>10</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Täytä alkutiedot:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Nimimerkki_label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Oma nimimerkki:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Kentankoko_label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>150</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Kentän koko:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="Nimimerkki">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>100</y>
+     <width>231</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="Pelaajat">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>50</y>
+     <width>52</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="Kentankoko">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>150</y>
+     <width>83</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <item>
+    <property name="text">
+     <string>Pieni</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Suuri</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>
@@ -53,10 +148,13 @@
      <y>254</y>
     </hint>
     <hint type="destinationlabel">
-     <x>271</x>
-     <y>157</y>
+     <x>273</x>
+     <y>159</y>
     </hint>
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>aloita_peli()</slot>
+ </slots>
 </ui>

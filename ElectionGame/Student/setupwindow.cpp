@@ -1,5 +1,6 @@
 #include "setupwindow.h"
 #include "ui_setupwindow.h"
+#include <QDebug>
 
 
 SetupWindow::SetupWindow(QWidget *parent) :
@@ -7,9 +8,29 @@ SetupWindow::SetupWindow(QWidget *parent) :
     ui(new Ui::SetupWindow)
 {
     ui->setupUi(this);
+    QObject::connect(ui->Aloitabutton, SIGNAL(clicked()),
+                      this, SLOT(aloita_peli()));
 }
 
 SetupWindow::~SetupWindow()
 {
     delete ui;
+}
+
+void SetupWindow::aloita_peli()
+{
+    qDebug() << "huora";
+    if (ui->Nimimerkki->toPlainText().length() != 0 && ui->Pelaajat->value() != 0)
+    {
+        pelaajanNimi = ui->Nimimerkki->toPlainText();
+        pelaajat = ui->Pelaajat->value();
+        if (ui->Kentankoko->currentText() == "Pieni")
+        {
+            onkoPieni = true;
+        }
+    }
+    else
+    {
+        qDebug() << "huora";
+    }
 }
