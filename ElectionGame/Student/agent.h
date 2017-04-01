@@ -36,7 +36,9 @@ private:
     std::weak_ptr<Interface::Player> owner_;
     unsigned short connections_;
     bool common_;
-    std::weak_ptr<Interface::Location> place_;
+    std::weak_ptr<Interface::Location> lokaatio_;
+    std::weak_ptr<Interface::Location> pleismentti_;
+
 };
 
 #endif // AGENT_H
