@@ -3,6 +3,9 @@
 #include "influence.h"
 #include "location.h"
 #include "akkuna.h"
+#include "setupwindow.h"
+
+#include "vector"
 
 #include <QApplication>
 #include <QWidget>
@@ -20,7 +23,11 @@ using std::shared_ptr;
  */
 int main(int argc, char* argv[])
 {
+    //QApplication eka(argc, argv);
     QApplication a(argc, argv);
+    SetupWindow wintoosa;
+    wintoosa.show();
+    //eka.exec();
 
     // create a game object
     shared_ptr<Game> game = make_shared<Game>();
@@ -28,7 +35,7 @@ int main(int argc, char* argv[])
     // set up locations of the board
     {
         // create and initialize a location, and add it to the game
-        shared_ptr<Location> location1 = make_shared<Location>(1, "First Location");
+        shared_ptr<Location> location1 = make_shared<Location>(1, "Metsämiesten kilta"); // Kaupungin kuumakulmakundit, Hengenpelastajatytöt, Kallion huolestuneet kansalaiset
         location1->initialize();
         game->addLocation(location1);
 
@@ -48,6 +55,8 @@ int main(int argc, char* argv[])
     }
 
     // set up players
+    std::vector<shared_ptr<Player>> playervector;
+
     {
         // add a player to the game
         shared_ptr<Player> player1 = game->addPlayer("Player 1");
@@ -55,10 +64,12 @@ int main(int argc, char* argv[])
         // TODO: perform other player setup as necessary
 
         // TODO: create more players
+        playervector.push_back(player1);
     }
 
-    // TODO: open the main window
+    // open the main window
     Akkuna window;
     window.show();
+    window.addPlayer(playervector.at(0));
     a.exec();
 }

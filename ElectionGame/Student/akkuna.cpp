@@ -12,3 +12,7 @@ Akkuna::~Akkuna()
 {
     delete ui;
 }
+
+void Akkuna::addPlayer(shared_ptr<Interface::Player> pelaaja){
+    ui->pekaajakyltti->setText(pelaaja->name());
+}

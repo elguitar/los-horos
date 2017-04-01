@@ -27,11 +27,13 @@ SOURCES +=\
     ../Course/withdrawaction.cpp \
     agent.cpp \
     main.cpp \
-    akkuna.cpp
+    akkuna.cpp \
+    setupwindow.cpp
 
 HEADERS  += \
     agent.h \
-    akkuna.h
+    akkuna.h \
+    setupwindow.h
 
 unix {
     target.path = /usr/lib
@@ -70,4 +72,5 @@ QMAKE_EXTRA_TARGETS += copyfiles
 POST_TARGETDEPS += copyfiles
 
 FORMS += \
-    akkuna.ui
+    akkuna.ui \
+    setupwindow.ui
