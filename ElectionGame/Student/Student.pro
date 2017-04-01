@@ -26,10 +26,12 @@ SOURCES +=\
     ../Course/stateexception.cpp \
     ../Course/withdrawaction.cpp \
     agent.cpp \
-    main.cpp
+    main.cpp \
+    akkuna.cpp
 
 HEADERS  += \
-    agent.h
+    agent.h \
+    akkuna.h
 
 unix {
     target.path = /usr/lib
@@ -66,3 +68,6 @@ macx {
 
 QMAKE_EXTRA_TARGETS += copyfiles
 POST_TARGETDEPS += copyfiles
+
+FORMS += \
+    akkuna.ui

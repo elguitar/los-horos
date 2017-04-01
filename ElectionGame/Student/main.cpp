@@ -2,6 +2,7 @@
 #include "game.h"
 #include "influence.h"
 #include "location.h"
+#include "akkuna.h"
 
 #include <QApplication>
 #include <QWidget>
@@ -57,7 +58,7 @@ int main(int argc, char* argv[])
     }
 
     // TODO: open the main window
-    QWidget window;
+    Akkuna window;
     window.show();
     a.exec();
 }
