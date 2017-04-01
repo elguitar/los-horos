@@ -68,6 +68,7 @@ int main(int argc, char* argv[])
     }
 
     // open the main window
+
     Akkuna window;
     window.show();
     window.addPlayer(playervector.at(0));
