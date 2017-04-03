@@ -25,6 +25,7 @@ private:
     int pelaajat;
     bool onkoPieni = false;
     QString pelaajanNimi;
+    Akkuna* akkunaptr;
 };
 
 #endif // SETUPWINDOW_H

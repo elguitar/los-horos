@@ -15,6 +15,7 @@ SetupWindow::SetupWindow(QWidget *parent) :
 SetupWindow::~SetupWindow()
 {
     delete ui;
+    delete akkunaptr;
 }
 
 void SetupWindow::aloita_peli()
@@ -28,9 +29,13 @@ void SetupWindow::aloita_peli()
         {
             onkoPieni = true;
         }
+        akkunaptr = new Akkuna(pelaajat, onkoPieni, pelaajanNimi);
+        akkunaptr->show();
+        close();
+
     }
     else
     {
-        qDebug() << "joku huonosti";
+        qDebug() << "setupwindown iffi vituillaa";
     }
 }

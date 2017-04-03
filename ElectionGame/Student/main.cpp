@@ -55,7 +55,6 @@ int main(int argc, char* argv[])
     }
 
     // set up players
-    std::vector<shared_ptr<Player>> playervector;
 
     {
         // add a player to the game
@@ -64,13 +63,9 @@ int main(int argc, char* argv[])
         // TODO: perform other player setup as necessary
 
         // TODO: create more players
-        playervector.push_back(player1);
     }
 
     // open the main window
-
-    Akkuna window;
-    window.show();
-    window.addPlayer(playervector.at(0));
+    //window.addPlayer(playervector.at(0));
     a.exec();
 }

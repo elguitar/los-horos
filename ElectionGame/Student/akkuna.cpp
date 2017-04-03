@@ -8,6 +8,14 @@ Akkuna::Akkuna(QWidget *parent) :
     ui->setupUi(this);
 }
 
+Akkuna::Akkuna(int pelaajamaara, bool pieniko, QString pelaajanimi, QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Akkuna),
+    pelaajanNimi(pelaajanimi)
+{
+    ui->setupUi(this);
+}
+
 Akkuna::~Akkuna()
 {
     delete ui;

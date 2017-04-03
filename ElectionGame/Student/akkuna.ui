@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QLabel" name="pekaajakyltti">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>120</y>
+     <x>10</x>
+     <y>560</y>
      <width>341</width>
      <height>21</height>
     </rect>
@@ -25,6 +25,17 @@
    <property name="text">
     <string>ilpoisgay</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>651</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="kaupunkigrid"/>
   </widget>
  </widget>
  <resources/>
