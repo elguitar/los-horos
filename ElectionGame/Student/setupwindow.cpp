@@ -3,9 +3,10 @@
 #include <QDebug>
 
 
-SetupWindow::SetupWindow(QWidget *parent) :
+SetupWindow::SetupWindow(shared_ptr<Interface::Game> peli, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::SetupWindow)
+    ui(new Ui::SetupWindow),
+    peli_(peli)
 {
     ui->setupUi(this);
     QObject::connect(ui->Aloitabutton, SIGNAL(clicked()),
@@ -29,7 +30,7 @@ void SetupWindow::aloita_peli()
         {
             onkoPieni = true;
         }
-        akkunaptr = new Akkuna(pelaajat, onkoPieni, pelaajanNimi);
+        akkunaptr = new Akkuna(peli_, pelaajat, onkoPieni, pelaajanNimi);
         akkunaptr->show();
         close();
 

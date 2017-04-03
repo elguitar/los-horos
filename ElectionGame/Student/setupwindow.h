@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "akkuna.h"
+#include "game.h"
 
 namespace Ui {
 class SetupWindow;
@@ -14,7 +15,7 @@ class SetupWindow : public QDialog
 
 
 public:
-    explicit SetupWindow(QWidget *parent = 0);
+    explicit SetupWindow(shared_ptr<Interface::Game> peli, QWidget *parent = 0);
     ~SetupWindow();
 
 public slots:
@@ -26,6 +27,7 @@ private:
     bool onkoPieni = false;
     QString pelaajanNimi;
     Akkuna* akkunaptr;
+    shared_ptr<Interface::Game> peli_;
 };
 
 #endif // SETUPWINDOW_H

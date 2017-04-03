@@ -8,10 +8,11 @@ Akkuna::Akkuna(QWidget *parent) :
     ui->setupUi(this);
 }
 
-Akkuna::Akkuna(int pelaajamaara, bool pieniko, QString pelaajanimi, QWidget *parent) :
+Akkuna::Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko, QString pelaajanimi, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Akkuna),
-    pelaajanNimi(pelaajanimi)
+    pelaajanNimi(pelaajanimi),
+    peli_(peli)
 {
     ui->setupUi(this);
     unsigned int gridkoko = 4;
@@ -22,7 +23,7 @@ Akkuna::Akkuna(int pelaajamaara, bool pieniko, QString pelaajanimi, QWidget *par
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
         QLabel* kaupunginosa = new QLabel;
-        kaupunginosa->setText("aasdf");
+        kaupunginosa->setText(peli_->locations().at(0)->name());
         ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
 
     }

@@ -23,14 +23,12 @@ using std::shared_ptr;
  */
 int main(int argc, char* argv[])
 {
-    //QApplication eka(argc, argv);
     QApplication a(argc, argv);
-    SetupWindow setuppiwindow;
-    setuppiwindow.show();
-    //eka.exec();
 
     // create a game object
     shared_ptr<Game> game = make_shared<Game>();
+    SetupWindow setuppiwindow(game);
+    setuppiwindow.show();
 
     // set up locations of the board
     {
