@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "player.h"
+#include "game.h"
 using std::make_shared;
 using std::shared_ptr;
 

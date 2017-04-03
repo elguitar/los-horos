@@ -25,8 +25,8 @@ int main(int argc, char* argv[])
 {
     //QApplication eka(argc, argv);
     QApplication a(argc, argv);
-    SetupWindow wintoosa;
-    wintoosa.show();
+    SetupWindow setuppiwindow;
+    setuppiwindow.show();
     //eka.exec();
 
     // create a game object

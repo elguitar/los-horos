@@ -14,6 +14,18 @@ Akkuna::Akkuna(int pelaajamaara, bool pieniko, QString pelaajanimi, QWidget *par
     pelaajanNimi(pelaajanimi)
 {
     ui->setupUi(this);
+    unsigned int gridkoko = 4;
+    if(!pieniko){
+        gridkoko = 4; // tähän pitää muuttaa suuren koko
+    }
+    unsigned char row = 0;
+    for(unsigned char i = 0; i < gridkoko; i++){
+        row = i/2;
+        QLabel* kaupunginosa = new QLabel;
+        kaupunginosa->setText("aasdf");
+        ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
+
+    }
 }
 
 Akkuna::~Akkuna()
