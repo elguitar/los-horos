@@ -19,7 +19,7 @@ SetupWindow::~SetupWindow()
 
 void SetupWindow::aloita_peli()
 {
-    qDebug() << "huora";
+    qDebug() << "connectworks";
     if (ui->Nimimerkki->toPlainText().length() != 0 && ui->Pelaajat->value() != 0)
     {
         pelaajanNimi = ui->Nimimerkki->toPlainText();
@@ -31,6 +31,6 @@ void SetupWindow::aloita_peli()
     }
     else
     {
-        qDebug() << "huora";
+        qDebug() << "joku huonosti";
     }
 }
