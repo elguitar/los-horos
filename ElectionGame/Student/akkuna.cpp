@@ -15,11 +15,12 @@ Akkuna::Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko,
     peli_(peli)
 {
     ui->setupUi(this);
+    kaupunginosat(pieniko);
 
 }
 
 
-void Akkuna::kaupunginosat(int pieniko)
+void Akkuna::kaupunginosat(bool pieniko)
 {
     unsigned int gridkoko = 4;
     if(!pieniko){
