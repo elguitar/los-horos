@@ -20,6 +20,7 @@ public:
     explicit Akkuna(QWidget *parent = 0);
     explicit Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko, QString pelaajanimi, QWidget *parent=0);
     void addPlayer(shared_ptr<Interface::Player> pelaaja);
+    void kaupunginosat(int pieniko);
     ~Akkuna();
 
 private:

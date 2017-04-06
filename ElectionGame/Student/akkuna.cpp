@@ -15,6 +15,12 @@ Akkuna::Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko,
     peli_(peli)
 {
     ui->setupUi(this);
+
+}
+
+
+void Akkuna::kaupunginosat(int pieniko)
+{
     unsigned int gridkoko = 4;
     if(!pieniko){
         gridkoko = 4; // tähän pitää muuttaa suuren koko
@@ -23,16 +29,10 @@ Akkuna::Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko,
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
         QLabel* kaupunginosa = new QLabel;
-        kaupunginosa->setText(peli_->locations().at(0)->name());
+        kaupunginosa->setText(peli_->locations().at(i)->name());
         ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
 
     }
-}
-
-Akkuna::kaupunginosat()
-{
-
-
 }
 
 Akkuna::~Akkuna()
