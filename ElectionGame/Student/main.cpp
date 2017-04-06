@@ -37,9 +37,18 @@ int main(int argc, char* argv[])
     // set up locations of the board
     {
         // create and initialize a location, and add it to the game
-        shared_ptr<Location> location1 = make_shared<Location>(1, "Metsämiesten kilta"); // Kaupungin kuumakulmakundit, Hengenpelastajatytöt, Kallion huolestuneet kansalaiset
+        shared_ptr<Location> location1 = make_shared<Location>(1, "Metsämiesten kilta");
+        shared_ptr<Location> location2 = make_shared<Location>(2, "Kaupungin kuumakulmakundit");
+        shared_ptr<Location> location3 = make_shared<Location>(3, "Hengenpelastajatytöt");
+        shared_ptr<Location> location4 = make_shared<Location>(4, "Kallion huolestuneet kansalaiset");// Kaupungin kuumakulmakundit, Hengenpelastajatytöt, Kallion huolestuneet kansalaiset
         location1->initialize();
         game->addLocation(location1);
+        location2->initialize();
+        game->addLocation(location2);
+        location3->initialize();
+        game->addLocation(location3);
+        location4->initialize();
+        game->addLocation(location4);
 
         // set up cards for the location deck
         {
