@@ -8,6 +8,7 @@
 using std::make_shared;
 using std::shared_ptr;
 
+#include "kaupunginosa.h"
 namespace Ui {
 class Akkuna;
 }

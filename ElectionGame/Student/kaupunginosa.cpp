@@ -8,6 +8,14 @@ Kaupunginosa::Kaupunginosa(QWidget *parent) :
     ui->setupUi(this);
 }
 
+Kaupunginosa::Kaupunginosa(QString nimi, QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Kaupunginosa)
+{
+    ui->setupUi(this);
+    ui->nimi->setText(nimi);
+}
+
 Kaupunginosa::~Kaupunginosa()
 {
     delete ui;

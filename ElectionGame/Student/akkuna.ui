@@ -10,35 +10,32 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>1</horstretch>
+    <verstretch>1</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Meirän peli</string>
   </property>
-  <widget class="QLabel" name="pekaajakyltti">
+  <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>560</y>
-     <width>341</width>
-     <height>21</height>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>601</height>
     </rect>
    </property>
-   <property name="text">
-    <string>ilpoisgay</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="gridLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>651</width>
-     <height>471</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="kaupunkigrid" rowminimumheight="0" columnminimumwidth="0">
-    <property name="sizeConstraint">
-     <enum>QLayout::SetDefaultConstraint</enum>
-    </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QGridLayout" name="kaupunkigrid">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+     </layout>
+    </item>
    </layout>
   </widget>
  </widget>

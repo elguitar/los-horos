@@ -29,10 +29,10 @@ void Akkuna::kaupunginosat(bool pieniko)
     unsigned char row = 0;
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
-        QLabel* kaupunginosa = new QLabel;
-        kaupunginosa->setText(peli_->locations().at(i)->name());
-        ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
-
+        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_->locations().at(i)->name());
+        //kaupunginosa->setText(peli_->locations().at(i)->name());
+        //ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
+        ui->kaupunkigrid->addWidget(kaupunginosa, row, i%2);
     }
 }
 
@@ -42,5 +42,5 @@ Akkuna::~Akkuna()
 }
 
 void Akkuna::addPlayer(shared_ptr<Interface::Player> pelaaja){
-    ui->pekaajakyltti->setText(pelaaja->name());
+
 }

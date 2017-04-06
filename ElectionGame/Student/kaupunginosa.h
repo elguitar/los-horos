@@ -13,6 +13,7 @@ class Kaupunginosa : public QWidget
 
 public:
     explicit Kaupunginosa(QWidget *parent = 0);
+    explicit Kaupunginosa(QString nimi, QWidget *parent = 0);
     ~Kaupunginosa();
 
 private:
