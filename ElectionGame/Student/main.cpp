@@ -5,7 +5,7 @@
 #include "akkuna.h"
 #include "setupwindow.h"
 
-#include "vector"
+#include <vector>
 
 #include <QApplication>
 #include <QWidget>
