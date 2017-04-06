@@ -35,7 +35,11 @@
      <height>471</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="kaupunkigrid"/>
+   <layout class="QGridLayout" name="kaupunkigrid" rowminimumheight="0" columnminimumwidth="0">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
+   </layout>
   </widget>
  </widget>
  <resources/>

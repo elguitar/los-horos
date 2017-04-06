@@ -30,12 +30,14 @@ SOURCES +=\
     agent.cpp \
     main.cpp \
     akkuna.cpp \
-    setupwindow.cpp
+    setupwindow.cpp \
+    kaupunginosa.cpp
 
 HEADERS  += \
     agent.h \
     akkuna.h \
-    setupwindow.h
+    setupwindow.h \
+    kaupunginosa.h
 
 unix {
     target.path = /usr/lib
@@ -75,4 +77,5 @@ POST_TARGETDEPS += copyfiles
 
 FORMS += \
     akkuna.ui \
-    setupwindow.ui
+    setupwindow.ui \
+    kaupunginosa.ui
