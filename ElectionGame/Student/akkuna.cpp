@@ -29,6 +29,12 @@ Akkuna::Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko,
     }
 }
 
+Akkuna::kaupunginosat()
+{
+
+
+}
+
 Akkuna::~Akkuna()
 {
     delete ui;
