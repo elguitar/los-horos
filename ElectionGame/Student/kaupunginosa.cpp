@@ -8,12 +8,13 @@ Kaupunginosa::Kaupunginosa(QWidget *parent) :
     ui->setupUi(this);
 }
 
-Kaupunginosa::Kaupunginosa(QString nimi, QWidget *parent) :
+Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Kaupunginosa)
+    ui(new Ui::Kaupunginosa),
+    location_(location)
 {
     ui->setupUi(this);
-    ui->nimi->setText(nimi);
+    ui->nimi->setText(location_->name());
 }
 
 Kaupunginosa::~Kaupunginosa()

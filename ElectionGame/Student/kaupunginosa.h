@@ -2,6 +2,7 @@
 #define KAUPUNGINOSA_H
 
 #include <QWidget>
+#include "location.h"
 
 namespace Ui {
 class Kaupunginosa;
@@ -13,11 +14,12 @@ class Kaupunginosa : public QWidget
 
 public:
     explicit Kaupunginosa(QWidget *parent = 0);
-    explicit Kaupunginosa(QString nimi, QWidget *parent = 0);
+    explicit Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidget *parent=0);
     ~Kaupunginosa();
 
 private:
     Ui::Kaupunginosa *ui;
+    std::shared_ptr<Interface::Location> location_;
 };
 
 #endif // KAUPUNGINOSA_H

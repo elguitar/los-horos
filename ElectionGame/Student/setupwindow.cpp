@@ -38,6 +38,6 @@ void SetupWindow::aloita_peli()
     }
     else
     {
-        qDebug() << "setupwindown iffi vituillaa";
+        qDebug() << "setupwindown ehto ei täyty";
     }
 }
