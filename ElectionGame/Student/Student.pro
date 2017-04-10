@@ -31,13 +31,15 @@ SOURCES +=\
     main.cpp \
     akkuna.cpp \
     setupwindow.cpp \
-    kaupunginosa.cpp
+    kaupunginosa.cpp \
+    pelikortti.cpp
 
 HEADERS  += \
     agent.h \
     akkuna.h \
     setupwindow.h \
-    kaupunginosa.h
+    kaupunginosa.h \
+    pelikortti.h
 
 unix {
     target.path = /usr/lib
@@ -78,4 +80,5 @@ POST_TARGETDEPS += copyfiles
 FORMS += \
     akkuna.ui \
     setupwindow.ui \
-    kaupunginosa.ui
+    kaupunginosa.ui \
+    pelikortti.ui

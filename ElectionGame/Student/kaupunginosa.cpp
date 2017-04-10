@@ -1,8 +1,6 @@
 #include "kaupunginosa.h"
 #include "ui_kaupunginosa.h"
-#include "deckinterface.h"
-#include <QDebug>
-#include <QPixmap>
+
 
 
 Kaupunginosa::Kaupunginosa(QWidget *parent) :
@@ -53,6 +51,7 @@ void Kaupunginosa::nostaAgentti()
 void Kaupunginosa::asetaAgentti()
 {
     qDebug() << "aseta agentti";
+
 }
 
 void Kaupunginosa::asetaPelimerkki()

@@ -4,6 +4,10 @@
 #include <QWidget>
 #include "location.h"
 #include "game.h"
+#include "pelikortti.h"
+#include "deckinterface.h"
+#include <QDebug>
+#include <QPixmap>
 
 namespace Ui {
 class Kaupunginosa;
