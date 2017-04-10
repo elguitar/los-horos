@@ -22,7 +22,6 @@ SetupWindow::~SetupWindow()
 void SetupWindow::aloita_peli()
 {
     qDebug() << "connectworks";
-    std::cout << "Moi" << endl;
     if (ui->Nimimerkki->toPlainText().length() != 0 && ui->Pelaajat->value() != 0)
     {
         pelaajanNimi = ui->Nimimerkki->toPlainText();
