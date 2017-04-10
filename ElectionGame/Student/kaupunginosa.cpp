@@ -74,18 +74,18 @@ void Kaupunginosa::asetaPakkakuvat()
 
         ui->pakka->setPixmap(scaled);
     }
-   /* else if(location_->name() == "Kaupungin kuumakulmakundit"){
-        QPixmap pic("Assets/.png");
+   else if(location_->name() == "Kaupungin kuumakulmakundit"){
+        QPixmap pic("Assets/citykorttiback.png");
         QPixmap scaled = pic.scaled(61, 91, Qt::IgnoreAspectRatio, Qt::FastTransformation);
 
         ui->pakka->setPixmap(scaled);
     }
     else if(location_->name() == "Kallion huolestuneet kansalaiset"){
-        QPixmap pic("Assets/.png");
+        QPixmap pic("Assets/kalliokorttiback.png");
         QPixmap scaled = pic.scaled(61, 91, Qt::IgnoreAspectRatio, Qt::FastTransformation);
 
         ui->pakka->setPixmap(scaled);
-    }*/
+    }
 }
 
 Kaupunginosa::~Kaupunginosa()
