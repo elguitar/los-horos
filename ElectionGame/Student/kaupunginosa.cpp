@@ -2,6 +2,7 @@
 #include "ui_kaupunginosa.h"
 #include "deckinterface.h"
 #include <QDebug>
+#include <QPixmap>
 
 
 Kaupunginosa::Kaupunginosa(QWidget *parent) :
@@ -18,9 +19,6 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidge
 {
     ui->setupUi(this);
     ui->nimi->setText(location_->name());
-    if(location_->name() == "Hengenpelastajatytöt"){
-        ui->pakka->setStyleSheet("QWidget {background-image: url(Assets/naiskorttiback.png) }");
-    }
     QObject::connect(ui->drawCard, SIGNAL(clicked()),
                       this, SLOT(nostaKortti()));
     QObject::connect(ui->setAgent, SIGNAL(clicked()),
@@ -29,7 +27,10 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidge
                       this, SLOT(asetaPelimerkki()));
     QObject::connect(ui->drawAgent, SIGNAL(clicked()),
                       this, SLOT(nostaAgentti()));
+    asetaPakkakuvat();
+
 }
+
 
 void Kaupunginosa::nostaKortti()
 {
@@ -57,6 +58,34 @@ void Kaupunginosa::asetaAgentti()
 void Kaupunginosa::asetaPelimerkki()
 {
     qDebug() << "aseta pelimerkki";
+}
+
+void Kaupunginosa::asetaPakkakuvat()
+{
+    if(location_->name() == "Hengenpelastajatytöt"){
+        QPixmap pic("Assets/naiskorttiback.png");
+        QPixmap scaled = pic.scaled(61, 91, Qt::IgnoreAspectRatio, Qt::FastTransformation);
+
+        ui->pakka->setPixmap(scaled);
+    }
+    else if(location_->name() == "Metsämiesten kilta"){
+        QPixmap pic("Assets/metsakorttiback.png");
+        QPixmap scaled = pic.scaled(61, 91, Qt::IgnoreAspectRatio, Qt::FastTransformation);
+
+        ui->pakka->setPixmap(scaled);
+    }
+   /* else if(location_->name() == "Kaupungin kuumakulmakundit"){
+        QPixmap pic("Assets/.png");
+        QPixmap scaled = pic.scaled(61, 91, Qt::IgnoreAspectRatio, Qt::FastTransformation);
+
+        ui->pakka->setPixmap(scaled);
+    }
+    else if(location_->name() == "Kallion huolestuneet kansalaiset"){
+        QPixmap pic("Assets/.png");
+        QPixmap scaled = pic.scaled(61, 91, Qt::IgnoreAspectRatio, Qt::FastTransformation);
+
+        ui->pakka->setPixmap(scaled);
+    }*/
 }
 
 Kaupunginosa::~Kaupunginosa()

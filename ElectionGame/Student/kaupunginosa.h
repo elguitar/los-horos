@@ -24,6 +24,7 @@ public slots:
     void asetaAgentti();
     void asetaPelimerkki();
 
+    void asetaPakkakuvat();
 private:
     Ui::Kaupunginosa *ui;
     std::shared_ptr<Interface::Location> location_;
