@@ -135,6 +135,13 @@
    </item>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>Pelaajat</tabstop>
+  <tabstop>Nimimerkki</tabstop>
+  <tabstop>Kentankoko</tabstop>
+  <tabstop>Aloitabutton</tabstop>
+  <tabstop>Suljebutton</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
