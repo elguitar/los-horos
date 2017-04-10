@@ -43,7 +43,7 @@
         <item>
          <widget class="QPushButton" name="pushButton_2">
           <property name="text">
-           <string>PushButton</string>
+           <string>Kortti</string>
           </property>
          </widget>
         </item>
@@ -63,7 +63,7 @@
         <item>
          <widget class="QPushButton" name="pushButton">
           <property name="text">
-           <string>PushButton</string>
+           <string>Kortti2</string>
           </property>
          </widget>
         </item>
