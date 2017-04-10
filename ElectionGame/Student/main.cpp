@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
         shared_ptr<Location> location1 = make_shared<Location>(1, "Metsämiesten kilta");
         shared_ptr<Location> location2 = make_shared<Location>(2, "Hengenpelastajatytöt");
         shared_ptr<Location> location3 = make_shared<Location>(3, "Kaupungin kuumakulmakundit");
-        shared_ptr<Location> location4 = make_shared<Location>(4, "Kallion huolestuneet kansalaiset");// Kaupungin kuumakulmakundit, Hengenpelastajatytöt, Kallion huolestuneet kansalaiset
+        shared_ptr<Location> location4 = make_shared<Location>(4, "Kallion huolestuneet kansalaiset");
         location1->initialize();
         game->addLocation(location1);
         location2->initialize();
