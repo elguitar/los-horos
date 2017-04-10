@@ -77,9 +77,9 @@
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="QPushButton" name="oper1">
+     <widget class="QPushButton" name="draw">
       <property name="text">
-       <string>PushButton</string>
+       <string>Nosta kortti</string>
       </property>
      </widget>
     </item>
@@ -108,19 +108,7 @@
      <height>91</height>
     </rect>
    </property>
-   <zorder>verticalLayoutWidget</zorder>
-   <zorder>nimi</zorder>
-   <zorder>verticalLayoutWidget</zorder>
-   <zorder>nimi</zorder>
-   <zorder>nimi</zorder>
   </widget>
-  <zorder>nimi</zorder>
-  <zorder>agentti1</zorder>
-  <zorder>agentti2</zorder>
-  <zorder>agentti3</zorder>
-  <zorder>gridLayoutWidget</zorder>
-  <zorder>pakka</zorder>
-  <zorder>horizontalLayoutWidget</zorder>
  </widget>
  <resources/>
  <connections/>

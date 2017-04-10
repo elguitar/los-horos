@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "location.h"
+#include "game.h"
 
 namespace Ui {
 class Kaupunginosa;
@@ -16,6 +17,9 @@ public:
     explicit Kaupunginosa(QWidget *parent = 0);
     explicit Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidget *parent=0);
     ~Kaupunginosa();
+
+public slots:
+    void nostaKortti();
 
 private:
     Ui::Kaupunginosa *ui;
