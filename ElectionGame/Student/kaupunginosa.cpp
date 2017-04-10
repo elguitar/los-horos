@@ -19,7 +19,7 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidge
     ui->setupUi(this);
     ui->nimi->setText(location_->name());
     if(location_->name() == "Hengenpelastajatytöt"){
-        ui->pakka->setStyleSheet("QWidget {background-image: url(.Assets/naiskorttiback.png) }");
+        ui->pakka->setStyleSheet("QWidget {background-image: url(Assets/naiskorttiback.png) }");
     }
     QObject::connect(ui->drawCard, SIGNAL(clicked()),
                       this, SLOT(nostaKortti()));
