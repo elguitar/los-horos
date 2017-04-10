@@ -8,6 +8,7 @@
 #include "location.h"
 #include "akkuna.h"
 #include "setupwindow.h"
+#include "agent.h"
 
 #include <vector>
 
@@ -57,6 +58,8 @@ int main(int argc, char* argv[])
             location1->deck()->addCard(influence1);
 
             // TODO: create more cards
+            shared_ptr<Agent> agentti = make_shared<Agent>("koeakentti",true);
+            location1->deck()->addCard(agentti);
 
             // shuffle the deck
             location1->deck()->shuffle();
