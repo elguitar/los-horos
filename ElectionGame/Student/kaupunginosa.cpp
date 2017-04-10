@@ -18,13 +18,19 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidge
 {
     ui->setupUi(this);
     ui->nimi->setText(location_->name());
-    QObject::connect(ui->draw, SIGNAL(clicked()),
+    QObject::connect(ui->drawCard, SIGNAL(clicked()),
                       this, SLOT(nostaKortti()));
+    QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                      this, SLOT(asetaAgentti()));
+    QObject::connect(ui->setToken, SIGNAL(clicked()),
+                      this, SLOT(asetaPelimerkki()));
+    QObject::connect(ui->drawAgent, SIGNAL(clicked()),
+                      this, SLOT(nostaAgentti()));
 }
 
 void Kaupunginosa::nostaKortti()
 {
-    qDebug() << "Mennäännostoon";
+    qDebug() << "nosta kortti";
     if (location_->deck()->canDraw())
     {
         location_->deck()->draw();
@@ -33,6 +39,21 @@ void Kaupunginosa::nostaKortti()
     {
 
     }
+}
+
+void Kaupunginosa::nostaAgentti()
+{
+    qDebug() << "nosta agentti";
+}
+
+void Kaupunginosa::asetaAgentti()
+{
+    qDebug() << "aseta agentti";
+}
+
+void Kaupunginosa::asetaPelimerkki()
+{
+    qDebug() << "aseta pelimerkki";
 }
 
 Kaupunginosa::~Kaupunginosa()

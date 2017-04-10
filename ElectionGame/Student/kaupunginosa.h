@@ -20,6 +20,9 @@ public:
 
 public slots:
     void nostaKortti();
+    void nostaAgentti();
+    void asetaAgentti();
+    void asetaPelimerkki();
 
 private:
     Ui::Kaupunginosa *ui;

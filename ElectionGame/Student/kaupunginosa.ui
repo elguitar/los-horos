@@ -70,30 +70,30 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="1">
-     <widget class="QPushButton" name="oper2">
+     <widget class="QPushButton" name="setAgent">
       <property name="text">
-       <string>PushButton</string>
+       <string>Aseta agentti</string>
       </property>
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="QPushButton" name="draw">
+     <widget class="QPushButton" name="drawCard">
       <property name="text">
        <string>Nosta kortti</string>
       </property>
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="oper3">
+     <widget class="QPushButton" name="setToken">
       <property name="text">
-       <string>PushButton</string>
+       <string>Aseta pelimerkki</string>
       </property>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QPushButton" name="oper4">
+     <widget class="QPushButton" name="drawAgent">
       <property name="text">
-       <string>PushButton</string>
+       <string>Nosta agentti</string>
       </property>
      </widget>
     </item>
