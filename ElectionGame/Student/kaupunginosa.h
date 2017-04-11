@@ -8,6 +8,7 @@
 #include "deckinterface.h"
 #include <QDebug>
 #include <QPixmap>
+#include "agent.h"
 
 namespace Ui {
 class Kaupunginosa;
@@ -32,6 +33,7 @@ public slots:
 private:
     Ui::Kaupunginosa *ui;
     std::shared_ptr<Interface::Location> location_;
+    std::vector<std::shared_ptr<Agent> > agentit_;
 };
 
 #endif // KAUPUNGINOSA_H
