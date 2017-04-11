@@ -33,7 +33,8 @@ SOURCES +=\
     setupwindow.cpp \
     kaupunginosa.cpp \
     pelikortti.cpp \
-    action.cpp
+    action.cpp \
+    aicontrol.cpp
 
 HEADERS  += \
     agent.h \
@@ -41,7 +42,8 @@ HEADERS  += \
     setupwindow.h \
     kaupunginosa.h \
     pelikortti.h \
-    action.h
+    action.h \
+    aicontrol.h
 
 unix {
     target.path = /usr/lib
