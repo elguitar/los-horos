@@ -32,14 +32,16 @@ SOURCES +=\
     akkuna.cpp \
     setupwindow.cpp \
     kaupunginosa.cpp \
-    pelikortti.cpp
+    pelikortti.cpp \
+    action.cpp
 
 HEADERS  += \
     agent.h \
     akkuna.h \
     setupwindow.h \
     kaupunginosa.h \
-    pelikortti.h
+    pelikortti.h \
+    action.h
 
 unix {
     target.path = /usr/lib
