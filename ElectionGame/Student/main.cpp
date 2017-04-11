@@ -9,7 +9,8 @@
 #include "akkuna.h"
 #include "setupwindow.h"
 #include "agent.h"
-
+#include "manualcontrol.h"
+#include "runner.h"
 #include <vector>
 
 #include <QApplication>
@@ -54,8 +55,12 @@ int main(int argc, char* argv[])
     // set up players
 
     {
+        Interface::Runner runnaaja(game);
         // add a player to the game
         shared_ptr<Player> player1 = game->addPlayer("Player 1");
+        shared_ptr<Interface::ManualControl> pelaajakontrolli;
+        runnaaja.setPlayerControl(player1,pelaajakontrolli);
+
 
         // TODO: perform other player setup as necessary
 

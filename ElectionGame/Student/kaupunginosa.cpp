@@ -8,6 +8,7 @@ Kaupunginosa::Kaupunginosa(QWidget *parent) :
     ui(new Ui::Kaupunginosa)
 {
     ui->setupUi(this);
+    //ui->setToken->setEnabled(false);
 }
 
 Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, QWidget *parent) :
@@ -41,6 +42,7 @@ void Kaupunginosa::nostaKortti()
 
 void Kaupunginosa::nostaAgentti()
 {
+    ui->setToken->setEnabled(false);
     qDebug() << "nosta agentti";
 }
 
@@ -48,6 +50,7 @@ void Kaupunginosa::asetaAgentti()
 {
     //
     qDebug() << "aseta agentti";
+    ui->setToken->setEnabled(true);
     if(ui->agentit->count() < 3){
         //ui->agentit->addWidget(new Pelikortti());
 
