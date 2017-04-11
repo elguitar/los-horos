@@ -35,7 +35,7 @@
      <x>20</x>
      <y>220</y>
      <width>261</width>
-     <height>70</height>
+     <height>78</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -43,6 +43,13 @@
      <widget class="QPushButton" name="setAgent">
       <property name="text">
        <string>Aseta agentti</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="drawAgent">
+      <property name="text">
+       <string>Nosta agentti</string>
       </property>
      </widget>
     </item>
@@ -57,13 +64,6 @@
      <widget class="QPushButton" name="setToken">
       <property name="text">
        <string>Aseta pelimerkki</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="drawAgent">
-      <property name="text">
-       <string>Nosta agentti</string>
       </property>
      </widget>
     </item>
@@ -120,6 +120,17 @@
    <property name="autoFillBackground">
     <bool>true</bool>
    </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>120</y>
+     <width>221</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="agentit"/>
   </widget>
  </widget>
  <resources/>

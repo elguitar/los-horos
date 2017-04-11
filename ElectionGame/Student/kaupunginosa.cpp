@@ -51,7 +51,9 @@ void Kaupunginosa::nostaAgentti()
 void Kaupunginosa::asetaAgentti()
 {
     qDebug() << "aseta agentti";
-
+    if(ui->agentit->count() < 3){
+        ui->agentit->addWidget(new Pelikortti());
+    }
 }
 
 void Kaupunginosa::asetaPelimerkki()
