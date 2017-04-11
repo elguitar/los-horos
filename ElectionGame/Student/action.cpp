@@ -29,7 +29,7 @@ void Action::perform()
 
 void Action::nostaKortti()
 {
-    if (location_->deck()->canDraw())
+    if (location_->deck()->canDraw() & (peli_->currentPlayer()->cards().size() < 7))
     {
         peli_->currentPlayer()->addCard(location_->deck()->draw());
     }
