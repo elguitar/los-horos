@@ -18,7 +18,7 @@ ActionAsetaAgentti::~ActionAsetaAgentti()
 
 bool ActionAsetaAgentti::canPerform() const
 {
-    if (!(location_->canSendAgent(peli_->currentPlayer())))
+    if (!(location_->canSendAgent(peli_->currentPlayer())) || location_->agents().size() > 2)
     {
         return false;
     }

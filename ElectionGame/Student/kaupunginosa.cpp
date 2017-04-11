@@ -42,29 +42,38 @@ void Kaupunginosa::nostaKortti()
 
 void Kaupunginosa::nostaAgentti()
 {
-    ui->setToken->setEnabled(false);
-    ui->drawCard->setEnabled(false);
-    ui->agentToken->setEnabled(false);
-    ui->setAgent->setText("Aseta agentti");
-    QObject::connect(ui->setAgent, SIGNAL(clicked()),
-                      this, SLOT(asetaAgentti()));
+    ActionNostaAgentti* toiminto = new ActionNostaAgentti(peli_, location_);
+    if (toiminto->canPerform())
+    {
+        ui->setToken->setEnabled(false);
+        ui->drawCard->setEnabled(false);
+        ui->agentToken->setEnabled(false);
+        toiminto->perform();
+
+        ui->setAgent->setText("Aseta agentti");
+        QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                          this, SLOT(asetaAgentti()));
+    }
     qDebug() << "nosta agentti";
 }
 
 void Kaupunginosa::asetaAgentti()
 {
-    //
+    ActionAsetaAgentti* toiminto = new ActionAsetaAgentti(peli_, location_);
     qDebug() << "aseta agentti";
-    ui->setToken->setEnabled(true);
-    ui->drawCard->setEnabled(true);
-    ui->agentToken->setEnabled(true);
-    if(ui->agentit->count() < 3){
-        //ui->agentit->addWidget(new Pelikortti());
 
+    if (toiminto->canPerform())
+    {
+        ui->setToken->setEnabled(true);
+        ui->drawCard->setEnabled(true);
+        ui->agentToken->setEnabled(true);
+        toiminto->perform();
+
+        ui->setAgent->setText("Nosta agentti");
+        QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                          this, SLOT(nostaAgentti()));
+        //ui->agentit->addWidget(new Pelikortti());
     }
-    ui->setAgent->setText("Nosta agentti");
-    QObject::connect(ui->setAgent, SIGNAL(clicked()),
-                      this, SLOT(nostaAgentti()));
 }
 
 void Kaupunginosa::agentilleMerkki()

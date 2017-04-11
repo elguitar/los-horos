@@ -10,6 +10,8 @@
 #include <QPixmap>
 #include "agent.h"
 #include "actionnostakortti.h"
+#include "actionnostaagentti.h"
+#include "actionasetaagentti.h"
 
 namespace Ui {
 class Kaupunginosa;

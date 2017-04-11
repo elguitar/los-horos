@@ -36,12 +36,11 @@ void ActionNostaAgentti::perform()
         //std::set<std::shared_ptr<Interface::AgentInterface> >::iterator = location_->agents().begin();
         std::shared_ptr<Interface::AgentInterface> agentti = *std::next(location_->agents().begin(), i);
 
-        /*täs "no match for operator==" weak_ptr vs. shared_ptr
-         *
-         * if (agentti->owner() == peli_->currentPlayer())
+        std::shared_ptr<Interface::Player> pelaaja = agentti->owner().lock();
+        if (pelaaja == peli_->currentPlayer())
         {
             peli_->currentPlayer()->addCard(agentti);
             location_->removeAgent(agentti);
-        }*/
+        }
     }
 }
