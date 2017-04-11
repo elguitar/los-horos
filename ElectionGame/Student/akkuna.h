@@ -17,6 +17,9 @@ class Akkuna : public QWidget
 {
     Q_OBJECT
 
+public slots:
+    void asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti);
+
 public:
     explicit Akkuna(QWidget *parent = 0);
     explicit Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko, QString pelaajanimi, QWidget *parent=0);

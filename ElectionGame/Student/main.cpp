@@ -80,7 +80,7 @@ void addlocations(shared_ptr<Game> game){
     game->addLocation(location3);
     location4->initialize();
     game->addLocation(location4);
-};
+}
 
 void addcards(shared_ptr<Game> game){
     // create an influence card and add it to location deck

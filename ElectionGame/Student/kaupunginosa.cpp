@@ -32,6 +32,7 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidge
 
 void Kaupunginosa::nostaKortti()
 {
+
     qDebug() << "nosta kortti";
     if (location_->deck()->canDraw())
     {
@@ -50,9 +51,11 @@ void Kaupunginosa::nostaAgentti()
 
 void Kaupunginosa::asetaAgentti()
 {
+    //
     qDebug() << "aseta agentti";
     if(ui->agentit->count() < 3){
-        ui->agentit->addWidget(new Pelikortti());
+        //ui->agentit->addWidget(new Pelikortti());
+
     }
 }
 
