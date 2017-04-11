@@ -34,7 +34,11 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
 
 void Kaupunginosa::nostaKortti()
 {
-
+    ActionNostaKortti* toiminto = new ActionNostaKortti(peli_, location_);
+    if (toiminto->canPerform())
+    {
+        toiminto->perform();
+    }
     qDebug() << "nosta kortti";
     std::shared_ptr<ActionNostaKortti> kortti = make_shared<ActionNostaKortti>();
 
@@ -78,11 +82,22 @@ void Kaupunginosa::asetaAgentti()
 
 void Kaupunginosa::agentilleMerkki()
 {
+    ActionAgentilleMerkki* toiminto = new ActionAgentilleMerkki(peli_, location_);
+    if (toiminto->canPerform())
+    {
+        toiminto->perform();
+    }
     qDebug() << "agentille merkki";
 }
 
 void Kaupunginosa::asetaPelimerkki()
 {
+    ActionAsetaPelimerkki* toiminto = new ActionAsetaPelimerkki(peli_, location_);
+
+    if (toiminto->canPerform())
+    {
+        toiminto->perform();
+    }
     qDebug() << "aseta pelimerkki";
 }
 

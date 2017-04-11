@@ -12,6 +12,8 @@
 #include "actionnostakortti.h"
 #include "actionnostaagentti.h"
 #include "actionasetaagentti.h"
+#include "actionasetapelimerkki.h"
+#include "actionagentillemerkki.h"
 
 namespace Ui {
 class Kaupunginosa;
