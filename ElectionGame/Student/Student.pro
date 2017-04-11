@@ -35,7 +35,8 @@ SOURCES +=\
     pelikortti.cpp \
     action.cpp \
     aicontrol.cpp \
-    actionasetaagentti.cpp
+    actionasetaagentti.cpp \
+    actionnostakortti.cpp
 
 HEADERS  += \
     agent.h \
@@ -45,7 +46,8 @@ HEADERS  += \
     pelikortti.h \
     action.h \
     aicontrol.h \
-    actionasetaagentti.h
+    actionasetaagentti.h\
+    actionnostakortti.h
 
 unix {
     target.path = /usr/lib

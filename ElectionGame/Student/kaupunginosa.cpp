@@ -10,10 +10,11 @@ Kaupunginosa::Kaupunginosa(QWidget *parent) :
     ui->setupUi(this);
 }
 
-Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidget *parent) :
+Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Kaupunginosa),
-    location_(location)
+    location_(location),
+    peli_(peli)
 {
     ui->setupUi(this);
     ui->nimi->setText(location_->name());
@@ -34,14 +35,8 @@ void Kaupunginosa::nostaKortti()
 {
 
     qDebug() << "nosta kortti";
-    if (location_->deck()->canDraw())
-    {
-        location_->deck()->draw();
-    }
-    else
-    {
+    std::shared_ptr<ActionNostaKortti> kortti = make_shared<ActionNostaKortti>();
 
-    }
 }
 
 void Kaupunginosa::nostaAgentti()

@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QPixmap>
 #include "agent.h"
+#include "actionnostakortti.h"
 
 namespace Ui {
 class Kaupunginosa;
@@ -20,7 +21,7 @@ class Kaupunginosa : public QWidget
 
 public:
     explicit Kaupunginosa(QWidget *parent = 0);
-    explicit Kaupunginosa(std::shared_ptr<Interface::Location> location, QWidget *parent=0);
+    explicit Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, QWidget *parent=0);
     ~Kaupunginosa();
 
 public slots:
@@ -34,6 +35,7 @@ private:
     Ui::Kaupunginosa *ui;
     std::shared_ptr<Interface::Location> location_;
     std::vector<std::shared_ptr<Agent> > agentit_;
+    std::shared_ptr<Interface::Game> peli_;
 };
 
 #endif // KAUPUNGINOSA_H
