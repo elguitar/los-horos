@@ -25,8 +25,8 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
                       this, SLOT(asetaAgentti()));
     QObject::connect(ui->setToken, SIGNAL(clicked()),
                       this, SLOT(asetaPelimerkki()));
-    QObject::connect(ui->drawAgent, SIGNAL(clicked()),
-                      this, SLOT(nostaAgentti()));
+    QObject::connect(ui->agentToken, SIGNAL(clicked()),
+                      this, SLOT(agentilleMerkki()));
     asetaPakkakuvat();
 
 }
@@ -43,6 +43,11 @@ void Kaupunginosa::nostaKortti()
 void Kaupunginosa::nostaAgentti()
 {
     ui->setToken->setEnabled(false);
+    ui->drawCard->setEnabled(false);
+    ui->agentToken->setEnabled(false);
+    ui->setAgent->setText("Aseta agentti");
+    QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                      this, SLOT(asetaAgentti()));
     qDebug() << "nosta agentti";
 }
 
@@ -51,10 +56,20 @@ void Kaupunginosa::asetaAgentti()
     //
     qDebug() << "aseta agentti";
     ui->setToken->setEnabled(true);
+    ui->drawCard->setEnabled(true);
+    ui->agentToken->setEnabled(true);
     if(ui->agentit->count() < 3){
         //ui->agentit->addWidget(new Pelikortti());
 
     }
+    ui->setAgent->setText("Nosta agentti");
+    QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                      this, SLOT(nostaAgentti()));
+}
+
+void Kaupunginosa::agentilleMerkki()
+{
+    qDebug() << "agentille merkki";
 }
 
 void Kaupunginosa::asetaPelimerkki()

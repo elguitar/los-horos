@@ -47,12 +47,12 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QPushButton" name="drawAgent">
+     <widget class="QPushButton" name="agentToken">
       <property name="enabled">
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>Nosta agentti</string>
+       <string>Agentille merkki</string>
       </property>
       <property name="default">
        <bool>false</bool>
