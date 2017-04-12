@@ -71,5 +71,5 @@ void Agent::setConnections(unsigned short connections)
 
 void Agent::modifyConnections(short amount)
 {
-    connections_ += amount;
+    connections_ = amount;
 }

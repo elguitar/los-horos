@@ -31,11 +31,8 @@ void ActionAgentilleMerkki::perform()
         std::shared_ptr<Interface::Player> agentinOmistaja = agentti->owner().lock();
         if (agentinOmistaja == peli_->currentPlayer())
         {
-            /*unsigned int oldconnections = agentti->connections();
-            agentti->setConnections(oldconnections + 1);*/
-            
-            //Setconnections on connection_ += amount; -operaatio
-            agentti->setConnections(1);
+            unsigned int oldconnections = agentti->connections();
+            agentti->setConnections(oldconnections + 1);
         }
     }
 }
