@@ -66,16 +66,21 @@ int main(int argc, char* argv[])
         Interface::Runner runnaaja(game);
         // add a player to the game
         shared_ptr<Player> player1 = game->addPlayer("Player 1");
-        for (int i = 0; i < 3; ++i)
-        {
-            shared_ptr<Agent> agentti = make_shared<Agent>("agentti" + QString::number(i+1),true);
-            shared_ptr<Player> pelaaja = game->players().at(0);
-            pelaaja->addCard(agentti);
+        shared_ptr<Player> player2 = game->addPlayer("Player 2");
+        for(unsigned int j = 0; j < game->players().size(); ++j){
+            for (int i = 0; i < 3; ++i)
+            {
+                shared_ptr<Agent> agentti = make_shared<Agent>("agentti" + QString::number(i+1),true);
+                shared_ptr<Player> pelaaja = game->players().at(j);
+                pelaaja->addCard(agentti);
 
+            }
         }
 
         shared_ptr<Interface::ManualControl> pelaajakontrolli;
         runnaaja.setPlayerControl(player1,pelaajakontrolli);
+        shared_ptr<Interface::ManualControl> pelaajakontrolli2;
+        runnaaja.setPlayerControl(player2,pelaajakontrolli2);
 
 
         // TODO: perform other player setup as necessary
