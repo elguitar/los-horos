@@ -23,7 +23,7 @@ bool ActionAgentilleMerkki::canPerform() const
 
 void ActionAgentilleMerkki::perform()
 {
-    for (uint i = 0; i < location_->agents().size(); ++i)
+    for (unsigned int i = 0; i < location_->agents().size(); ++i)
     {
         //std::set<std::shared_ptr<Interface::AgentInterface> >::iterator = location_->agents().begin();
         std::shared_ptr<Interface::AgentInterface> agentti = *std::next(location_->agents().begin(), i);
@@ -31,8 +31,10 @@ void ActionAgentilleMerkki::perform()
         std::shared_ptr<Interface::Player> agentinOmistaja = agentti->owner().lock();
         if (agentinOmistaja == peli_->currentPlayer())
         {
-            uint oldconnections = agentti->connections();
-            agentti->setConnections(oldconnections + 1);
+            /*unsigned int oldconnections = agentti->connections();
+            agentti->setConnections(oldconnections + 1);*/
+            //Setconnections on connection_ += amount; -operaatio
+            agentti->setConnections(1);
         }
     }
 }

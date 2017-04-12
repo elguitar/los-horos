@@ -23,7 +23,7 @@ bool ActionAsetaPelimerkki::canPerform() const
 
 void ActionAsetaPelimerkki::perform()
 {
-    uint oldinfluence = location_->influence(peli_->currentPlayer());
+    unsigned int oldinfluence = location_->influence(peli_->currentPlayer());
 
     location_->setInfluence(peli_->currentPlayer(), oldinfluence + 1);
 
