@@ -33,8 +33,7 @@ using std::shared_ptr;
 
 
 void addLocations(shared_ptr<Game> game);
-void addCards(shared_ptr<Game> game);
-void readInfluenceCards(shared_ptr<Game> game);
+void createInfluenceCards(shared_ptr<Game> game);
 /*
  * The main program should initialize the game and open the main window, or
  * delegate these tasks elsewhere.
@@ -55,7 +54,7 @@ int main(int argc, char* argv[])
 
         // set up cards for the location deck
         {
-            addCards(game);
+            createInfluenceCards(game);
         }
 
         // TODO: create more locations
@@ -66,9 +65,15 @@ int main(int argc, char* argv[])
     {
         Interface::Runner runnaaja(game);
         // add a player to the game
-        shared_ptr<Agent> kasiakentti = make_shared<Agent>("kasiakentti",true);
         shared_ptr<Player> player1 = game->addPlayer("Player 1");
-        player1->addCard(kasiakentti);
+        for (int i = 0; i < 3; ++i)
+        {
+            shared_ptr<Agent> agentti = make_shared<Agent>("agentti" + QString::number(i+1),true);
+            shared_ptr<Player> pelaaja = game->players().at(0);
+            pelaaja->addCard(agentti);
+
+        }
+
         shared_ptr<Interface::ManualControl> pelaajakontrolli;
         runnaaja.setPlayerControl(player1,pelaajakontrolli);
 
@@ -99,21 +104,7 @@ void addLocations(shared_ptr<Game> game)
     game->addLocation(location4);
 }
 
-void addCards(shared_ptr<Game> game)
-{
-    // create influence cards and add them to location deck
-    readInfluenceCards(game);
-
-    // TODO: create more cards
-    shared_ptr<Agent> agentti = make_shared<Agent>("koeakentti",true);
-    shared_ptr<Location> location1 = game->locations().at(0);
-    location1->deck()->addCard(agentti);
-
-    // shuffle the deck
-    location1->deck()->shuffle();
-}
-
-void readInfluenceCards(shared_ptr<Game> game)
+void createInfluenceCards(shared_ptr<Game> game)
 {
     QString kortit;
     QFile file;
@@ -127,7 +118,7 @@ void readInfluenceCards(shared_ptr<Game> game)
     QJsonDocument sd = QJsonDocument::fromJson(kortit.toUtf8());
     qWarning() << sd.isNull(); // <- print false :)
     QJsonObject sett2 = sd.object();
-    for (unsigned int i = 0; i < 3; ++i)
+    for (unsigned int i = 0; i < 4; ++i)
     {
     QJsonArray jsonArray = sett2[QString::number(i)].toArray();
 
@@ -138,7 +129,7 @@ void readInfluenceCards(shared_ptr<Game> game)
             shared_ptr<Influence> uusiKortti = make_shared<Influence>(obj["nimi"].toString(), location, obj["vaikutus"].toInt());
             location->deck()->addCard(uusiKortti);
         }
-
+        location->deck()->shuffle();
     }
 }
 
