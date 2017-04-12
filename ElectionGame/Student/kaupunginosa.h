@@ -15,6 +15,7 @@
 #include "actionasetapelimerkki.h"
 #include "actionagentillemerkki.h"
 #include "akkuna.h"
+#include <memory>
 
 namespace Ui {
 class Kaupunginosa;
@@ -26,9 +27,10 @@ class Kaupunginosa : public QWidget
 
 public:
     explicit Kaupunginosa(QWidget *parent = 0);
-    explicit Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, QWidget *parent=0);
+    explicit Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, std::shared_ptr<QWidget> akkuna, QWidget *parent=0);
     ~Kaupunginosa();
 
+    Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, QWidget *parent=0);
 public slots:
     void nostaKortti();
     void nostaAgentti();
@@ -42,6 +44,7 @@ private:
     std::shared_ptr<Interface::Location> location_;
     std::vector<std::shared_ptr<Agent> > agentit_;
     std::shared_ptr<Interface::Game> peli_;
+    std::shared_ptr<QWidget> akkuna_;
 };
 
 #endif // KAUPUNGINOSA_H

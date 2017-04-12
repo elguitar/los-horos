@@ -31,6 +31,28 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
 
 }
 
+
+Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, std::shared_ptr<QWidget> akkuna, QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Kaupunginosa),
+    location_(location),
+    peli_(peli),
+    akkuna_(akkuna)
+{
+    ui->setupUi(this);
+    ui->nimi->setText(location_->name());
+    QObject::connect(ui->drawCard, SIGNAL(clicked()),
+                      this, SLOT(nostaKortti()));
+    QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                      this, SLOT(asetaAgentti()));
+    QObject::connect(ui->setToken, SIGNAL(clicked()),
+                      this, SLOT(asetaPelimerkki()));
+    QObject::connect(ui->agentToken, SIGNAL(clicked()),
+                      this, SLOT(agentilleMerkki()));
+    asetaPakkakuvat();
+
+}
+
 // Runner hoitaa canperformit ja performit. Meillä on kai vaan et lähetetään pleijjerille nextActioniin actioneita
 void Kaupunginosa::nostaKortti()
 {
@@ -78,7 +100,8 @@ void Kaupunginosa::asetaAgentti()
                           this, SLOT(nostaAgentti()));
         ui->agentit->addWidget(new Pelikortti());
     }
-    //((Akkuna*)parentWidget())->refreshHandToCurrentPlayer();
+    //std::shared_ptr<Akkuna> polo = std::dynamic_pointer_cast<Akkuna>(akkuna_);
+    //polo->refreshHandToCurrentPlayer();
 
 }
 

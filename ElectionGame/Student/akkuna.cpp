@@ -52,9 +52,11 @@ void Akkuna::kaupunginosat(bool pieniko)
         gridkoko = 4; // tähän pitää muuttaa suuren koko
     }
     unsigned char row = 0;
+    shared_ptr<Akkuna> tama = make_shared<Akkuna>(this);
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
-        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i),this);
+        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i));
+        //Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i),tama);
         //kaupunginosa->setText(peli_->locations().at(i)->name());
         //ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
         ui->kaupunkigrid->addWidget(kaupunginosa, row, i%2);
