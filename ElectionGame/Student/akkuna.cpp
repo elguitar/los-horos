@@ -14,12 +14,19 @@ void Akkuna::asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti)
 
 void Akkuna::refreshHandToCurrentPlayer()
 {
-    qDebug() << "Päivitetään käsi currentille";
-    qDebug() << pelaajanNimi;
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
-    qDebug() << "Eka toimi";
     std::vector<std::shared_ptr<Interface::CardInterface> > kortit = pelaaja->cards();
+    /*while(ui->kasikortit->children().size() != 0){
+        ui->kasikortit->removeItem(ui->kasikortit->itemAt(0));
+    }
+    ui->kasikortit->lay*/
+    QLayoutItem *item;
+    while((item = ui->kasikortit->takeAt(0))){
+        delete item->widget();
+        delete item;
+    }
     if(kortit.size() > 0){
+        unsigned int counter = 1;
         for (auto it = kortit.begin(); it != kortit.end(); ++it){
             ui->kasikortit->addWidget(new Pelikortti(*it));
         }

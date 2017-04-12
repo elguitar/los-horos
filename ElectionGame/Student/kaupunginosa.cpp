@@ -65,6 +65,8 @@ void Kaupunginosa::nostaKortti()
     }
     qDebug() << "nosta kortti";
     std::shared_ptr<ActionNostaKortti> kortti = make_shared<ActionNostaKortti>();
+    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
+
 
 }
 
@@ -83,6 +85,8 @@ void Kaupunginosa::nostaAgentti()
                           this, SLOT(asetaAgentti()));
     }
     qDebug() << "nosta agentti";
+    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
+
 }
 
 void Kaupunginosa::asetaAgentti()
