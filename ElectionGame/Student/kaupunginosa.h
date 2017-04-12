@@ -14,9 +14,9 @@
 #include "actionasetaagentti.h"
 #include "actionasetapelimerkki.h"
 #include "actionagentillemerkki.h"
-#include "akkuna.h"
 #include <memory>
 
+class Akkuna;
 namespace Ui {
 class Kaupunginosa;
 }

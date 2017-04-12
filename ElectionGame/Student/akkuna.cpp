@@ -15,6 +15,7 @@ void Akkuna::asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti)
 void Akkuna::refreshHandToCurrentPlayer()
 {
     qDebug() << "Päivitetään käsi currentille";
+    qDebug() << pelaajanNimi;
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
     qDebug() << "Eka toimi";
     std::vector<std::shared_ptr<Interface::CardInterface> > kortit = pelaaja->cards();
@@ -55,8 +56,8 @@ void Akkuna::kaupunginosat(bool pieniko)
     shared_ptr<Akkuna> tama = make_shared<Akkuna>(this);
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
-        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i));
-        //Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i),tama);
+        //Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i));
+        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i),tama,this);
         //kaupunginosa->setText(peli_->locations().at(i)->name());
         //ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
         ui->kaupunkigrid->addWidget(kaupunginosa, row, i%2);

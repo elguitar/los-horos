@@ -1,6 +1,7 @@
 #include "kaupunginosa.h"
 #include "ui_kaupunginosa.h"
 
+#include "akkuna.h"
 
 
 Kaupunginosa::Kaupunginosa(QWidget *parent) :
@@ -29,6 +30,7 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
                       this, SLOT(agentilleMerkki()));
     asetaPakkakuvat();
 
+
 }
 
 
@@ -36,8 +38,7 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
     QWidget(parent),
     ui(new Ui::Kaupunginosa),
     location_(location),
-    peli_(peli),
-    akkuna_(akkuna)
+    peli_(peli)
 {
     ui->setupUi(this);
     ui->nimi->setText(location_->name());
@@ -50,6 +51,7 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
     QObject::connect(ui->agentToken, SIGNAL(clicked()),
                       this, SLOT(agentilleMerkki()));
     asetaPakkakuvat();
+    //akkuna_ = std::dynamic_pointer_cast<Akkuna>(akkuna);
 
 }
 
@@ -102,6 +104,11 @@ void Kaupunginosa::asetaAgentti()
     }
     //std::shared_ptr<Akkuna> polo = std::dynamic_pointer_cast<Akkuna>(akkuna_);
     //polo->refreshHandToCurrentPlayer();
+    //Akkuna* mutsis_muuttuja = dynamic_cast<Akkuna*>(this->parentWidget());
+    //mutsis_muuttuja->refreshHandToCurrentPlayer();
+    //((Akkuna*)parentWidget())->refreshHandToCurrentPlayer();*/
+    //((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
+    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
 
 }
 
