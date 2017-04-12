@@ -11,11 +11,13 @@ Kaupunginosa::Kaupunginosa(QWidget *parent) :
     //ui->setToken->setEnabled(false);
 }
 
-Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, QWidget *parent) :
+Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, Ui::Akkuna *akkuna, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Kaupunginosa),
     location_(location),
-    peli_(peli)
+    peli_(peli),
+    akkuna_(akkuna)
+
 {
     ui->setupUi(this);
     ui->nimi->setText(location_->name());
@@ -76,7 +78,7 @@ void Kaupunginosa::asetaAgentti()
         ui->setAgent->setText("Nosta agentti");
         QObject::connect(ui->setAgent, SIGNAL(clicked()),
                           this, SLOT(nostaAgentti()));
-        //ui->agentit->addWidget(new Pelikortti());
+        ui->agentit->addWidget(new Pelikortti());
     }
 }
 

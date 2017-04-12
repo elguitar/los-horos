@@ -51,7 +51,7 @@ void Akkuna::kaupunginosat(bool pieniko)
     unsigned char row = 0;
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
-        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i));
+        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i),ui);
         //kaupunginosa->setText(peli_->locations().at(i)->name());
         //ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
         ui->kaupunkigrid->addWidget(kaupunginosa, row, i%2);
