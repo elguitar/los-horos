@@ -11,10 +11,18 @@
 #include "agent.h"
 #include "manualcontrol.h"
 #include "runner.h"
-#include <vector>
 
+#include <vector>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QFile>
+#include <QDebug>
+#include <QDir>
 #include <QApplication>
 #include <QWidget>
+
 
 using Interface::Game;
 using Interface::Influence;
@@ -24,8 +32,9 @@ using std::make_shared;
 using std::shared_ptr;
 
 
-void addlocations(shared_ptr<Game> game);
-void addcards(shared_ptr<Game> game);
+void addLocations(shared_ptr<Game> game);
+void addCards(shared_ptr<Game> game);
+void readInfluenceCards(shared_ptr<Game> game);
 /*
  * The main program should initialize the game and open the main window, or
  * delegate these tasks elsewhere.
@@ -42,11 +51,11 @@ int main(int argc, char* argv[])
     // set up locations of the board
     {
         // create and initialize a location, and add it to the game
-        addlocations(game);
+        addLocations(game);
 
         // set up cards for the location deck
         {
-            addcards(game);
+            addCards(game);
         }
 
         // TODO: create more locations
@@ -74,7 +83,8 @@ int main(int argc, char* argv[])
     a.exec();
 }
 
-void addlocations(shared_ptr<Game> game){
+void addLocations(shared_ptr<Game> game)
+{
     shared_ptr<Location> location1 = make_shared<Location>(1, "Metsämiesten kilta");
     shared_ptr<Location> location2 = make_shared<Location>(2, "Hengenpelastajatytöt");
     shared_ptr<Location> location3 = make_shared<Location>(3, "Kaupungin kuumakulmakundit");
@@ -89,12 +99,10 @@ void addlocations(shared_ptr<Game> game){
     game->addLocation(location4);
 }
 
-void addcards(shared_ptr<Game> game){
-    // create an influence card and add it to location deck
-    shared_ptr<Location> location1 = game->locations().at(0);
-    shared_ptr<Influence> influence1 = make_shared<Influence>(location1->name() + " Influence", location1, 1);
-    location1->deck()->addCard(influence1);
-    //game->locations().at(0)->addCard(influence1)
+void addCards(shared_ptr<Game> game)
+{
+    // create influence cards and add them to location deck
+    readInfluenceCards(game);
 
     // TODO: create more cards
     shared_ptr<Agent> agentti = make_shared<Agent>("koeakentti",true);
@@ -103,3 +111,33 @@ void addcards(shared_ptr<Game> game){
     // shuffle the deck
     location1->deck()->shuffle();
 }
+
+void readInfluenceCards(shared_ptr<Game> game)
+{
+    QString kortit;
+    QFile file;
+    QString path = QDir::currentPath();
+    path.append("/influence.json");
+    file.setFileName(path);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    kortit = file.readAll();
+    file.close();
+
+    QJsonDocument sd = QJsonDocument::fromJson(kortit.toUtf8());
+    qWarning() << sd.isNull(); // <- print false :)
+    QJsonObject sett2 = sd.object();
+    for (unsigned int i = 0; i < 3; ++i)
+    {
+    QJsonArray jsonArray = sett2[QString::number(i)].toArray();
+
+        shared_ptr<Location> location = game->locations().at(i);
+        foreach (const QJsonValue & value, jsonArray)
+        {
+            QJsonObject obj = value.toObject();
+            shared_ptr<Influence> uusiKortti = make_shared<Influence>(obj["nimi"].toString(), location, obj["vaikutus"].toInt());
+            location->deck()->addCard(uusiKortti);
+        }
+
+    }
+}
+

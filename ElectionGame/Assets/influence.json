@@ -1,0 +1,397 @@
+{
+  "0": [
+      {
+	  "nimi": "Parta",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Parta",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Parta",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Parta",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Kuusentaimi",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Kuusentaimi",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Kuusentaimi",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Kuusentaimi",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Sadetakki",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Sadetakki",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Sadetakki",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Sadetakki",
+	"vaikutus": 1
+      },
+      {
+	"nimi": "Kirves",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Kirves",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Kirves",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Kirves",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Saha",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Saha",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Saha",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Saha",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Moottorisaha",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Moottorisaha",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Moottorisaha",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Moottorisaha",
+	"vaikutus": 3
+      }
+   ],
+  "1": [
+      {
+	  "nimi": "Rantalelu",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Rantalelu",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Rantalelu",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Rantalelu",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Pelastusrengas",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Pelastusrengas",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Pelastusrengas",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Pelastusrengas",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Auringonpaiste",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Auringonpaiste",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Auringonpaiste",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Auringonpaiste",
+	"vaikutus": 1
+      },
+      {
+	"nimi": "Uudet bikinit",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Uudet bikinit",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Uudet bikinit",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Uudet bikinit",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Polkuvene",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Polkuvene",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Polkuvene",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Polkuvene",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Mies",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Mies",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Mies",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Mies",
+	"vaikutus": 3
+      }
+   ],
+   "2": [
+      {
+	  "nimi": "Farkut",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Farkut",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Farkut",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Farkut",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Hiusvaha",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Hiusvaha",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Hiusvaha",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Hiusvaha",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Kauluspaita",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Kauluspaita",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Kauluspaita",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Kauluspaita",
+	"vaikutus": 1
+      },
+      {
+	"nimi": "Pikkutakki",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Pikkutakki",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Pikkutakki",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Pikkutakki",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Uber-kyyti",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Uber-kyyti",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Uber-kyyti",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Uber-kyyti",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Limusiini",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Limusiini",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Limusiini",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Limusiini",
+	"vaikutus": 3
+      }
+   
+   ],
+   
+   "3": [
+      {
+	  "nimi": "Kiljua",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Kiljua",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Kiljua",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Kiljua",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Olut",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Olut",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Olut",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Olut",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Siideri",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Siideri",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Siideri",
+	"vaikutus": 1
+      },
+      {
+	  "nimi": "Siideri",
+	"vaikutus": 1
+      },
+      {
+	"nimi": "Uusi baari",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Uusi baari",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Uusi baari",
+	"vaikutus": 2
+      },
+      {
+	"nimi": "Uusi baari",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Hipster -status",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Hipster -status",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Hipster -status",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Hipster -status",
+	"vaikutus": 2
+      },
+      {
+	  "nimi": "Uusi Alko",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Uusi Alko",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Uusi Alko",
+	"vaikutus": 3
+      },
+      {
+	  "nimi": "Uusi Alko",
+	"vaikutus": 3
+      }
+   
+   ]
+}
