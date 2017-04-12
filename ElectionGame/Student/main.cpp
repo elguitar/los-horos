@@ -57,7 +57,9 @@ int main(int argc, char* argv[])
     {
         Interface::Runner runnaaja(game);
         // add a player to the game
+        shared_ptr<Agent> kasiakentti = make_shared<Agent>("kasiakentti",true);
         shared_ptr<Player> player1 = game->addPlayer("Player 1");
+        player1->addCard(kasiakentti);
         shared_ptr<Interface::ManualControl> pelaajakontrolli;
         runnaaja.setPlayerControl(player1,pelaajakontrolli);
 
