@@ -18,7 +18,6 @@
 
 namespace Ui {
 class Kaupunginosa;
-class Akkuna;
 }
 
 class Kaupunginosa : public QWidget
@@ -27,7 +26,7 @@ class Kaupunginosa : public QWidget
 
 public:
     explicit Kaupunginosa(QWidget *parent = 0);
-    explicit Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, Ui::Akkuna *akkuna, QWidget *parent=0);
+    explicit Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, QWidget *parent=0);
     ~Kaupunginosa();
 
 public slots:
@@ -43,7 +42,6 @@ private:
     std::shared_ptr<Interface::Location> location_;
     std::vector<std::shared_ptr<Agent> > agentit_;
     std::shared_ptr<Interface::Game> peli_;
-    Ui::Akkuna *akkuna_;
 };
 
 #endif // KAUPUNGINOSA_H

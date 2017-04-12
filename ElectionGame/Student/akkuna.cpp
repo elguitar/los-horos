@@ -16,9 +16,12 @@ void Akkuna::refreshHandToCurrentPlayer()
 {
     qDebug() << "Päivitetään käsi currentille";
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
+    qDebug() << "Eka toimi";
     std::vector<std::shared_ptr<Interface::CardInterface> > kortit = pelaaja->cards();
-    for (auto it = kortit.begin(); it != kortit.end(); ++it){
-        ui->kasikortit->addWidget(new Pelikortti(*it));
+    if(kortit.size() > 0){
+        for (auto it = kortit.begin(); it != kortit.end(); ++it){
+            ui->kasikortit->addWidget(new Pelikortti(*it));
+        }
     }
 }
 
@@ -51,10 +54,11 @@ void Akkuna::kaupunginosat(bool pieniko)
     unsigned char row = 0;
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
-        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i),ui);
+        Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i),this);
         //kaupunginosa->setText(peli_->locations().at(i)->name());
         //ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
         ui->kaupunkigrid->addWidget(kaupunginosa, row, i%2);
+
     }
 }
 
