@@ -33,6 +33,7 @@ void ActionAgentilleMerkki::perform()
         {
             /*unsigned int oldconnections = agentti->connections();
             agentti->setConnections(oldconnections + 1);*/
+            
             //Setconnections on connection_ += amount; -operaatio
             agentti->setConnections(1);
         }
