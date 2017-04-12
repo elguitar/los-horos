@@ -19,6 +19,7 @@ class Akkuna : public QWidget
 
 public slots:
     void asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti);
+    void refreshHandToCurrentPlayer();
 
 public:
     explicit Akkuna(QWidget *parent = 0);

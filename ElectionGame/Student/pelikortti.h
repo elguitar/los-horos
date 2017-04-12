@@ -17,7 +17,7 @@ class Pelikortti : public QWidget
 
 public:
     explicit Pelikortti(QWidget *parent = 0);
-    explicit Pelikortti(shared_ptr<Interface::CardInterface> kortti,QString typeName, QWidget *parent = 0);
+    explicit Pelikortti(shared_ptr<Interface::CardInterface> kortti, QWidget *parent = 0);
     ~Pelikortti();
 
 private:

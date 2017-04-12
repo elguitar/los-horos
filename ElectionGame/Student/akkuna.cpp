@@ -8,7 +8,17 @@ void Akkuna::asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti)
         ui->kasikortit->addWidget(new Pelikortti(kortti,kortti->typeName()));
     }*/
     if(ui->kasikortit->count() < 7){
-        ui->kasikortit->addWidget(new Pelikortti(kortti,kortti->typeName()));
+        ui->kasikortit->addWidget(new Pelikortti(kortti));
+    }
+}
+
+void Akkuna::refreshHandToCurrentPlayer()
+{
+    qDebug() << "Päivitetään käsi currentille";
+    shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
+    std::vector<std::shared_ptr<Interface::CardInterface> > kortit = pelaaja->cards();
+    for (auto it = kortit.begin(); it != kortit.end(); ++it){
+        ui->kasikortit->addWidget(new Pelikortti(*it));
     }
 }
 
@@ -27,6 +37,7 @@ Akkuna::Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko,
 {
     ui->setupUi(this);
     kaupunginosat(pieniko);
+    refreshHandToCurrentPlayer();
 
 }
 

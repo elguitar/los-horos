@@ -8,13 +8,12 @@ Pelikortti::Pelikortti(QWidget *parent) :
     ui->setupUi(this);
 }
 
-Pelikortti::Pelikortti(shared_ptr<Interface::CardInterface> kortti, QString typeName, QWidget *parent) :
+Pelikortti::Pelikortti(shared_ptr<Interface::CardInterface> kortti, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Pelikortti),
-    kortti_(kortti),
-    tyyppi_(typeName)
+    kortti_(kortti)
 {
-
+    ui->setupUi(this);
 }
 
 Pelikortti::~Pelikortti()
