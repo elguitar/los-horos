@@ -106,6 +106,7 @@ void addCards(shared_ptr<Game> game)
 
     // TODO: create more cards
     shared_ptr<Agent> agentti = make_shared<Agent>("koeakentti",true);
+    shared_ptr<Location> location1 = game->locations().at(0);
     location1->deck()->addCard(agentti);
 
     // shuffle the deck
@@ -117,7 +118,7 @@ void readInfluenceCards(shared_ptr<Game> game)
     QString kortit;
     QFile file;
     QString path = QDir::currentPath();
-    path.append("/influence.json");
+    path.append("/Assets/influence.json");
     file.setFileName(path);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     kortit = file.readAll();
