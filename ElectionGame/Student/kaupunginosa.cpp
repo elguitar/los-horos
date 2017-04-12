@@ -31,7 +31,7 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
 
 }
 
-
+// Runner hoitaa canperformit ja performit. Meillä on kai vaan et lähetetään pleijjerille nextActioniin actioneita
 void Kaupunginosa::nostaKortti()
 {
     ActionNostaKortti* toiminto = new ActionNostaKortti(peli_, location_);
