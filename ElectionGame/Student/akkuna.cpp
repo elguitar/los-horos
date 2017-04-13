@@ -42,7 +42,7 @@ void Akkuna::laskeVoittaja()
     for (shared_ptr<Interface::Location> paikka : peli_->locations())
     {
         shared_ptr<Interface::Councilor> jasen = paikka->councilor();
-        unsigned int vaikutus;
+        unsigned int vaikutus = 0;
         shared_ptr<Interface::Player> valivoittaja;
 
         for (shared_ptr<Interface::Player> pelaaja : peli_->players())
@@ -53,7 +53,7 @@ void Akkuna::laskeVoittaja()
             for (shared_ptr<Interface::CardInterface> kortti: pelaaja->cards())
             {
                 std::shared_ptr<Interface::Influence> card = std::dynamic_pointer_cast<Interface::Influence>(kortti);
-                if (card)
+                if (card->location().lock() == paikka)
                 {
                     valivaikutus += card->amount();
                 }
@@ -82,6 +82,7 @@ void Akkuna::laskeVoittaja()
             eniten = player.second;
             voittava = player.first;
             onkoUseampi = false;
+            qDebug() << "voitto";
         }
         else if (player.second == eniten)
         {
@@ -97,10 +98,12 @@ void Akkuna::laskeVoittaja()
             if (pisteet.at(voittava) > pisteet.at(toinen))
             {
                 voittaja = voittava;
+                qDebug() << "voitto";
             }
             else
             {
                 voittaja = toinen;
+                qDebug() << "voitto";
             }
         }
     }
@@ -112,8 +115,8 @@ void Akkuna::refreshUI()
     ++usedTurns;
     QString akkunakierroskyltti = "Kierros: " + QString::number((usedTurns+4)/4) + "/10";
     ui->kierroslaskuri->setText(akkunakierroskyltti);
-
-    if (usedTurns/4 >= 10)
+    //if (usedTurns == 10){laskeVoittaja();}
+    if (usedTurns/4 >= 5)
     {
         laskeVoittaja();
     }
