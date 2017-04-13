@@ -16,6 +16,7 @@
 #include "actionagentillemerkki.h"
 #include <memory>
 
+
 class Akkuna;
 namespace Ui {
 class Kaupunginosa;
@@ -47,6 +48,8 @@ private:
     std::vector<std::shared_ptr<Agent> > agentit_;
     std::shared_ptr<Interface::Game> peli_;
     std::shared_ptr<QWidget> akkuna_;
+    void poistaPelaajanAgentti();
+    std::shared_ptr<Agent> etsiPelaajanKadestaAgentti();
 };
 
 #endif // KAUPUNGINOSA_H

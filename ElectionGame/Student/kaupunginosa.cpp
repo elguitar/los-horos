@@ -80,7 +80,6 @@ void Kaupunginosa::hideButtons()
 
 }
 
-// Runner hoitaa canperformit ja performit. Meillä on kai vaan et lähetetään pleijjerille nextActioniin actioneita
 void Kaupunginosa::nostaKortti()
 {
     ActionNostaKortti* toiminto = new ActionNostaKortti(peli_, location_);
@@ -106,6 +105,7 @@ void Kaupunginosa::nostaAgentti()
     if (toiminto->canPerform())
     {
         toiminto->perform();
+        poistaPelaajanAgentti();
         hideButtons();
 
 
@@ -122,10 +122,10 @@ void Kaupunginosa::asetaAgentti()
 
     if (toiminto->canPerform())
     {
+        std::shared_ptr<Agent> agentti = etsiPelaajanKadestaAgentti();
+        ui->agentit->addWidget(new PeliCard(agentti));
         toiminto->perform();
         enableButtons();
-        ui->agentit->addWidget(new PeliCard());
-
         peli_->nextPlayer();
         ((Akkuna*)this->parentWidget())->refreshUI();
         ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
@@ -190,6 +190,35 @@ void Kaupunginosa::asetaPakkakuvat()
         QPixmap scaled = pic.scaled(61, 91, Qt::IgnoreAspectRatio, Qt::FastTransformation);
 
         ui->pakka->setPixmap(scaled);
+    }
+}
+
+void Kaupunginosa::poistaPelaajanAgentti()
+{
+    shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
+    QLayoutItem *item;
+    unsigned short i = 0;
+    while((item = ui->agentit->takeAt(i))){
+        QWidget* witketti = item->widget();
+        PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
+        if(pelaaja == kortti->getOwner().lock()){
+            delete item->widget();
+            delete item;
+            break;
+        }
+        ++i;
+    }
+}
+
+std::shared_ptr<Agent> Kaupunginosa::etsiPelaajanKadestaAgentti()
+{
+    for (std::shared_ptr<Interface::CardInterface> card : peli_->currentPlayer()->cards())
+    {
+        if (card->typeName() == "Agent")
+        {
+            std::shared_ptr<Agent> kortti = std::dynamic_pointer_cast<Agent>(card);
+            return kortti;
+        }
     }
 }
 

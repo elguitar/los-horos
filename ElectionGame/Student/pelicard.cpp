@@ -26,6 +26,9 @@ PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, QWidget *parent)
     }
 }
 
+std::weak_ptr<Interface::Player> PeliCard::getOwner(){
+    return kortti_->owner();
+}
 
 PeliCard::~PeliCard()
 {

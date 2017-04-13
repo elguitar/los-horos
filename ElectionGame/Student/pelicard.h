@@ -23,6 +23,7 @@ public:
     ~PeliCard();
 
 
+    std::weak_ptr<Interface::Player> getOwner();
 private:
     Ui::PeliCard *ui;
     shared_ptr<Interface::CardInterface> kortti_;
