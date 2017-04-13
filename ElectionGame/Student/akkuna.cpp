@@ -36,14 +36,20 @@ void Akkuna::refreshHandToCurrentPlayer()
 void Akkuna::laskeVoittaja()
 {
     std::map<shared_ptr<Interface::Player>, int> pisteet;
+    std::map<shared_ptr<Interface::Player>, int> jasenet;
     shared_ptr<Interface::Player> voittaja;
+
     for (shared_ptr<Interface::Location> paikka : peli_->locations())
     {
+        shared_ptr<Interface::Councilor> jasen = paikka->councilor();
         unsigned int vaikutus;
+        shared_ptr<Interface::Player> valivoittaja;
+
         for (shared_ptr<Interface::Player> pelaaja : peli_->players())
         {
             pisteet.insert(std::pair<shared_ptr<Interface::Player>,int> {pelaaja,0});
             unsigned int valivaikutus = paikka->influence(pelaaja);
+
             for (shared_ptr<Interface::CardInterface> kortti: pelaaja->cards())
             {
                 std::shared_ptr<Interface::Influence> card = std::dynamic_pointer_cast<Interface::Influence>(kortti);
@@ -54,13 +60,49 @@ void Akkuna::laskeVoittaja()
             }
             if (valivaikutus > vaikutus)
             {
-                shared_ptr<Interface::Councilor> jasen = paikka->councilor();
                 jasen->setOwner(pelaaja);
                 vaikutus = valivaikutus;
+                valivoittaja = pelaaja;
             }
             pisteet.at(pelaaja) += valivaikutus;
         }
+        jasenet.insert(std::pair<shared_ptr<Interface::Player>,int> {valivoittaja,0});
+        jasenet.at(valivoittaja) += 1;
+    }
 
+    shared_ptr<Interface::Player> voittava;
+    shared_ptr<Interface::Player> toinen;
+    int eniten = -1;
+    unsigned int laskuri = 0;
+    bool onkoUseampi = false;
+    for (auto player : jasenet)
+    {
+        if (player.second > eniten)
+        {
+            eniten = player.second;
+            voittava = player.first;
+            onkoUseampi = false;
+        }
+        else if (player.second == eniten)
+        {
+            onkoUseampi = true;
+            ++laskuri;
+            toinen = player.first;
+        }
+    }
+    if (jasenet.at(toinen) = jasenet.at(voittava))
+    {
+        if (laskuri != 3)
+        {
+            if (pisteet.at(voittava) > pisteet.at(toinen))
+            {
+                voittaja = voittava;
+            }
+            else
+            {
+                voittaja = toinen;
+            }
+        }
     }
 
 }
