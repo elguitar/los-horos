@@ -5,10 +5,10 @@ void Akkuna::asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti)
 {
     qDebug() << "Kortti käteen. T: Akkuna";
     /*if(peli_->currentPlayer()->cards().size() < 7){
-        ui->kasikortit->addWidget(new Pelikortti(kortti,kortti->typeName()));
+        ui->kasikortit->addWidget(new PeliCard(kortti,kortti->typeName()));
     }*/
     if(ui->kasikortit->count() < 7){
-        ui->kasikortit->addWidget(new Pelikortti(kortti));
+        ui->kasikortit->addWidget(new PeliCard(kortti));
     }
 }
 
@@ -30,9 +30,9 @@ void Akkuna::refreshHandToCurrentPlayer()
     if(kortit.size() > 0){
         unsigned int counter = 1;
         for (auto it = kortit.begin(); it != kortit.end(); ++it){
-            ui->kasikortit->addWidget(new Pelikortti(*it));
+            ui->kasikortit->addWidget(new PeliCard(*it));
         }
-    }
+    } ui->kasikortit->addStretch();
 }
 
 void Akkuna::refreshUI()

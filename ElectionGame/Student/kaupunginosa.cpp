@@ -124,7 +124,7 @@ void Kaupunginosa::asetaAgentti()
     {
         toiminto->perform();
         enableButtons();
-        ui->agentit->addWidget(new Pelikortti());
+        ui->agentit->addWidget(new PeliCard());
 
         peli_->nextPlayer();
         ((Akkuna*)this->parentWidget())->refreshUI();
