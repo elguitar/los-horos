@@ -110,7 +110,7 @@ void Akkuna::laskeVoittaja()
 void Akkuna::refreshUI()
 {
     ++usedTurns;
-    if (usedTurns/4 >= 40)
+    if (usedTurns/4 >= 10)
     {
         laskeVoittaja();
     }
