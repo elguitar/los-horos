@@ -1,6 +1,7 @@
 #include "pelikortti.h"
 #include "ui_pelikortti.h"
 
+#include <QDebug>
 Pelikortti::Pelikortti(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Pelikortti)
@@ -17,23 +18,11 @@ Pelikortti::Pelikortti(shared_ptr<Interface::CardInterface> kortti, QWidget *par
     ui->setupUi(this);
     ui->kortinnimi->setText(kortti_->name());
     ui->pelaaja->setText(kortti_->owner().lock()->name());
-}
-
-Pelikortti::Pelikortti(shared_ptr<Agent> kortti, QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::Pelikortti),
-    kortti_(kortti)
-
-{
     if(kortti->typeName() == "Agent"){
-        shared_ptr<Agent> tempagent = std::dynamic_pointer_cast<Agent>(kortti);
-        agentconnections_ = tempagent->connections();
-        //ui->pelimerkit->setText(QString::number(agentconnections_));
+        agentconnections_ = std::dynamic_pointer_cast<Agent>(kortti)->connections();
+        ui->pelimerkit->setText(QString::number(agentconnections_));
         //ui->pelimerkit->setText(QString::number(1));
     }
-    ui->setupUi(this);
-    ui->kortinnimi->setText(kortti_->name());
-    ui->pelaaja->setText(kortti_->owner().lock()->name());
 }
 
 Pelikortti::~Pelikortti()
