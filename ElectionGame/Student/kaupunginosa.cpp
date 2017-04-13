@@ -85,10 +85,15 @@ void Kaupunginosa::nostaKortti()
     if (toiminto->canPerform())
     {
         toiminto->perform();
+        qDebug() << "nosta kortti";
+
     }
-    qDebug() << "nosta kortti";
     std::shared_ptr<ActionNostaKortti> kortti = make_shared<ActionNostaKortti>();
-    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
+
+    peli_->nextPlayer();
+    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
+    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
+
 
 
 }
@@ -100,25 +105,27 @@ void Kaupunginosa::nostaAgentti()
     {
         toiminto->perform();
         hideButtons();
+        qDebug() << "nosta agentti";
+
     }
-    qDebug() << "nosta agentti";
 
     peli_->nextPlayer();
     //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
+    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
 
 }
 
 void Kaupunginosa::asetaAgentti()
 {
     ActionAsetaAgentti* toiminto = new ActionAsetaAgentti(peli_, location_);
-    qDebug() << "aseta agentti";
 
     if (toiminto->canPerform())
     {
         toiminto->perform();
         enableButtons();
         ui->agentit->addWidget(new Pelikortti());
+        qDebug() << "aseta agentti";
+
     }
     //std::shared_ptr<Akkuna> polo = std::dynamic_pointer_cast<Akkuna>(akkuna_);
     //polo->refreshHandToCurrentPlayer();
@@ -128,7 +135,7 @@ void Kaupunginosa::asetaAgentti()
     //((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
     peli_->nextPlayer();
     //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
+    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
 
 }
 
@@ -138,11 +145,12 @@ void Kaupunginosa::agentilleMerkki()
     if (toiminto->canPerform())
     {
         toiminto->perform();
+        qDebug() << "agentille merkki";
+
     }
-    qDebug() << "agentille merkki";
     peli_->nextPlayer();
     //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
+    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
 }
 
 void Kaupunginosa::asetaPelimerkki()
@@ -152,11 +160,12 @@ void Kaupunginosa::asetaPelimerkki()
     if (toiminto->canPerform())
     {
         toiminto->perform();
+        qDebug() << "aseta pelimerkki";
+
     }
-    qDebug() << "aseta pelimerkki";
     peli_->nextPlayer();
     //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
+    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
 }
 
 void Kaupunginosa::asetaPakkakuvat()

@@ -14,7 +14,7 @@ Pelikortti::Pelikortti(shared_ptr<Interface::CardInterface> kortti, QWidget *par
     kortti_(kortti)
 {
     ui->setupUi(this);
-    ui->topframe->setStyleSheet("border: 1px solid red");
+    //ui->topframe->setStyleSheet("border: 1px solid red");
 }
 
 Pelikortti::~Pelikortti()
