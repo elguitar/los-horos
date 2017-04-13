@@ -14,8 +14,10 @@ void Akkuna::asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti)
 
 void Akkuna::refreshHandToCurrentPlayer()
 {
-    peli_->nextPlayer();
+    peli_->nextPlayer(); // Tää tosiaa pitää tehä jossain muualla tai vähintään ekalla suorituskerralla ohittaa iffillä
+
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
+    ui->pelaajakyltti->setText(pelaaja->name());
     std::vector<std::shared_ptr<Interface::CardInterface> > kortit = pelaaja->cards();
     /*while(ui->kasikortit->children().size() != 0){
         ui->kasikortit->removeItem(ui->kasikortit->itemAt(0));
