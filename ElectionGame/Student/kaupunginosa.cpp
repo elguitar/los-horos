@@ -62,6 +62,7 @@ void Kaupunginosa::enableButtons()
     ui->agentToken->setEnabled(true);
 
     ui->setAgent->setText("Nosta agentti");
+    disconnect(ui->setAgent, SIGNAL(clicked()), this, SLOT(asetaAgentti()));
     QObject::connect(ui->setAgent, SIGNAL(clicked()),
                       this, SLOT(nostaAgentti()));
 }
@@ -73,6 +74,7 @@ void Kaupunginosa::hideButtons()
     ui->agentToken->setEnabled(false);
 
     ui->setAgent->setText("Aseta agentti");
+    disconnect(ui->setAgent, SIGNAL(clicked()), this, SLOT(nostaAgentti()));
     QObject::connect(ui->setAgent, SIGNAL(clicked()),
                       this, SLOT(asetaAgentti()));
 
@@ -91,7 +93,7 @@ void Kaupunginosa::nostaKortti()
     std::shared_ptr<ActionNostaKortti> kortti = make_shared<ActionNostaKortti>();
 
     peli_->nextPlayer();
-    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
+    ((Akkuna*)this->parentWidget())->refreshUI();
     ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
 
 
@@ -105,14 +107,13 @@ void Kaupunginosa::nostaAgentti()
     {
         toiminto->perform();
         hideButtons();
+
+
+        peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->refreshUI();
+        ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "nosta agentti";
-
     }
-
-    peli_->nextPlayer();
-    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
-
 }
 
 void Kaupunginosa::asetaAgentti()
@@ -124,19 +125,13 @@ void Kaupunginosa::asetaAgentti()
         toiminto->perform();
         enableButtons();
         ui->agentit->addWidget(new Pelikortti());
+
+        peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->refreshUI();
+        ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "aseta agentti";
 
     }
-    //std::shared_ptr<Akkuna> polo = std::dynamic_pointer_cast<Akkuna>(akkuna_);
-    //polo->refreshHandToCurrentPlayer();
-    //Akkuna* mutsis_muuttuja = dynamic_cast<Akkuna*>(this->parentWidget());
-    //mutsis_muuttuja->refreshHandToCurrentPlayer();
-    //((Akkuna*)parentWidget())->refreshHandToCurrentPlayer();*/
-    //((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
-    peli_->nextPlayer();
-    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
-
 }
 
 void Kaupunginosa::agentilleMerkki()
@@ -145,12 +140,12 @@ void Kaupunginosa::agentilleMerkki()
     if (toiminto->canPerform())
     {
         toiminto->perform();
-        qDebug() << "agentille merkki";
 
+        peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->refreshUI();
+        ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
+        qDebug() << "agentille merkki";
     }
-    peli_->nextPlayer();
-    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
 }
 
 void Kaupunginosa::asetaPelimerkki()
@@ -160,12 +155,14 @@ void Kaupunginosa::asetaPelimerkki()
     if (toiminto->canPerform())
     {
         toiminto->perform();
+
+        peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->refreshUI();
+        ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "aseta pelimerkki";
 
     }
-    peli_->nextPlayer();
-    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
+
 }
 
 void Kaupunginosa::asetaPakkakuvat()
