@@ -11,6 +11,7 @@
 #include "agent.h"
 #include "manualcontrol.h"
 #include "runner.h"
+#include "councilor.h"
 
 #include <vector>
 #include <QJsonArray>
@@ -28,6 +29,7 @@ using Interface::Game;
 using Interface::Influence;
 using Interface::Location;
 using Interface::Player;
+using Interface::Councilor;
 using std::make_shared;
 using std::shared_ptr;
 
@@ -65,13 +67,30 @@ int main(int argc, char* argv[])
     {
         Interface::Runner runnaaja(game);
         // add a player to the game
+
         shared_ptr<Player> player1 = game->addPlayer("Player 1");
         shared_ptr<Player> player2 = game->addPlayer("Player 2");
+        shared_ptr<Player> player3 = game->addPlayer("Player 3");
+        shared_ptr<Player> player4 = game->addPlayer("Player 4");
+        std::vector<std::pair<QString,QString> > valtuustovektori = { {"Mikko", "Metsuri"},
+                                                                      {"Linda", "Sukeltaja"},
+                                                                      {"Jesse","Stud"},
+                                                                      {"Anneli","Putkinainen"} };
+
         for(unsigned int j = 0; j < game->players().size(); ++j){
+            shared_ptr<Player> pelaaja = game->players().at(j);
+            shared_ptr<Location> paikka = game->locations().at(j);
+            shared_ptr<Councilor> jasen = make_shared<Councilor>
+                                                            (valtuustovektori.at(j).first,
+                                                            valtuustovektori.at(j).second,
+                                                             game->locations().at(j));
+            pelaaja->setCouncilor(jasen);
+            paikka->setCouncilor(jasen);
+
+
             for (int i = 0; i < 3; ++i)
             {
                 shared_ptr<Agent> agentti = make_shared<Agent>("agentti" + QString::number(i+1),true);
-                shared_ptr<Player> pelaaja = game->players().at(j);
                 pelaaja->addCard(agentti);
 
             }

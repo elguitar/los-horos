@@ -14,7 +14,6 @@ void Akkuna::asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti)
 
 void Akkuna::refreshHandToCurrentPlayer()
 {
-
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
     ui->pelaajakyltti->setText(pelaaja->name());
     std::vector<std::shared_ptr<Interface::CardInterface> > kortit = pelaaja->cards();
@@ -28,15 +27,52 @@ void Akkuna::refreshHandToCurrentPlayer()
         delete item;
     }
     if(kortit.size() > 0){
-        unsigned int counter = 1;
         for (auto it = kortit.begin(); it != kortit.end(); ++it){
             ui->kasikortit->addWidget(new Pelikortti(*it));
         }
     }
 }
 
+void Akkuna::laskeVoittaja()
+{
+    std::map<shared_ptr<Interface::Player>, int> pisteet;
+    shared_ptr<Interface::Player> voittaja;
+    for (shared_ptr<Interface::Location> paikka : peli_->locations())
+    {
+        unsigned int vaikutus;
+        for (shared_ptr<Interface::Player> pelaaja : peli_->players())
+        {
+            pisteet.insert(std::pair<shared_ptr<Interface::Player>,int> {pelaaja,0});
+            unsigned int valivaikutus = paikka->influence(pelaaja);
+            for (shared_ptr<Interface::CardInterface> kortti: pelaaja->cards())
+            {
+                std::shared_ptr<Interface::Influence> card = std::dynamic_pointer_cast<Interface::Influence>(kortti);
+                if (card)
+                {
+                    valivaikutus += card->amount();
+                }
+            }
+            if (valivaikutus > vaikutus)
+            {
+                shared_ptr<Interface::Councilor> jasen = paikka->councilor();
+                jasen->setOwner(pelaaja);
+                vaikutus = valivaikutus;
+            }
+            pisteet.at(pelaaja) += valivaikutus;
+        }
+
+    }
+
+}
+
 void Akkuna::refreshUI()
 {
+    ++usedTurns;
+    if (usedTurns/4 >= 40)
+    {
+        laskeVoittaja();
+    }
+
     for (int i = 0; i < peli_->locations().size(); ++i)
     {
         ActionNostaAgentti* testi = new ActionNostaAgentti(peli_, peli_->locations().at(i));
@@ -63,7 +99,8 @@ Akkuna::Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko,
     QWidget(parent),
     ui(new Ui::Akkuna),
     pelaajanNimi(pelaajanimi),
-    peli_(peli)
+    peli_(peli),
+    usedTurns(0)
 {
     ui->setupUi(this);
     kaupunginosat(pieniko);

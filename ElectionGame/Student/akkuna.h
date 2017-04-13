@@ -9,6 +9,9 @@ using std::make_shared;
 using std::shared_ptr;
 
 #include "kaupunginosa.h"
+#include "influence.h"
+#include "councilor.h"
+
 namespace Ui {
 class Akkuna;
 }
@@ -29,9 +32,11 @@ public:
     void kaupunginosat(bool pieniko);
     ~Akkuna();
 
+    void laskeVoittaja();
 private:
     Ui::Akkuna *ui;
     int pelaajat;
+    unsigned int usedTurns;
     bool onkoPieni;
     QString pelaajanNimi;
     shared_ptr<Interface::Game> peli_;
