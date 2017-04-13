@@ -17,35 +17,35 @@
 	"vaikutus": 1
       },      
       {
-	  "nimi": "Kuusentaimi",
+	  "nimi": "Kuusen taimi",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Kuusentaimi",
+	  "nimi": "Kuusen taimi",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Kuusentaimi",
+	  "nimi": "Kuusen taimi",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Kuusentaimi",
+	  "nimi": "Kuusen taimi",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Sadetakki",
+	  "nimi": "Sade takki",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Sadetakki",
+	  "nimi": "Sade takki",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Sadetakki",
+	  "nimi": "Sade takki",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Sadetakki",
+	  "nimi": "Sade takki",
 	"vaikutus": 1
       },
       {
@@ -81,69 +81,69 @@
 	"vaikutus": 2
       },
       {
-	  "nimi": "Moottorisaha",
+	  "nimi": "Moottori saha",
 	"vaikutus": 3
       },
       {
-	  "nimi": "Moottorisaha",
+	  "nimi": "Moottori saha",
 	"vaikutus": 3
       },
       {
-	  "nimi": "Moottorisaha",
+	  "nimi": "Moottori saha",
 	"vaikutus": 3
       },
       {
-	  "nimi": "Moottorisaha",
+	  "nimi": "Moottori saha",
 	"vaikutus": 3
       }
    ],
   "1": [
       {
-	  "nimi": "Rantalelu",
+	  "nimi": "Ranta lelu",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Rantalelu",
-	"vaikutus": 1
-      },      
-      {
-	  "nimi": "Rantalelu",
+	  "nimi": "Ranta lelu",
 	"vaikutus": 1
       },      
       {
-	  "nimi": "Rantalelu",
+	  "nimi": "Ranta lelu",
 	"vaikutus": 1
       },      
       {
-	  "nimi": "Pelastusrengas",
+	  "nimi": "Ranta lelu",
+	"vaikutus": 1
+      },      
+      {
+	  "nimi": "Pelastus rengas",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Pelastusrengas",
+	  "nimi": "Pelastus rengas",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Pelastusrengas",
+	  "nimi": "Pelastus rengas",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Pelastusrengas",
+	  "nimi": "Pelastus rengas",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Auringonpaiste",
+	  "nimi": "Auringon paiste",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Auringonpaiste",
+	  "nimi": "Auringon paiste",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Auringonpaiste",
+	  "nimi": "Auringon paiste",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Auringonpaiste",
+	  "nimi": "Auringon paiste",
 	"vaikutus": 1
       },
       {
@@ -163,19 +163,19 @@
 	"vaikutus": 2
       },
       {
-	  "nimi": "Polkuvene",
+	  "nimi": "Polku vene",
 	"vaikutus": 2
       },
       {
-	  "nimi": "Polkuvene",
+	  "nimi": "Polku vene",
 	"vaikutus": 2
       },
       {
-	  "nimi": "Polkuvene",
+	  "nimi": "Polku vene",
 	"vaikutus": 2
       },
       {
-	  "nimi": "Polkuvene",
+	  "nimi": "Polku vene",
 	"vaikutus": 2
       },
       {
@@ -213,83 +213,83 @@
 	"vaikutus": 1
       },      
       {
-	  "nimi": "Hiusvaha",
+	  "nimi": "Hius vaha",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Hiusvaha",
+	  "nimi": "Hius vaha",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Hiusvaha",
+	  "nimi": "Hius vaha",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Hiusvaha",
+	  "nimi": "Hius vaha",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Kauluspaita",
+	  "nimi": "Kaulus paita",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Kauluspaita",
+	  "nimi": "Kaulus paita",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Kauluspaita",
+	  "nimi": "Kaulus paita",
 	"vaikutus": 1
       },
       {
-	  "nimi": "Kauluspaita",
+	  "nimi": "Kaulus paita",
 	"vaikutus": 1
       },
       {
-	"nimi": "Pikkutakki",
+	"nimi": "Pikku takki",
 	"vaikutus": 2
       },
       {
-	"nimi": "Pikkutakki",
+	"nimi": "Pikku takki",
 	"vaikutus": 2
       },
       {
-	"nimi": "Pikkutakki",
+	"nimi": "Pikku takki",
 	"vaikutus": 2
       },
       {
-	"nimi": "Pikkutakki",
+	"nimi": "Pikku takki",
 	"vaikutus": 2
       },
       {
-	  "nimi": "Uber-kyyti",
+	  "nimi": "Uber kyyti",
 	"vaikutus": 2
       },
       {
-	  "nimi": "Uber-kyyti",
+	  "nimi": "Uber kyyti",
 	"vaikutus": 2
       },
       {
-	  "nimi": "Uber-kyyti",
+	  "nimi": "Uber kyyti",
 	"vaikutus": 2
       },
       {
-	  "nimi": "Uber-kyyti",
+	  "nimi": "Uber kyyti",
 	"vaikutus": 2
       },
       {
-	  "nimi": "Limusiini",
+	  "nimi": "Limu siini",
 	"vaikutus": 3
       },
       {
-	  "nimi": "Limusiini",
+	  "nimi": "Limu siini",
 	"vaikutus": 3
       },
       {
-	  "nimi": "Limusiini",
+	  "nimi": "Limu siini",
 	"vaikutus": 3
       },
       {
-	  "nimi": "Limusiini",
+	  "nimi": "Limu siini",
 	"vaikutus": 3
       }
    

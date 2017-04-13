@@ -4,7 +4,7 @@
 #include <QWidget>
 #include "location.h"
 #include "game.h"
-#include "pelikortti.h"
+#include "pelicard.h"
 #include "deckinterface.h"
 #include <QDebug>
 #include <QPixmap>

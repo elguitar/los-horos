@@ -1,30 +1,33 @@
-#include "pelikortti.h"
-#include "ui_pelikortti.h"
+#include "pelicard.h"
+#include "ui_pelicard.h"
 
-#include <QDebug>
-Pelikortti::Pelikortti(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::Pelikortti)
+PeliCard::PeliCard(QWidget *parent) :
+    QFrame(parent),
+    ui(new Ui::PeliCard)
 {
     ui->setupUi(this);
 }
 
-Pelikortti::Pelikortti(shared_ptr<Interface::CardInterface> kortti, QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::Pelikortti),
+PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, QWidget *parent) :
+    QFrame(parent),
+    ui(new Ui::PeliCard),
     kortti_(kortti)
 
 {
+
     ui->setupUi(this);
     ui->kortinnimi->setText(kortti_->name());
     if(kortti->typeName() == "Agent"){
         agentconnections_ = std::dynamic_pointer_cast<Agent>(kortti)->connections();
         ui->pelimerkit->setText(QString::number(agentconnections_));
         //ui->pelimerkit->setText(QString::number(1));
+    } else{
+        ui->pelimerkit->setText("");
     }
 }
 
-Pelikortti::~Pelikortti()
+
+PeliCard::~PeliCard()
 {
     delete ui;
 }

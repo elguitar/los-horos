@@ -32,26 +32,26 @@ SOURCES +=\
     akkuna.cpp \
     setupwindow.cpp \
     kaupunginosa.cpp \
-    pelikortti.cpp \
     aicontrol.cpp \
     actionasetaagentti.cpp \
     actionnostakortti.cpp \
     actionnostaagentti.cpp \
     actionasetapelimerkki.cpp \
-    actionagentillemerkki.cpp
+    actionagentillemerkki.cpp \
+    pelicard.cpp
 
 HEADERS  += \
     agent.h \
     akkuna.h \
     setupwindow.h \
     kaupunginosa.h \
-    pelikortti.h \
     aicontrol.h \
     actionasetaagentti.h\
     actionnostakortti.h \
     actionnostaagentti.h \
     actionasetapelimerkki.h \
-    actionagentillemerkki.h
+    actionagentillemerkki.h \
+    pelicard.h
 
 unix {
     target.path = /usr/lib
@@ -93,4 +93,5 @@ FORMS += \
     akkuna.ui \
     setupwindow.ui \
     kaupunginosa.ui \
-    pelikortti.ui
+    pelikortti.ui \
+    pelicard.ui
