@@ -17,7 +17,6 @@ Pelikortti::Pelikortti(shared_ptr<Interface::CardInterface> kortti, QWidget *par
 {
     ui->setupUi(this);
     ui->kortinnimi->setText(kortti_->name());
-    ui->pelaaja->setText(kortti_->owner().lock()->name());
     if(kortti->typeName() == "Agent"){
         agentconnections_ = std::dynamic_pointer_cast<Agent>(kortti)->connections();
         ui->pelimerkit->setText(QString::number(agentconnections_));
