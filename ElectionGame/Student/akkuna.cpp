@@ -14,7 +14,6 @@ void Akkuna::asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti)
 
 void Akkuna::refreshHandToCurrentPlayer()
 {
-    peli_->nextPlayer(); // Tää tosiaa pitää tehä jossain muualla tai vähintään ekalla suorituskerralla ohittaa iffillä
 
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
     ui->pelaajakyltti->setText(pelaaja->name());
@@ -32,6 +31,23 @@ void Akkuna::refreshHandToCurrentPlayer()
         unsigned int counter = 1;
         for (auto it = kortit.begin(); it != kortit.end(); ++it){
             ui->kasikortit->addWidget(new Pelikortti(*it));
+        }
+    }
+}
+
+void Akkuna::refreshUI()
+{
+    for (int i = 0; i < peli_->locations().size(); ++i)
+    {
+        ActionNostaAgentti* testi = new ActionNostaAgentti(peli_, peli_->locations().at(i));
+        Kaupunginosa *osa = dynamic_cast<Kaupunginosa*>(ui->kaupunkigrid->itemAt(i)->widget());
+        if (testi->canPerform())
+        {
+            osa->enableButtons();
+        }
+        else
+        {
+            osa->hideButtons();
         }
     }
 }

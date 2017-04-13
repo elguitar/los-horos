@@ -20,12 +20,24 @@ bool ActionNostaAgentti::canPerform() const
 {
     if (peli_->currentPlayer()->cards().size() < 7)
     {
-        return true;
+        for (uint i = 0; i < location_->agents().size(); ++i)
+        {
+            //std::set<std::shared_ptr<Interface::AgentInterface> >::iterator = location_->agents().begin();
+            std::shared_ptr<Interface::AgentInterface> agentti = *std::next(location_->agents().begin(), i);
+
+            std::shared_ptr<Interface::Player> agentinOmistaja = agentti->owner().lock();
+            if (agentinOmistaja == peli_->currentPlayer())
+            {
+                return true;
+            }
+        }
+
     }
     else
     {
        return false;
     }
+    return false;
 }
 
 void ActionNostaAgentti::perform()

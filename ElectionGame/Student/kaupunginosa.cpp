@@ -55,6 +55,29 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
 
 }
 
+void Kaupunginosa::enableButtons()
+{
+    ui->setToken->setEnabled(true);
+    ui->drawCard->setEnabled(true);
+    ui->agentToken->setEnabled(true);
+
+    ui->setAgent->setText("Nosta agentti");
+    QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                      this, SLOT(nostaAgentti()));
+}
+
+void Kaupunginosa::hideButtons()
+{
+    ui->setToken->setEnabled(false);
+    ui->drawCard->setEnabled(false);
+    ui->agentToken->setEnabled(false);
+
+    ui->setAgent->setText("Aseta agentti");
+    QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                      this, SLOT(asetaAgentti()));
+
+}
+
 // Runner hoitaa canperformit ja performit. Meillä on kai vaan et lähetetään pleijjerille nextActioniin actioneita
 void Kaupunginosa::nostaKortti()
 {
@@ -75,16 +98,13 @@ void Kaupunginosa::nostaAgentti()
     ActionNostaAgentti* toiminto = new ActionNostaAgentti(peli_, location_);
     if (toiminto->canPerform())
     {
-        ui->setToken->setEnabled(false);
-        ui->drawCard->setEnabled(false);
-        ui->agentToken->setEnabled(false);
         toiminto->perform();
-
-        ui->setAgent->setText("Aseta agentti");
-        QObject::connect(ui->setAgent, SIGNAL(clicked()),
-                          this, SLOT(asetaAgentti()));
+        hideButtons();
     }
     qDebug() << "nosta agentti";
+
+    peli_->nextPlayer();
+    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
     ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
 
 }
@@ -96,14 +116,8 @@ void Kaupunginosa::asetaAgentti()
 
     if (toiminto->canPerform())
     {
-        ui->setToken->setEnabled(true);
-        ui->drawCard->setEnabled(true);
-        ui->agentToken->setEnabled(true);
         toiminto->perform();
-
-        ui->setAgent->setText("Nosta agentti");
-        QObject::connect(ui->setAgent, SIGNAL(clicked()),
-                          this, SLOT(nostaAgentti()));
+        enableButtons();
         ui->agentit->addWidget(new Pelikortti());
     }
     //std::shared_ptr<Akkuna> polo = std::dynamic_pointer_cast<Akkuna>(akkuna_);
@@ -112,6 +126,8 @@ void Kaupunginosa::asetaAgentti()
     //mutsis_muuttuja->refreshHandToCurrentPlayer();
     //((Akkuna*)parentWidget())->refreshHandToCurrentPlayer();*/
     //((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
+    peli_->nextPlayer();
+    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
     ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
 
 }
@@ -124,6 +140,9 @@ void Kaupunginosa::agentilleMerkki()
         toiminto->perform();
     }
     qDebug() << "agentille merkki";
+    peli_->nextPlayer();
+    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
+    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
 }
 
 void Kaupunginosa::asetaPelimerkki()
@@ -135,6 +154,9 @@ void Kaupunginosa::asetaPelimerkki()
         toiminto->perform();
     }
     qDebug() << "aseta pelimerkki";
+    peli_->nextPlayer();
+    //((Akkuna*)this->parentWidget()->parentWidget())->refreshUI();
+    ((Akkuna*)this->parentWidget()->parentWidget())->refreshHandToCurrentPlayer();
 }
 
 void Kaupunginosa::asetaPakkakuvat()

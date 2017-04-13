@@ -31,6 +31,8 @@ public:
     ~Kaupunginosa();
 
     Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_ptr<Interface::Location> location, QWidget *parent=0);
+    void hideButtons();
+    void enableButtons();
 public slots:
     void nostaKortti();
     void nostaAgentti();
