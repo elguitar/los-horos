@@ -110,6 +110,9 @@ void Akkuna::laskeVoittaja()
 void Akkuna::refreshUI()
 {
     ++usedTurns;
+    QString akkunakierroskyltti = "Kierros: " + QString::number((usedTurns+4)/4) + "/10";
+    ui->kierroslaskuri->setText(akkunakierroskyltti);
+
     if (usedTurns/4 >= 10)
     {
         laskeVoittaja();
