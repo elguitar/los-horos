@@ -41,6 +41,7 @@ void Akkuna::laskeVoittaja()
 
     for (shared_ptr<Interface::Location> paikka : peli_->locations())
     {
+        qDebug() << peli_->locations().size();
         shared_ptr<Interface::Councilor> jasen = paikka->councilor();
         unsigned int vaikutus = 0;
         shared_ptr<Interface::Player> valivoittaja;
@@ -52,12 +53,17 @@ void Akkuna::laskeVoittaja()
 
             for (shared_ptr<Interface::CardInterface> kortti: pelaaja->cards())
             {
+                qDebug() << pelaaja->cards().size();
                 std::shared_ptr<Interface::Influence> card = std::dynamic_pointer_cast<Interface::Influence>(kortti);
-                if (card->location().lock() == paikka)
+                if (kortti->typeName() == "Influence")
                 {
-                    valivaikutus += card->amount();
+                    if (card->location().lock() == paikka)
+                    {
+                        valivaikutus += card->amount();
+                    }
                 }
             }
+            qDebug() << "miau";
             if (valivaikutus > vaikutus)
             {
                 jasen->setOwner(pelaaja);
@@ -89,21 +95,35 @@ void Akkuna::laskeVoittaja()
             onkoUseampi = true;
             ++laskuri;
             toinen = player.first;
+            qDebug() << "tasan";
         }
     }
-    if (jasenet.at(toinen) = jasenet.at(voittava))
+    if (jasenet.at(toinen) == jasenet.at(voittava))
     {
         if (laskuri != 3)
         {
             if (pisteet.at(voittava) > pisteet.at(toinen))
             {
                 voittaja = voittava;
-                qDebug() << "voitto";
+                qDebug() << "tasavoitto";
             }
             else
             {
                 voittaja = toinen;
-                qDebug() << "voitto";
+                qDebug() << "tasavoitto";
+            }
+        }
+        else
+        {
+            int eniten = -1;
+            for (auto member : pisteet)
+            {
+                qDebug() << "kaikille yks";
+                if (member.second > eniten)
+                {
+                    eniten = member.second;
+                    voittaja = member.first;
+                }
             }
         }
     }
