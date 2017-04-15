@@ -24,6 +24,7 @@ public:
 
 
     std::weak_ptr<Interface::Player> getOwner();
+    void setConnections(int maara);
 private:
     Ui::PeliCard *ui;
     shared_ptr<Interface::CardInterface> kortti_;

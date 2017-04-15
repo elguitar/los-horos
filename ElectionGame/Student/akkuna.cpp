@@ -72,62 +72,70 @@ void Akkuna::laskeVoittaja()
             }
             pisteet.at(pelaaja) += valivaikutus;
         }
-        jasenet.insert(std::pair<shared_ptr<Interface::Player>,int> {valivoittaja,0});
-        jasenet.at(valivoittaja) += 1;
+        if (valivoittaja != nullptr)
+        {
+            jasenet.insert(std::pair<shared_ptr<Interface::Player>,int> {valivoittaja,0});
+            jasenet.at(valivoittaja) += 1;
+        }
     }
 
-    shared_ptr<Interface::Player> voittava;
-    shared_ptr<Interface::Player> toinen;
-    int eniten = -1;
-    unsigned int laskuri = 0;
-    bool onkoUseampi = false;
-    for (auto player : jasenet)
+    if (jasenet.size() != 0)
     {
-        if (player.second > eniten)
+        shared_ptr<Interface::Player> voittava;
+        shared_ptr<Interface::Player> toinen;
+        int eniten = -1;
+        unsigned int laskuri = 0;
+        bool onkoUseampi = false;
+        for (auto player : jasenet)
         {
-            eniten = player.second;
-            voittava = player.first;
-            onkoUseampi = false;
-            qDebug() << "voitto";
-        }
-        else if (player.second == eniten)
-        {
-            onkoUseampi = true;
-            ++laskuri;
-            toinen = player.first;
-            qDebug() << "tasan";
-        }
-    }
-    if (jasenet.at(toinen) == jasenet.at(voittava))
-    {
-        if (laskuri != 3)
-        {
-            if (pisteet.at(voittava) > pisteet.at(toinen))
+            if (player.second > eniten)
             {
-                voittaja = voittava;
-                qDebug() << "tasavoitto";
+                if (player.first != nullptr)
+                {
+                    eniten = player.second;
+                    voittava = player.first;
+                    onkoUseampi = false;
+                    qDebug() << "voitto";
+                }
+            }
+            else if (player.second == eniten)
+            {
+                onkoUseampi = true;
+                ++laskuri;
+                toinen = player.first;
+                qDebug() << "tasan";
+            }
+        }
+        if (jasenet.at(toinen) == jasenet.at(voittava))
+        {
+            if (laskuri != 3)
+            {
+                if (pisteet.at(voittava) > pisteet.at(toinen))
+                {
+                    voittaja = voittava;
+                    qDebug() << "tasavoitto";
+                }
+                else
+                {
+                    voittaja = toinen;
+                    qDebug() << "tasavoitto";
+                }
             }
             else
             {
-                voittaja = toinen;
-                qDebug() << "tasavoitto";
-            }
-        }
-        else
-        {
-            int eniten = -1;
-            for (auto member : pisteet)
-            {
-                qDebug() << "kaikille yks";
-                if (member.second > eniten)
+                int eniten = -1;
+                for (auto member : pisteet)
                 {
-                    eniten = member.second;
-                    voittaja = member.first;
+                    qDebug() << "kaikille yks";
+                    if (member.second > eniten)
+                    {
+                        eniten = member.second;
+                        voittaja = member.first;
+                    }
                 }
             }
         }
-    }
-
+    }else {}
 }
 
 void Akkuna::refreshUI()
@@ -147,6 +155,7 @@ void Akkuna::refreshUI()
         Kaupunginosa *osa = dynamic_cast<Kaupunginosa*>(ui->kaupunkigrid->itemAt(i)->widget());
         if (testi->canPerform())
         {
+            //ActionAgentilleMerkki* koe = new ActionAgentilleMerkki
             osa->enableButtons();
         }
         else

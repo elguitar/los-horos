@@ -26,6 +26,11 @@ PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, QWidget *parent)
     }
 }
 
+void PeliCard::setConnections(int maara)
+{
+    ui->pelimerkit->setText(QString::number(maara));
+}
+
 std::weak_ptr<Interface::Player> PeliCard::getOwner(){
     return kortti_->owner();
 }

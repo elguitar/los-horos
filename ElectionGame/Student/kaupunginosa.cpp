@@ -123,8 +123,8 @@ void Kaupunginosa::asetaAgentti()
     if (toiminto->canPerform())
     {
         std::shared_ptr<Agent> agentti = etsiPelaajanKadestaAgentti();
-        ui->agentit->addWidget(new PeliCard(agentti));
         toiminto->perform();
+        ui->agentit->addWidget(new PeliCard(agentti));
         enableButtons();
         peli_->nextPlayer();
         ((Akkuna*)this->parentWidget())->refreshUI();
@@ -140,6 +140,7 @@ void Kaupunginosa::agentilleMerkki()
     if (toiminto->canPerform())
     {
         toiminto->perform();
+        paivitaAgentit();
 
         peli_->nextPlayer();
         ((Akkuna*)this->parentWidget())->refreshUI();
@@ -218,6 +219,30 @@ std::shared_ptr<Agent> Kaupunginosa::etsiPelaajanKadestaAgentti()
         {
             std::shared_ptr<Agent> kortti = std::dynamic_pointer_cast<Agent>(card);
             return kortti;
+        }
+    }
+}
+
+void Kaupunginosa::paivitaAgentit()
+{
+    shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
+    {
+        QLayoutItem *item;
+        unsigned short i = 0;
+        while((item = ui->agentit->takeAt(i))){
+            QWidget* witketti = item->widget();
+            PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
+            if (pelaaja = kortti->getOwner().lock())
+            {
+                for (auto agentti : location_->agents())
+                {
+                    if (agentti->owner().lock() == pelaaja)
+                    {
+                        qDebug() << agentti->connections();
+                        kortti->setConnections(agentti->connections());
+                    }
+                }
+            }
         }
     }
 }
