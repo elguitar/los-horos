@@ -28,6 +28,7 @@ public:
 private:
     Ui::PeliCard *ui;
     shared_ptr<Interface::CardInterface> kortti_;
+    shared_ptr<Interface::Player> omistaja_;
     QString tyyppi_;
     unsigned short agentconnections_;
 

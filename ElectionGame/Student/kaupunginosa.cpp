@@ -94,7 +94,7 @@ void Kaupunginosa::nostaKortti()
     peli_->nextPlayer();
     ((Akkuna*)this->parentWidget())->refreshUI();
     ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
-
+    delete toiminto;
 
 
 }
@@ -114,6 +114,7 @@ void Kaupunginosa::nostaAgentti()
         ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "nosta agentti";
     }
+    delete toiminto;
 }
 
 void Kaupunginosa::asetaAgentti()
@@ -132,6 +133,7 @@ void Kaupunginosa::asetaAgentti()
         qDebug() << "aseta agentti";
 
     }
+    delete toiminto;
 }
 
 void Kaupunginosa::agentilleMerkki()
@@ -147,6 +149,7 @@ void Kaupunginosa::agentilleMerkki()
         ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "agentille merkki";
     }
+    delete toiminto;
 }
 
 void Kaupunginosa::asetaPelimerkki()
@@ -163,6 +166,7 @@ void Kaupunginosa::asetaPelimerkki()
         qDebug() << "aseta pelimerkki";
 
     }
+    delete toiminto;
 
 }
 
@@ -234,6 +238,7 @@ void Kaupunginosa::paivitaAgentit()
             PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
             if (pelaaja = kortti->getOwner().lock())
             {
+                qDebug() << "täällä vielä";
                 for (auto agentti : location_->agents())
                 {
                     if (agentti->owner().lock() == pelaaja)

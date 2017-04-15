@@ -135,7 +135,11 @@ void Akkuna::laskeVoittaja()
                 }
             }
         }
-    }else {}
+    }
+    else
+    {
+        //tänne jos kukaan ei voita yhtään aluetta
+    }
 }
 
 void Akkuna::refreshUI()
