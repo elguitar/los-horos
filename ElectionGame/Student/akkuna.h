@@ -11,9 +11,11 @@ using std::shared_ptr;
 #include "kaupunginosa.h"
 #include "influence.h"
 #include "councilor.h"
+#include "enddialog.h"
 
 namespace Ui {
 class Akkuna;
+class endDialog;
 }
 
 class Akkuna : public QWidget
@@ -36,6 +38,7 @@ public:
 private:
     Ui::Akkuna *ui;
     int pelaajat;
+    endDialog *lopetin_;
     unsigned int usedTurns;
     bool onkoPieni;
     QString pelaajanNimi;

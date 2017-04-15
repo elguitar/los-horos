@@ -38,7 +38,8 @@ SOURCES +=\
     actionnostaagentti.cpp \
     actionasetapelimerkki.cpp \
     actionagentillemerkki.cpp \
-    pelicard.cpp
+    pelicard.cpp \
+    enddialog.cpp
 
 HEADERS  += \
     agent.h \
@@ -51,7 +52,8 @@ HEADERS  += \
     actionnostaagentti.h \
     actionasetapelimerkki.h \
     actionagentillemerkki.h \
-    pelicard.h
+    pelicard.h \
+    enddialog.h
 
 unix {
     target.path = /usr/lib
@@ -94,4 +96,5 @@ FORMS += \
     setupwindow.ui \
     kaupunginosa.ui \
     pelikortti.ui \
-    pelicard.ui
+    pelicard.ui \
+    enddialog.ui
