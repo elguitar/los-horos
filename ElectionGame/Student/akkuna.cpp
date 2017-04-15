@@ -135,14 +135,18 @@ void Akkuna::laskeVoittaja()
                 }
             }
         }
-        QString viesti = "Voittaja on " + voittaja->name();
-        //endDialog lopetin(viesti);
-        lopetin_ = new endDialog(viesti);
-        lopetin_->show();
+
     }
     else
     {
         //tänne jos kukaan ei voita yhtään aluetta
+    }
+    if (voittaja != nullptr)
+    {
+        QString viesti = "Voittaja on " + voittaja->name();
+        lopetin_ = new endDialog(viesti);
+        lopetin_->show();
+        this->close();
     }
     this->close();
 }
