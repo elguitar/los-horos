@@ -142,6 +142,7 @@ void Akkuna::laskeVoittaja()
     }
 }
 
+
 void Akkuna::refreshUI()
 {
     ++usedTurns;
