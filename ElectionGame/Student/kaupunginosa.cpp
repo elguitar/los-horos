@@ -202,19 +202,7 @@ void Kaupunginosa::poistaPelaajanAgentti()
 {
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
     QLayoutItem *item;
-    unsigned short i = 0;
-    //auto tesmaus = ui->agentit->takeAt(i);
-    /*while((item = ui->agentit->itemAt(i))){
-        QWidget* witketti = item->widget();
-        PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
-        auto tesmaus = kortti->getOwner().lock();
-        if(pelaaja == kortti->getOwner().lock()){
-            delete item->widget();
-            delete item;
-            break;
-        }
-        ++i;
-    }*/
+
     for(unsigned int i = 0; i < ui->agentit->count(); ++i){
         item = ui->agentit->itemAt(i);
         QWidget* witketti = item->widget();
@@ -256,7 +244,6 @@ void Kaupunginosa::paivitaAgentit()
             {
                 if (pelaaja == agentti->owner().lock())
                 {
-                    qDebug() << "uudetconnections" << agentti->connections();
                     kortti->setConnections(agentti->connections());
                     break;
                 }

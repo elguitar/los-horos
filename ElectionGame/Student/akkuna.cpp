@@ -41,7 +41,6 @@ void Akkuna::laskeVoittaja()
 
     for (shared_ptr<Interface::Location> paikka : peli_->locations())
     {
-        qDebug() << peli_->locations().size();
         shared_ptr<Interface::Councilor> jasen = paikka->councilor();
         unsigned int vaikutus = 0;
         shared_ptr<Interface::Player> valivoittaja;
@@ -54,7 +53,6 @@ void Akkuna::laskeVoittaja()
 
             for (shared_ptr<Interface::CardInterface> kortti: pelaaja->cards())
             {
-                qDebug() << pelaaja->cards().size();
                 std::shared_ptr<Interface::Influence> card = std::dynamic_pointer_cast<Interface::Influence>(kortti);
                 if (kortti->typeName() == "Influence")
                 {
@@ -64,7 +62,6 @@ void Akkuna::laskeVoittaja()
                     }
                 }
             }
-            qDebug() << "miau";
             if (valivaikutus > vaikutus)
             {
                 jasen->setOwner(pelaaja);
