@@ -135,6 +135,10 @@ void Akkuna::laskeVoittaja()
                 }
             }
         }
+        else
+        {
+            voittaja = voittava;
+        }
 
     }
     else

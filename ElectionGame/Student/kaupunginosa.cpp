@@ -248,6 +248,7 @@ void Kaupunginosa::paivitaAgentit()
                     }
                 }
             }
+            ++i;
         }
     }
 }
