@@ -236,12 +236,12 @@ void Kaupunginosa::paivitaAgentit()
         while((item = ui->agentit->takeAt(i))){
             QWidget* witketti = item->widget();
             PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
-            if (pelaaja = kortti->getOwner().lock())
+            if (pelaaja == kortti->getOwner().lock())
             {
                 qDebug() << "täällä vielä";
                 for (auto agentti : location_->agents())
                 {
-                    if (agentti->owner().lock() == pelaaja)
+                    if (pelaaja == agentti->owner().lock())
                     {
                         qDebug() << agentti->connections();
                         kortti->setConnections(agentti->connections());
