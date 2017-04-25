@@ -243,26 +243,26 @@ std::shared_ptr<Agent> Kaupunginosa::etsiPelaajanKadestaAgentti()
 void Kaupunginosa::paivitaAgentit()
 {
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
-    {
-        QLayoutItem *item;
-        unsigned short i = 0;
-        while((item = ui->agentit->takeAt(i))){
-            QWidget* witketti = item->widget();
-            PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
-            if (pelaaja == kortti->getOwner().lock())
+
+    QLayoutItem *item;
+    unsigned short i = 0;
+    while((item = ui->agentit->itemAt(i))){
+        QWidget* witketti = item->widget();
+        PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
+        if (pelaaja == kortti->getOwner().lock())
+        {
+            qDebug() << "täällä vielä";
+            for (auto agentti : location_->agents())
             {
-                qDebug() << "täällä vielä";
-                for (auto agentti : location_->agents())
+                if (pelaaja == agentti->owner().lock())
                 {
-                    if (pelaaja == agentti->owner().lock())
-                    {
-                        qDebug() << "uudetconnections" << agentti->connections();
-                        kortti->setConnections(agentti->connections());
-                    }
+                    qDebug() << "uudetconnections" << agentti->connections();
+                    kortti->setConnections(agentti->connections());
+                    break;
                 }
             }
-            ++i;
         }
+        ++i;
     }
 }
 
