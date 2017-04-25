@@ -48,7 +48,7 @@ void ActionAgentilleMerkki::perform()
         if (agentinOmistaja == peli_->currentPlayer())
         {
             unsigned int oldconnections = agentti->connections();
-            qDebug() << oldconnections;
+            qDebug() << "oldconnections: " << oldconnections;
             agentti->setConnections(oldconnections + 1);
         }
     }

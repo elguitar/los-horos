@@ -106,7 +106,7 @@ void Akkuna::laskeVoittaja()
                 qDebug() << "tasan";
             }
         }
-        if (jasenet.at(toinen) == jasenet.at(voittava))
+        if (toinen && jasenet.at(toinen) == jasenet.at(voittava))
         {
             if (laskuri != 3)
             {

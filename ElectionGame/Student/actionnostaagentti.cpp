@@ -1,4 +1,5 @@
 #include "actionnostaagentti.h"
+#include <QDebug>
 
 ActionNostaAgentti::ActionNostaAgentti()
 {
@@ -54,6 +55,7 @@ void ActionNostaAgentti::perform()
             peli_->currentPlayer()->addCard(agentti);
             agentti->setConnections(0);
             location_->removeAgent(agentti);
+            qDebug() << "Agentti poistettu";
         }
     }
 }

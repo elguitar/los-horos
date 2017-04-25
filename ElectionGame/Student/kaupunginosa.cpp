@@ -243,7 +243,7 @@ void Kaupunginosa::paivitaAgentit()
                 {
                     if (pelaaja == agentti->owner().lock())
                     {
-                        qDebug() << agentti->connections();
+                        qDebug() << "uudetconnections" << agentti->connections();
                         kortti->setConnections(agentti->connections());
                     }
                 }
