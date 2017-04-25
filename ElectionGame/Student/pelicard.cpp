@@ -1,6 +1,8 @@
 #include "pelicard.h"
 #include "ui_pelicard.h"
 
+#include "akkuna.h"
+
 PeliCard::PeliCard(QWidget *parent) :
     QFrame(parent),
     ui(new Ui::PeliCard)
@@ -28,6 +30,8 @@ PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, bool cardInHand,
     if(cardInHand){
         QPushButton *button = new QPushButton("Discard", this);
         ui->horizontalLayout->addWidget(button);
+        QObject::connect(button, SIGNAL(clicked()),
+                          this, SLOT(discard()));
     }
 }
 
@@ -36,6 +40,13 @@ void PeliCard::setConnections(int maara)
     ui->pelimerkit->setText(QString::number(maara));
 }
 
+void PeliCard::discard()
+{
+    std::shared_ptr<Interface::Player> pleijjeri = kortti_->owner().lock();
+    pleijjeri->playCard(kortti_);
+    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
+
+}
 std::weak_ptr<Interface::Player> PeliCard::getOwner(){
     return kortti_->owner();
 }
