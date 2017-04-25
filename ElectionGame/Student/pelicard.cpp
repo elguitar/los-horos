@@ -27,7 +27,7 @@ PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, bool cardInHand,
         short unsigned int influence = std::dynamic_pointer_cast<Interface::Influence>(kortti)->amount();
         ui->pelimerkit->setText(QString::number(influence));
     }
-    if(cardInHand){
+    if(cardInHand && kortti_->typeName() != "Agent"){
         QPushButton *button = new QPushButton("Discard", this);
         ui->horizontalLayout->addWidget(button);
         QObject::connect(button, SIGNAL(clicked()),
