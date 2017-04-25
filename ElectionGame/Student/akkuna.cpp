@@ -28,7 +28,7 @@ void Akkuna::refreshHandToCurrentPlayer()
     }
     if(kortit.size() > 0){
         for (auto it = kortit.begin(); it != kortit.end(); ++it){
-            ui->kasikortit->addWidget(new PeliCard(*it));
+            ui->kasikortit->addWidget(new PeliCard(*it, true));
         }
     } ui->kasikortit->addStretch();
 }

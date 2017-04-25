@@ -8,7 +8,7 @@ PeliCard::PeliCard(QWidget *parent) :
     ui->setupUi(this);
 }
 
-PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, QWidget *parent) :
+PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, bool cardInHand, QWidget *parent) :
     QFrame(parent),
     ui(new Ui::PeliCard),
     kortti_(kortti)
@@ -22,7 +22,12 @@ PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, QWidget *parent)
         ui->pelimerkit->setText(QString::number(agentconnections_));
         //ui->pelimerkit->setText(QString::number(1));
     } else{
-        ui->pelimerkit->setText("");
+        short unsigned int influence = std::dynamic_pointer_cast<Interface::Influence>(kortti)->amount();
+        ui->pelimerkit->setText(QString::number(influence));
+    }
+    if(cardInHand){
+        QPushButton *button = new QPushButton("Discard", this);
+        ui->horizontalLayout->addWidget(button);
     }
 }
 

@@ -2,11 +2,13 @@
 #define PELICARD_H
 
 #include <QFrame>
+#include <QPushButton>
 #include "game.h"
 #include "cardinterface.h"
 using std::make_shared;
 using std::shared_ptr;
 #include "agent.h"
+#include "influence.h"
 #include "player.h"
 
 namespace Ui {
@@ -19,7 +21,7 @@ class PeliCard : public QFrame
 
 public:
     explicit PeliCard(QWidget *parent = 0);
-    explicit PeliCard(shared_ptr<Interface::CardInterface> kortti, QWidget *parent = 0);
+    explicit PeliCard(shared_ptr<Interface::CardInterface> kortti, bool cardInHand = 0, QWidget *parent = 0);
     ~PeliCard();
 
 
