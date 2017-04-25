@@ -50,6 +50,7 @@ void Akkuna::laskeVoittaja()
         {
             pisteet.insert(std::pair<shared_ptr<Interface::Player>,int> {pelaaja,0});
             unsigned int valivaikutus = paikka->influence(pelaaja);
+            qDebug() << "influencepöydässä: " << valivaikutus;
 
             for (shared_ptr<Interface::CardInterface> kortti: pelaaja->cards())
             {

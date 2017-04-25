@@ -25,8 +25,23 @@ void ActionAsetaPelimerkki::perform()
 {
     unsigned int oldinfluence = location_->influence(peli_->currentPlayer());
 
-    location_->setInfluence(peli_->currentPlayer(), oldinfluence + 1);
+    for (std::shared_ptr<Interface::Player> pelaaja : peli_->players()) {
+        for (std::shared_ptr<Interface::AgentInterface> agentti : location_->agents())
+        {
+            if (agentti->owner().lock() == peli_->currentPlayer())
+            {
+                if (agentti->connections() == 2)
+                {
+                    location_->setInfluence(peli_->currentPlayer(), oldinfluence + 2);
+                }
+                else
+                {
+                    location_->setInfluence(peli_->currentPlayer(), oldinfluence + 1);
+                }
+            }
+        }
 
+    }
     //if-lauseella jos agentilla merkkejä, tehokkaampi operaatio
     //location_->setInfluence(peli_->currentPlayer(), oldinfluence + 2);
 }
