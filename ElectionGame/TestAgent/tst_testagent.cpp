@@ -102,6 +102,7 @@ void TestAgent::locationTest()
     QVERIFY(agentti->placement().expired());
     agentti->setPlacement(Lokaatio);
     QCOMPARE(agentti->placement().lock(), Lokaatio);
+    delete agentti;
 }
 
 void TestAgent::typeTest()
