@@ -12,17 +12,30 @@ public:
     TestAgent();
 
 private Q_SLOTS:
-    void testCase1();
+    void nameTest_data();
+    void nameTest();
 };
 
 TestAgent::TestAgent()
 {
 }
+void TestAgent::nameTest_data(){
+    QTest::addColumn<QString>("input");
+    QTest::addColumn<QString>("result");
 
-void TestAgent::testCase1()
-{
-    QVERIFY2(true, "Failure");
+    QTest::newRow("Normi") << "Apina" << "Apina";
+    QTest::newRow("Oudot kirjaimet") << "€éḿþy" << "€éḿþy";
+    QTest::newRow("Pitkä") << "AbcdefghijklmnopqrstuvwxyzAbcdefghijklmnopqrstuvwxyzAbcdefghijklmnopqrstuvwxyzAbcdefghijklmnopqrstuvwxyz" << "AbcdefghijklmnopqrstuvwxyzAbcdefghijklmnopqrstuvwxyzAbcdefghijklmnopqrstuvwxyzAbcdefghijklmnopqrstuvwxyz";
+
 }
+void TestAgent::nameTest(){
+    QFETCH(QString, input);
+    QFETCH(QString, result);
+    Agent* agentti = new Agent(input,0);
+    QCOMPARE(agentti->name(), result);
+    delete agentti;
+}
+
 
 QTEST_APPLESS_MAIN(TestAgent)
 
