@@ -5,6 +5,8 @@
 #include <QtTest>
 #include <vector>
 
+Q_DECLARE_METATYPE(std::shared_ptr<Interface::Location>)
+
 class TestAgent : public QObject
 {
     Q_OBJECT
@@ -74,28 +76,32 @@ void TestAgent::locationTest_data()
         Interface::Location* location = new Interface::Location(i, nimet.at(i));
         std::shared_ptr<Interface::Location> lk = std::make_shared<Interface::Location>(i, nimet.at(i));
         lokaatiot_.push_back(location);
+        loka2_.push_back(lk);
     }
     QTest::addColumn<QString>("agentinnimi");
-    QTest::addColumn<Interface::Location*>("Lokaatio");
+    QTest::addColumn<std::shared_ptr<Interface::Location >>("Lokaatio");
 
-    QTest::newRow("Eka") << "Apina" << lokaatiot_.at(0);
-    QTest::newRow("Toka") << "Apina" << lokaatiot_.at(1);
-    QTest::newRow("Kolmas") << "Apina" << lokaatiot_.at(2);
-    QTest::newRow("Neljas") << "Apina" << lokaatiot_.at(3);
-    QTest::newRow("Viides") << "Apina" << lokaatiot_.at(4);
-    QTest::newRow("Kuudes") << "Apina" << lokaatiot_.at(5);
-    QTest::newRow("Seitsemäs") << "Apina" << lokaatiot_.at(6);
-    QTest::newRow("Kahdeksas") << "Apina" << lokaatiot_.at(7);
+    QTest::newRow("Eka") << "Apina" << loka2_.at(0);
+    QTest::newRow("Toka") << "Apina" << loka2_.at(1);
+    QTest::newRow("Kolmas") << "Apina" << loka2_.at(2);
+    QTest::newRow("Neljas") << "Apina" << loka2_.at(3);
+    QTest::newRow("Viides") << "Apina" << loka2_.at(4);
+    QTest::newRow("Kuudes") << "Apina" << loka2_.at(5);
+    QTest::newRow("Seitsemäs") << "Apina" << loka2_.at(6);
+    QTest::newRow("Kahdeksas") << "Apina" << loka2_.at(7);
 }
 
 void TestAgent::locationTest()
 {
-    QFETCH(QString, nimi);
-    QFETCH(Interface::Location*, lokaatio);
+    QFETCH(QString, agentinnimi);
+    QFETCH(std::shared_ptr<Interface::Location>, Lokaatio);
 
-    Agent* agentti = new Agent(nimi,false);
-    std::shared_ptr<Interface::Location> location = std::make_shared<Interface::Location>(*lokaatio);
-    agentti->setPlacement(location);
+    Agent* agentti = new Agent(agentinnimi,false);
+    //std::shared_ptr<Interface::Location> location = std::make_shared<Interface::Location>(*lokaatio);
+    QVERIFY(agentti->location().expired()); // Eli location null
+    QVERIFY(agentti->placement().expired());
+    agentti->setPlacement(Lokaatio);
+    QCOMPARE(agentti->placement().lock(), Lokaatio);
 }
 
 void TestAgent::typeTest()
