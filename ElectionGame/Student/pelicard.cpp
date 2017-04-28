@@ -47,6 +47,26 @@ void PeliCard::setColour()
     {
         this->setStyleSheet("background-color:white;");
     }
+    else
+    {
+        unsigned int id = std::dynamic_pointer_cast<Interface::Influence>(kortti_)->location().lock()->id();
+        if (id == 1)
+        {
+            this->setStyleSheet("background-color:green;");
+        }
+        else if (id == 2)
+        {
+            this->setStyleSheet("background-color:pink;");
+        }
+        else if (id == 3)
+        {
+            this->setStyleSheet("background-color:grey;");
+        }
+        else if (id == 4)
+        {
+            this->setStyleSheet("background-color:brown;");
+        }
+    }
 }
 
 void PeliCard::discard()
