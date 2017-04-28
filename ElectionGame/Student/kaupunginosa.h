@@ -43,6 +43,8 @@ public slots:
 
     void asetaPakkakuvat();
     void agentilleMerkki();
+    void paivitaInfluence();
+
 private:
     Ui::Kaupunginosa *ui;
     std::shared_ptr<Interface::Location> location_;

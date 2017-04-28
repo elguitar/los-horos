@@ -177,7 +177,9 @@ void Akkuna::refreshUI()
         {
             osa->hideButtons();
         }
+    osa->paivitaInfluence();
     }
+
 }
 
 Akkuna::Akkuna(QWidget *parent) :

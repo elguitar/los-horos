@@ -153,6 +153,11 @@ void Kaupunginosa::agentilleMerkki()
     delete toiminto;
 }
 
+void Kaupunginosa::paivitaInfluence()
+{
+    ui->influence->setText("Influence: " + QString::number(location_->influence(peli_->currentPlayer())));
+}
+
 void Kaupunginosa::asetaPelimerkki()
 {
     ActionAsetaPelimerkki* toiminto = new ActionAsetaPelimerkki(peli_, location_);
