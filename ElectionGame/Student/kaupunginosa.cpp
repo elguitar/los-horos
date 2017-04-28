@@ -66,12 +66,21 @@ void Kaupunginosa::enableButtons()
         ui->drawCard->setEnabled(false);
         ui->drawCard->setText("Pakka tyhjä");
     }
-    ui->agentToken->setEnabled(true);
+    ActionAgentilleMerkki* toiminto = new ActionAgentilleMerkki(peli_, location_);
+    if (toiminto->canPerform())
+    {
+        ui->agentToken->setEnabled(true);
+    }
+    else
+    {
+        ui->agentToken->setEnabled(false);
+    }
     ui->setAgent->setEnabled(true);
     ui->setAgent->setText("Nosta agentti");
     disconnect(ui->setAgent, SIGNAL(clicked()), this, SLOT(asetaAgentti()));
     QObject::connect(ui->setAgent, SIGNAL(clicked()),
                       this, SLOT(nostaAgentti()));
+    delete toiminto;
 }
 
 void Kaupunginosa::hideButtons()
@@ -101,6 +110,7 @@ void Kaupunginosa::hideButtons()
                 ui->setToken->setEnabled(true);
                 ui->drawCard->setEnabled(false);
             }
+            delete toiminto;
         }
     }
     if (!agentti)
