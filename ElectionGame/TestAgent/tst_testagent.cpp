@@ -29,6 +29,7 @@ private Q_SLOTS:
     void ownerTest_data();
     void ownerTest();
     void typeTest();
+    void theEverythingTest();
 
 private:
     std::vector<Interface::Location*> lokaatiot_;
@@ -119,9 +120,9 @@ void TestAgent::locationTest_data()
 {
     std::vector<QString> nimet {"Pääsisäismaa", "Joulujallutähti", "Kermaiset kulmakuuma kundiukot", "Hengenpelastajatytöt", "Metsä miähet", "Hörökorvapuustit", "Salmiakki_on_hyvää", "Suklaamyös"};
     for(unsigned int i = 0; i < 8; ++i){
-        Interface::Location* location = new Interface::Location(i, nimet.at(i));
+        //Interface::Location* location = new Interface::Location(i, nimet.at(i));
         std::shared_ptr<Interface::Location> lk = std::make_shared<Interface::Location>(i, nimet.at(i));
-        lokaatiot_.push_back(location);
+        //lokaatiot_.push_back(location);
         loka2_.push_back(lk);
     }
     QTest::addColumn<QString>("agentinnimi");
@@ -199,6 +200,27 @@ void TestAgent::typeTest()
     QVERIFY(invariantti(agentti));
     delete agentti;
     delete tyyppi;
+}
+
+void TestAgent::theEverythingTest()
+{
+    Agent* agentti = new Agent(QString {"Apina"}, 0);
+    QVERIFY(invariantti(agentti));
+    std::shared_ptr<Interface::Location> lk = std::make_shared<Interface::Location>(0, "Esimerkkilokation");
+    QVERIFY(agentti->location().expired());
+    QVERIFY(agentti->placement().expired());
+    agentti->setPlacement(lk);
+    QCOMPARE(agentti->placement().lock(), lk);
+    QVERIFY(invariantti(agentti));
+    std::shared_ptr<Interface::Player> pelaaja = std::make_shared<Interface::Player>(peli_, 0, "Esimerkkipelaaja");
+    QVERIFY(agentti->owner().expired());
+    agentti->setOwner(pelaaja);
+    QVERIFY(invariantti(agentti));
+    QCOMPARE(agentti->owner().lock(),pelaaja);
+    unsigned short connectiivi = 2;
+    agentti->setConnections(connectiivi);
+    QVERIFY(invariantti(agentti));
+    QCOMPARE(agentti->connections(), connectiivi);
 }
 
 bool TestAgent::invariantti(Agent* agentti)
