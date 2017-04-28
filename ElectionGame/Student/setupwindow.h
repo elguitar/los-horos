@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "akkuna.h"
 #include "game.h"
+#include "enddialog.h"
 
 namespace Ui {
 class SetupWindow;

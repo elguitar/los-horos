@@ -37,7 +37,10 @@ void SetupWindow::aloita_peli()
     }
     else
     {
-        qDebug() << "setupwindown ehto ei täyty";
+        QString viesti = "Tarvitset vähintään 2 pelaajaa";
+        endDialog* dialogi = new endDialog(viesti);
+        dialogi->show();
+
     }
 }
 
