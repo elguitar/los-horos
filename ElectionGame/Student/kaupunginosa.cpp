@@ -213,6 +213,7 @@ void Kaupunginosa::asetaPelimerkki()
         toiminto->perform();
 
         peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->kaytaVuoro();
         ((Akkuna*)this->parentWidget())->refreshUI();
         ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "aseta pelimerkki";

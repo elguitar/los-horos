@@ -138,7 +138,7 @@
    <item row="0" column="1">
     <widget class="QLabel" name="kierroslaskuri">
      <property name="text">
-      <string>Kierros: 1/15</string>
+      <string>Kierrosta vaalipäivään: 15</string>
      </property>
     </widget>
    </item>

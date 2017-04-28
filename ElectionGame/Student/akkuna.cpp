@@ -144,7 +144,7 @@ void Akkuna::laskeVoittaja()
 
 void Akkuna::refreshUI()
 {
-    QString akkunakierroskyltti = "Kierros: " + QString::number((usedTurns+peli_->players().size())/peli_->players().size()) + "/15";
+    QString akkunakierroskyltti = "Kierrosta vaalipäivään: " + QString::number(16-((usedTurns+peli_->players().size())/peli_->players().size()));
     ui->kierroslaskuri->setText(akkunakierroskyltti);
     if (usedTurns/peli_->players().size() >= 15)
     {
