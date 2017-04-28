@@ -20,6 +20,8 @@ public:
 private Q_SLOTS:
     void commonTest_data();
     void commonTest();
+    void connectionTest_data();
+    void connectionTest();
     void nameTest_data();
     void nameTest();
     void locationTest_data();
@@ -58,6 +60,36 @@ void TestAgent::commonTest()
     QCOMPARE(agentti->isCommon(), result);
     delete agentti;
 
+}
+
+void TestAgent::connectionTest_data()
+{
+    QTest::addColumn<QString>("Nimi");
+    QTest::addColumn<unsigned short>("Konnektiot");
+    QTest::addColumn<unsigned short>("Result");
+    std::vector<unsigned short> numerot = {0,1,2,100};
+
+    QTest::newRow("Nolla") << "Apina" << numerot.at(0) << numerot.at(0);
+    QTest::newRow("Yksi") << "Apina" << numerot.at(1) << numerot.at(1);
+    QTest::newRow("Kaksi") << "Apina" << numerot.at(2) << numerot.at(2);
+    QTest::newRow("Sata") << "Apina" << numerot.at(3) << numerot.at(3);
+}
+
+void TestAgent::connectionTest()
+{
+    QFETCH(QString, Nimi);
+    QFETCH(unsigned short, Konnektiot);
+    QFETCH(unsigned short, Result);
+    unsigned short nolla = 0;
+
+    Agent* agentti = new Agent(Nimi, 0);
+    QCOMPARE(agentti->connections(), nolla);
+    agentti->setConnections(Konnektiot);
+    QCOMPARE(agentti->connections(), Result);
+    agentti->setConnections(0);
+    QCOMPARE(agentti->connections(), nolla);
+    agentti->modifyConnections(Konnektiot);
+    QCOMPARE(agentti->connections(), Result);
 }
 void TestAgent::nameTest_data(){
     QTest::addColumn<QString>("input");
