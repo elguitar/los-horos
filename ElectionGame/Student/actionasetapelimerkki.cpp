@@ -42,6 +42,5 @@ void ActionAsetaPelimerkki::perform()
         }
 
     }
-    //if-lauseella jos agentilla merkkejä, tehokkaampi operaatio
-    //location_->setInfluence(peli_->currentPlayer(), oldinfluence + 2);
+
 }

@@ -21,7 +21,6 @@ bool ActionAgentilleMerkki::canPerform() const
 {
     for (unsigned int i = 0; i < location_->agents().size(); ++i)
     {
-        //std::set<std::shared_ptr<Interface::AgentInterface> >::iterator = location_->agents().begin();
         std::shared_ptr<Interface::AgentInterface> agentti = *std::next(location_->agents().begin(), i);
 
         std::shared_ptr<Interface::Player> agentinOmistaja = agentti->owner().lock();
@@ -41,7 +40,6 @@ void ActionAgentilleMerkki::perform()
 {
     for (unsigned int i = 0; i < location_->agents().size(); ++i)
     {
-        //std::set<std::shared_ptr<Interface::AgentInterface> >::iterator = location_->agents().begin();
         std::shared_ptr<Interface::AgentInterface> agentti = *std::next(location_->agents().begin(), i);
 
         std::shared_ptr<Interface::Player> agentinOmistaja = agentti->owner().lock();
