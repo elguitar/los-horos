@@ -57,6 +57,9 @@ std::weak_ptr<Interface::Location> Agent::placement() const
 void Agent::setPlacement(std::weak_ptr<Interface::Location> placement)
 {
     pleismentti_ = placement;
+    if(placement.lock() != nullptr){
+        connections_ = 1;
+    }
 }
 
 unsigned short Agent::connections() const

@@ -43,7 +43,6 @@ void ActionAsetaAgentti::perform()
             std::shared_ptr<Agent> kortti = std::dynamic_pointer_cast<Agent>(card);
             kortti->setPlacement(location_);
             location_->sendAgent(kortti);
-            kortti->setConnections(1);
             peli_->currentPlayer()->playCard(card);
             break;
         }

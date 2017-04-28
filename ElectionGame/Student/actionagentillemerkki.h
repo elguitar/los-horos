@@ -1,6 +1,11 @@
 #ifndef ACTIONAGENTILLEMERKKI_H
 #define ACTIONAGENTILLEMERKKI_H
 
+/**
+  * @file
+  * @brief Määrittelee agentille merkinasettamistoiminnon kuvaavan luokan
+  */
+
 #include "actioninterface.h"
 #include "game.h"
 #include "location.h"
