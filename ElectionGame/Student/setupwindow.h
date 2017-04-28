@@ -26,9 +26,6 @@ public slots:
     void sulje_peli();
 private:
     Ui::SetupWindow *ui;
-    int pelaajat;
-    bool onkoPieni = false;
-    QString pelaajanNimi;
     Akkuna* akkunaptr;
     shared_ptr<Interface::Game> peli_;
 };
