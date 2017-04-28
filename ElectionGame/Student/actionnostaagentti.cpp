@@ -23,7 +23,6 @@ bool ActionNostaAgentti::canPerform() const
     {
         for (uint i = 0; i < location_->agents().size(); ++i)
         {
-            //std::set<std::shared_ptr<Interface::AgentInterface> >::iterator = location_->agents().begin();
             std::shared_ptr<Interface::AgentInterface> agentti = *std::next(location_->agents().begin(), i);
 
             std::shared_ptr<Interface::Player> agentinOmistaja = agentti->owner().lock();
@@ -43,10 +42,8 @@ bool ActionNostaAgentti::canPerform() const
 
 void ActionNostaAgentti::perform()
 {
-    //for (std::shared_ptr<Agent> agentti : location_->agents())
     for (uint i = 0; i < location_->agents().size(); ++i)
     {
-        //std::set<std::shared_ptr<Interface::AgentInterface> >::iterator = location_->agents().begin();
         std::shared_ptr<Interface::AgentInterface> agentti = *std::next(location_->agents().begin(), i);
 
         std::shared_ptr<Interface::Player> agentinOmistaja = agentti->owner().lock();
@@ -55,7 +52,6 @@ void ActionNostaAgentti::perform()
             peli_->currentPlayer()->addCard(agentti);
             location_->removeAgent(agentti);
             agentti->setConnections(0);
-            qDebug() << "Agentti poistettu";
         }
     }
 }

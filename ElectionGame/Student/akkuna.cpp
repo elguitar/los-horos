@@ -43,7 +43,6 @@ void Akkuna::laskeVoittaja()
         {
             pisteet.insert(std::pair<shared_ptr<Interface::Player>,int> {pelaaja,0});
             unsigned int valivaikutus = paikka->influence(pelaaja);
-            qDebug() << "influencepöydässä: " << valivaikutus;
 
             for (shared_ptr<Interface::CardInterface> kortti: pelaaja->cards())
             {
@@ -87,7 +86,6 @@ void Akkuna::laskeVoittaja()
                     eniten = player.second;
                     voittava = player.first;
                     onkoUseampi = false;
-                    qDebug() << "voitto";
                 }
             }
             else if (player.second == eniten)
@@ -95,7 +93,6 @@ void Akkuna::laskeVoittaja()
                 onkoUseampi = true;
                 ++laskuri;
                 toinen = player.first;
-                qDebug() << "tasan";
             }
         }
         if (toinen && jasenet.at(toinen) == jasenet.at(voittava))
@@ -105,12 +102,10 @@ void Akkuna::laskeVoittaja()
                 if (pisteet.at(voittava) > pisteet.at(toinen))
                 {
                     voittaja = voittava;
-                    qDebug() << "tasavoitto";
                 }
                 else
                 {
                     voittaja = toinen;
-                    qDebug() << "tasavoitto";
                 }
             }
             else
@@ -118,7 +113,6 @@ void Akkuna::laskeVoittaja()
                 int eniten = -1;
                 for (auto member : pisteet)
                 {
-                    qDebug() << "kaikille yks";
                     if (member.second > eniten)
                     {
                         eniten = member.second;
