@@ -4,9 +4,6 @@
 void Akkuna::asetaKorttiKateen(shared_ptr<Interface::CardInterface> kortti)
 {
     qDebug() << "Kortti käteen. T: Akkuna";
-    /*if(peli_->currentPlayer()->cards().size() < 7){
-        ui->kasikortit->addWidget(new PeliCard(kortti,kortti->typeName()));
-    }*/
     if(ui->kasikortit->count() < 7){
         ui->kasikortit->addWidget(new PeliCard(kortti));
     }
@@ -17,10 +14,7 @@ void Akkuna::refreshHandToCurrentPlayer()
     shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
     ui->pelaajakyltti->setText(pelaaja->name());
     std::vector<std::shared_ptr<Interface::CardInterface> > kortit = pelaaja->cards();
-    /*while(ui->kasikortit->children().size() != 0){
-        ui->kasikortit->removeItem(ui->kasikortit->itemAt(0));
-    }
-    ui->kasikortit->lay*/
+
     QLayoutItem *item;
     while((item = ui->kasikortit->takeAt(0))){
         delete item->widget();
@@ -170,7 +164,6 @@ void Akkuna::refreshUI()
         Kaupunginosa *osa = dynamic_cast<Kaupunginosa*>(ui->kaupunkigrid->itemAt(i)->widget());
         if (testi->canPerform())
         {
-            //ActionAgentilleMerkki* koe = new ActionAgentilleMerkki
             osa->enableButtons();
         }
         else
@@ -213,10 +206,7 @@ void Akkuna::kaupunginosat(bool pieniko)
     shared_ptr<Akkuna> tama = make_shared<Akkuna>(this);
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
-        //Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i));
         Kaupunginosa* kaupunginosa = new Kaupunginosa(peli_,peli_->locations().at(i),tama,this);
-        //kaupunginosa->setText(peli_->locations().at(i)->name());
-        //ui->kaupunkigrid->addWidget(kaupunginosa,row,i%2);
         ui->kaupunkigrid->addWidget(kaupunginosa, row, i%2);
 
     }
