@@ -18,6 +18,7 @@ public:
     explicit SetupWindow(shared_ptr<Interface::Game> peli, QWidget *parent = 0);
     ~SetupWindow();
 
+    bool teePelaajat();
 public slots:
     void aloita_peli();
 

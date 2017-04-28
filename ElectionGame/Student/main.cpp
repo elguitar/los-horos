@@ -65,10 +65,10 @@ int main(int argc, char* argv[])
     // set up players
 
     {
-        Interface::Runner runnaaja(game);
+
         // add a player to the game
 
-        shared_ptr<Player> player1 = game->addPlayer("Player 1");
+/*        shared_ptr<Player> player1 = game->addPlayer("Player 1");
         shared_ptr<Player> player2 = game->addPlayer("Player 2");
         shared_ptr<Player> player3 = game->addPlayer("Player 3");
         shared_ptr<Player> player4 = game->addPlayer("Player 4");
@@ -96,12 +96,7 @@ int main(int argc, char* argv[])
             }
         }
 
-        shared_ptr<Interface::ManualControl> pelaajakontrolli;
-        runnaaja.setPlayerControl(player1,pelaajakontrolli);
-        shared_ptr<Interface::ManualControl> pelaajakontrolli2;
-        runnaaja.setPlayerControl(player2,pelaajakontrolli2);
-
-
+*/
         // TODO: perform other player setup as necessary
 
         // TODO: create more players
