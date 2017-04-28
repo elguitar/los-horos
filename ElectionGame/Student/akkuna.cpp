@@ -158,7 +158,7 @@ void Akkuna::refreshUI()
         laskeVoittaja();
     }
 
-    for (int i = 0; i < peli_->locations().size(); ++i)
+    for (unsigned int i = 0; i < peli_->locations().size(); ++i)
     {
         ActionNostaAgentti* testi = new ActionNostaAgentti(peli_, peli_->locations().at(i));
         Kaupunginosa *osa = dynamic_cast<Kaupunginosa*>(ui->kaupunkigrid->itemAt(i)->widget());
@@ -182,26 +182,22 @@ Akkuna::Akkuna(QWidget *parent) :
     ui->setupUi(this);
 }
 
-Akkuna::Akkuna(shared_ptr<Interface::Game> peli, int pelaajamaara, bool pieniko, QString pelaajanimi, QWidget *parent) :
+Akkuna::Akkuna(shared_ptr<Interface::Game> peli, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Akkuna),
-    pelaajanNimi(pelaajanimi),
     peli_(peli),
     usedTurns(0)
 {
     ui->setupUi(this);
-    kaupunginosat(pieniko);
+    kaupunginosat();
     refreshHandToCurrentPlayer();
 
 }
 
 
-void Akkuna::kaupunginosat(bool pieniko)
+void Akkuna::kaupunginosat()
 {
     unsigned int gridkoko = 4;
-    if(!pieniko){
-        gridkoko = 4; // tähän pitää muuttaa suuren koko
-    }
     unsigned char row = 0;
     shared_ptr<Akkuna> tama = make_shared<Akkuna>(this);
     for(unsigned char i = 0; i < gridkoko; i++){

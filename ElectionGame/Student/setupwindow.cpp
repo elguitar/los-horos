@@ -31,7 +31,7 @@ void SetupWindow::aloita_peli()
     qDebug() << "connectworks";
     if (teePelaajat())
     {
-        akkunaptr = new Akkuna(peli_, pelaajat, onkoPieni, pelaajanNimi);
+        akkunaptr = new Akkuna(peli_);
         akkunaptr->show();
         close();
 
