@@ -67,7 +67,7 @@ void Kaupunginosa::enableButtons()
         ui->drawCard->setText("Pakka tyhjä");
     }
     ui->agentToken->setEnabled(true);
-
+    ui->setAgent->setEnabled(true);
     ui->setAgent->setText("Nosta agentti");
     disconnect(ui->setAgent, SIGNAL(clicked()), this, SLOT(asetaAgentti()));
     QObject::connect(ui->setAgent, SIGNAL(clicked()),
@@ -76,15 +76,44 @@ void Kaupunginosa::enableButtons()
 
 void Kaupunginosa::hideButtons()
 {
-    ui->setToken->setEnabled(false);
-    ui->drawCard->setEnabled(false);
-    ui->agentToken->setEnabled(false);
+    shared_ptr<Interface::Player> pelaaja = peli_->currentPlayer();
+    QLayoutItem *item;
+    bool agentti = false;
 
-    ui->setAgent->setText("Aseta agentti");
-    disconnect(ui->setAgent, SIGNAL(clicked()), this, SLOT(nostaAgentti()));
-    QObject::connect(ui->setAgent, SIGNAL(clicked()),
-                      this, SLOT(asetaAgentti()));
+    for(unsigned int i = 0; i < ui->agentit->count(); ++i){
+        item = ui->agentit->itemAt(i);
+        QWidget* witketti = item->widget();
+        PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
+        if(pelaaja == kortti->getOwner().lock()){
+            agentti = true;
+            ActionAgentilleMerkki* toiminto = new ActionAgentilleMerkki(peli_, location_);
+            if (toiminto->canPerform())
+            {
+                ui->agentToken->setEnabled(true);
+                ui->setToken->setEnabled(true);
+                ui->setAgent->setEnabled(false);
+                ui->drawCard->setEnabled(false);
+            }
+            else
+            {
+                ui->agentToken->setEnabled(false);
+                ui->setAgent->setEnabled(false);
+                ui->setToken->setEnabled(true);
+                ui->drawCard->setEnabled(false);
+            }
+        }
+    }
+    if (!agentti)
+    {
+        ui->setToken->setEnabled(false);
+        ui->drawCard->setEnabled(false);
+        ui->agentToken->setEnabled(false);
 
+        ui->setAgent->setText("Aseta agentti");
+        disconnect(ui->setAgent, SIGNAL(clicked()), this, SLOT(nostaAgentti()));
+        QObject::connect(ui->setAgent, SIGNAL(clicked()),
+                         this, SLOT(asetaAgentti()));
+    }
 }
 
 void Kaupunginosa::nostaKortti()
@@ -220,7 +249,6 @@ void Kaupunginosa::poistaPelaajanAgentti()
         item = ui->agentit->itemAt(i);
         QWidget* witketti = item->widget();
         PeliCard* kortti = dynamic_cast<PeliCard*> (witketti);
-        auto tesmaus = kortti->getOwner().lock();
         if(pelaaja == kortti->getOwner().lock()){
             delete item->widget();
             //delete item;

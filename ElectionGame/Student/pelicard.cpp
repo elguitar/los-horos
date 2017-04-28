@@ -76,6 +76,7 @@ void PeliCard::discard()
     ((Akkuna*)this->parentWidget())->refreshUI();
     ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
 }
+
 std::weak_ptr<Interface::Player> PeliCard::getOwner(){
     return kortti_->owner();
 }
