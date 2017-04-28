@@ -127,10 +127,6 @@ void Akkuna::laskeVoittaja()
         }
 
     }
-    else
-    {
-        //tänne jos kukaan ei voita yhtään aluetta
-    }
     if (voittaja != nullptr)
     {
         QString viesti = "Voittaja on " + voittaja->name();
@@ -138,7 +134,13 @@ void Akkuna::laskeVoittaja()
         lopetin_->show();
         this->close();
     }
-    this->close();
+    else
+    {
+        QString viesti = "Hävisitte kaikki!";
+        lopetin_ = new endDialog(viesti);
+        lopetin_->show();
+        this->close();
+    }
 }
 
 
@@ -191,7 +193,7 @@ Akkuna::Akkuna(shared_ptr<Interface::Game> peli, QWidget *parent) :
 void Akkuna::kaupunginosat()
 {
     unsigned int gridkoko = 4;
-    unsigned char row = 0;
+    unsigned int row = 0;
     shared_ptr<Akkuna> tama = make_shared<Akkuna>(this);
     for(unsigned char i = 0; i < gridkoko; i++){
         row = i/2;
@@ -211,6 +213,3 @@ Akkuna::~Akkuna()
     delete ui;
 }
 
-void Akkuna::addPlayer(shared_ptr<Interface::Player> pelaaja){
-
-}
