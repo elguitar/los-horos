@@ -35,6 +35,7 @@ public:
     ~Akkuna();
 
     void laskeVoittaja();
+    void kaytaVuoro();
 private:
     Ui::Akkuna *ui;
     endDialog *lopetin_;

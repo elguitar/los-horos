@@ -1,4 +1,5 @@
 #include "actionnostakortti.h"
+#include <QDebug>
 
 
 ActionNostaKortti::ActionNostaKortti()
@@ -18,6 +19,10 @@ ActionNostaKortti::~ActionNostaKortti()
 
 bool ActionNostaKortti::canPerform() const
 {
+    if (location_->deck()->canDraw())
+    {
+        qDebug() << "true";
+    }
     return location_->deck()->canDraw() && peli_->currentPlayer()->cards().size() < 7;
 }
 

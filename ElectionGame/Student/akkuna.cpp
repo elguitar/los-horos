@@ -150,7 +150,6 @@ void Akkuna::laskeVoittaja()
 
 void Akkuna::refreshUI()
 {
-    ++usedTurns;
     QString akkunakierroskyltti = "Kierros: " + QString::number((usedTurns+peli_->players().size())/peli_->players().size()) + "/15";
     ui->kierroslaskuri->setText(akkunakierroskyltti);
     if (usedTurns/peli_->players().size() >= 15)
@@ -206,6 +205,11 @@ void Akkuna::kaupunginosat()
         ui->kaupunkigrid->addWidget(kaupunginosa, row, i%2);
 
     }
+}
+
+void Akkuna::kaytaVuoro()
+{
+    ++usedTurns;
 }
 
 Akkuna::~Akkuna()

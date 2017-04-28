@@ -52,14 +52,20 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
     QObject::connect(ui->agentToken, SIGNAL(clicked()),
                       this, SLOT(agentilleMerkki()));
     asetaPakkakuvat();
-    //akkuna_ = std::dynamic_pointer_cast<Akkuna>(akkuna);
 
 }
 
 void Kaupunginosa::enableButtons()
 {
     ui->setToken->setEnabled(true);
-    ui->drawCard->setEnabled(true);
+    if (location_->deck()->canDraw())
+    {
+        ui->drawCard->setEnabled(true);
+    }else
+    {
+        ui->drawCard->setEnabled(false);
+        ui->drawCard->setText("Pakka tyhjä");
+    }
     ui->agentToken->setEnabled(true);
 
     ui->setAgent->setText("Nosta agentti");
@@ -88,13 +94,12 @@ void Kaupunginosa::nostaKortti()
     {
         toiminto->perform();
         qDebug() << "nosta kortti";
+        peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->kaytaVuoro();
+        ((Akkuna*)this->parentWidget())->refreshUI();
+        ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
 
     }
-    std::shared_ptr<ActionNostaKortti> kortti = make_shared<ActionNostaKortti>();
-
-    peli_->nextPlayer();
-    ((Akkuna*)this->parentWidget())->refreshUI();
-    ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
     delete toiminto;
 
 
@@ -111,6 +116,7 @@ void Kaupunginosa::nostaAgentti()
 
 
         peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->kaytaVuoro();
         ((Akkuna*)this->parentWidget())->refreshUI();
         ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "nosta agentti";
@@ -129,10 +135,10 @@ void Kaupunginosa::asetaAgentti()
         ui->agentit->addWidget(new PeliCard(agentti));
         enableButtons();
         peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->kaytaVuoro();
         ((Akkuna*)this->parentWidget())->refreshUI();
         ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "aseta agentti";
-
     }
     delete toiminto;
 }
@@ -146,6 +152,7 @@ void Kaupunginosa::agentilleMerkki()
         paivitaAgentit();
 
         peli_->nextPlayer();
+        ((Akkuna*)this->parentWidget())->kaytaVuoro();
         ((Akkuna*)this->parentWidget())->refreshUI();
         ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
         qDebug() << "agentille merkki";
