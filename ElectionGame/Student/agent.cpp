@@ -69,10 +69,47 @@ unsigned short Agent::connections() const
 
 void Agent::setConnections(unsigned short connections)
 {
-    connections_ = connections;
+    unsigned short oldcon = connections_;
+    try{
+        connections_ = connections;
+        if(!invariantti()){
+            const QString msg = "Agentilla on oltava connection > 0, jos se on pelattu pöytään.";
+            Interface::GameException* exc = new Interface::GameException(msg);
+            //Interface::StateException exc;
+            throw exc;
+        }
+    }
+    catch(Interface::GameException const& virhe){
+        this->setConnections(oldcon);
+    }
 }
 
 void Agent::modifyConnections(short amount)
 {
-    connections_ = amount;
+    unsigned short oldcon = connections_;
+    try{
+        connections_ += amount;
+        if(!invariantti()){
+            const QString msg = "Agentilla on oltava connection > 0, jos se on pelattu pöytään.";
+            Interface::GameException* exc = new Interface::GameException(msg);
+            //Interface::StateException exc;
+            throw exc;
+        }
+    }
+    catch(Interface::GameException const& virhe){
+        this->setConnections(oldcon);
+    }
+}
+
+bool Agent::invariantti()
+{
+    if(this->placement().lock() != nullptr){
+        if(this->connections() > 0){
+            return true;
+        } else{
+            return false;
+        }
+    } else{
+        return true;
+    }
 }

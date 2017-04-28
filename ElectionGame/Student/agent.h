@@ -118,7 +118,7 @@ public:
      * @param connections uusi suhteiden taso
      * @post suhteet ovat parametrin mukaiset
      * @post Poikkeustakuu: vahva
-     * @exception StateException jos rikkoisi invariantin
+     * @exception GameException jos rikkoisi invariantin
      */
     virtual void setConnections(unsigned short connections);
     /**
@@ -127,7 +127,7 @@ public:
      * @param change suhteiden muutos
      * @post suhteita on muutettu parametrin mukaisesti
      * @post Poikkeustakuu: vahva
-     * @exception StateException jos rikkoisi invariantin
+     * @exception GameException jos rikkoisi invariantin
      */
     virtual void modifyConnections(short amount);
 private:
