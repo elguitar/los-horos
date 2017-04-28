@@ -125,8 +125,13 @@ p, li { white-space: pre-wrap; }
   </widget>
  </widget>
  <tabstops>
+  <tabstop>p1Name</tabstop>
+  <tabstop>p2Name</tabstop>
+  <tabstop>p3Name</tabstop>
+  <tabstop>p4Name</tabstop>
   <tabstop>Aloitabutton</tabstop>
   <tabstop>Suljebutton</tabstop>
+  <tabstop>saantoBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>
