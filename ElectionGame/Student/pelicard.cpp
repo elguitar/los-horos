@@ -44,8 +44,8 @@ void PeliCard::discard()
 {
     std::shared_ptr<Interface::Player> pleijjeri = kortti_->owner().lock();
     pleijjeri->playCard(kortti_);
+    ((Akkuna*)this->parentWidget())->refreshUI();
     ((Akkuna*)this->parentWidget())->refreshHandToCurrentPlayer();
-
 }
 std::weak_ptr<Interface::Player> PeliCard::getOwner(){
     return kortti_->owner();

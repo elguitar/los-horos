@@ -63,9 +63,7 @@ int main(int argc, char* argv[])
     }
 
     // open the main window
-    //window.addPlayer(playervector.at(0));
     a.exec();
-    return 0;
 }
 
 void addLocations(shared_ptr<Game> game)
