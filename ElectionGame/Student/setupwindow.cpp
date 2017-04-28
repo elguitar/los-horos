@@ -1,6 +1,5 @@
 #include "setupwindow.h"
 #include "ui_setupwindow.h"
-#include <QDebug>
 #include <iostream>
 
 SetupWindow::SetupWindow(shared_ptr<Interface::Game> peli, QWidget *parent) :

@@ -1,5 +1,4 @@
 #include "actionnostakortti.h"
-#include <QDebug>
 
 
 ActionNostaKortti::ActionNostaKortti()

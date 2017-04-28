@@ -1,5 +1,4 @@
 #include "actionagentillemerkki.h"
-#include <QDebug>
 
 ActionAgentilleMerkki::ActionAgentilleMerkki()
 {
