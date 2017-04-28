@@ -59,7 +59,6 @@ int main(int argc, char* argv[])
             createInfluenceCards(game);
         }
 
-        // TODO: create more locations
     }
 
     // open the main window
@@ -94,7 +93,6 @@ void createInfluenceCards(shared_ptr<Game> game)
     file.close();
 
     QJsonDocument sd = QJsonDocument::fromJson(kortit.toUtf8());
-    qWarning() << sd.isNull(); // <- print false :)
     QJsonObject sett2 = sd.object();
     for (unsigned int i = 0; i < 4; ++i)
     {

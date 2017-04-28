@@ -22,7 +22,6 @@ PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, bool cardInHand,
     if(kortti->typeName() == "Agent"){
         agentconnections_ = std::dynamic_pointer_cast<Agent>(kortti)->connections();
         setConnections(agentconnections_);
-        //ui->pelimerkit->setText(QString::number(1));
     } else{
         short unsigned int influence = std::dynamic_pointer_cast<Interface::Influence>(kortti)->amount();
         ui->pelimerkit->setText(QString::number(influence));
