@@ -28,7 +28,6 @@ void SetupWindow::sulje_peli()
 
 void SetupWindow::aloita_peli()
 {
-    qDebug() << "connectworks";
     if (teePelaajat())
     {
         akkunaptr = new Akkuna(peli_);
