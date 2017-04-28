@@ -1,5 +1,4 @@
 #include "actionnostaagentti.h"
-#include <QDebug>
 
 ActionNostaAgentti::ActionNostaAgentti()
 {

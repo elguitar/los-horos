@@ -10,7 +10,6 @@
 #include "setupwindow.h"
 #include "agent.h"
 #include "manualcontrol.h"
-#include "runner.h"
 #include "councilor.h"
 
 #include <vector>
@@ -19,7 +18,6 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QFile>
-#include <QDebug>
 #include <QDir>
 #include <QApplication>
 #include <QWidget>
