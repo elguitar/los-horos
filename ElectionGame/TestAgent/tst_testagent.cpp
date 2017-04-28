@@ -1,11 +1,14 @@
 #include "agent.h"
 #include "location.h"
+#include "game.h"
+#include "player.h"
 
 #include <QSignalSpy>
 #include <QtTest>
 #include <vector>
 
 Q_DECLARE_METATYPE(std::shared_ptr<Interface::Location>)
+Q_DECLARE_METATYPE(std::shared_ptr<Interface::Player>)
 
 class TestAgent : public QObject
 {
@@ -21,10 +24,14 @@ private Q_SLOTS:
     void nameTest();
     void locationTest_data();
     void locationTest();
+    void ownerTest_data();
+    void ownerTest();
     void typeTest();
 
 private:
     std::vector<Interface::Location*> lokaatiot_;
+    std::shared_ptr<Interface::Game> peli_;
+    std::vector<std::shared_ptr<Interface::Player> > nimet_;
     std::vector<std::shared_ptr <Interface::Location> > loka2_;
 };
 
@@ -102,6 +109,42 @@ void TestAgent::locationTest()
     QVERIFY(agentti->placement().expired());
     agentti->setPlacement(Lokaatio);
     QCOMPARE(agentti->placement().lock(), Lokaatio);
+    delete agentti;
+}
+
+void TestAgent::ownerTest_data()
+{
+    std::vector<QString> nimet {"Erkki", "*€¨ä'ë", "Kermainen kulmakuuma kundiukko", "Hengenpelastajatyttö", "Metsä miäs", "", "Salmiakki_on_hyvää", "Suklaamyös"};
+    for(unsigned int i = 0; i < 8; ++i){
+        //Interface::Player* pelaaja = new Interface::Player(i, nimet.at(i));
+        std::shared_ptr<Interface::Player> pelaaja = std::make_shared<Interface::Player>(peli_, i, nimet.at(i));
+        //nimet_.push_back(location);
+        nimet_.push_back(pelaaja);
+    }
+    QTest::addColumn<QString>("agentinnimi");
+    QTest::addColumn<std::shared_ptr<Interface::Player >>("Pelaaja");
+
+    QTest::newRow("Eka") << "Apina" << nimet_.at(0);
+    QTest::newRow("Toka") << "Apina" << nimet_.at(1);
+    QTest::newRow("Kolmas") << "Apina" << nimet_.at(2);
+    QTest::newRow("Neljas") << "Apina" << nimet_.at(3);
+    QTest::newRow("Viides") << "Apina" << nimet_.at(4);
+    QTest::newRow("Kuudes") << "Apina" << nimet_.at(5);
+    QTest::newRow("Seitsemäs") << "Apina" << nimet_.at(6);
+    QTest::newRow("Kahdeksas") << "Apina" << nimet_.at(7);
+}
+
+void TestAgent::ownerTest()
+{
+    QFETCH(QString, agentinnimi);
+    QFETCH(std::shared_ptr<Interface::Player>, Pelaaja);
+
+    Agent* agentti = new Agent(agentinnimi,false);
+    //std::shared_ptr<Interface::Location> location = std::make_shared<Interface::Location>(*lokaatio);
+    QVERIFY(agentti->owner().expired()); // Eli owner null
+    agentti->setOwner(Pelaaja);
+    QVERIFY(!agentti->owner().expired());
+    QCOMPARE(agentti->owner().lock(), Pelaaja);
     delete agentti;
 }
 
