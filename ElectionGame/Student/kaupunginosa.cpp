@@ -29,6 +29,7 @@ Kaupunginosa::Kaupunginosa(std::shared_ptr<Interface::Game> peli, std::shared_pt
     QObject::connect(ui->agentToken, SIGNAL(clicked()),
                       this, SLOT(agentilleMerkki()));
     asetaPakkakuvat();
+    //ui->agentit->setGeometry();
 
 
 }

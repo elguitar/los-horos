@@ -21,12 +21,13 @@ PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, bool cardInHand,
     ui->kortinnimi->setText(kortti_->name());
     if(kortti->typeName() == "Agent"){
         agentconnections_ = std::dynamic_pointer_cast<Agent>(kortti)->connections();
-        ui->pelimerkit->setText(QString::number(agentconnections_));
+        setConnections(agentconnections_);
         //ui->pelimerkit->setText(QString::number(1));
     } else{
         short unsigned int influence = std::dynamic_pointer_cast<Interface::Influence>(kortti)->amount();
         ui->pelimerkit->setText(QString::number(influence));
     }
+    setColour();
     if(cardInHand && kortti_->typeName() != "Agent"){
         QPushButton *button = new QPushButton("Discard", this);
         ui->horizontalLayout->addWidget(button);
@@ -38,6 +39,14 @@ PeliCard::PeliCard(shared_ptr<Interface::CardInterface> kortti, bool cardInHand,
 void PeliCard::setConnections(int maara)
 {
     ui->pelimerkit->setText(QString::number(maara));
+}
+
+void PeliCard::setColour()
+{
+    if (kortti_->typeName() == "Agent")
+    {
+        this->setStyleSheet("background-color:white;");
+    }
 }
 
 void PeliCard::discard()

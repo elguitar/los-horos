@@ -95,6 +95,5 @@ FORMS += \
     akkuna.ui \
     setupwindow.ui \
     kaupunginosa.ui \
-    pelikortti.ui \
     pelicard.ui \
     enddialog.ui

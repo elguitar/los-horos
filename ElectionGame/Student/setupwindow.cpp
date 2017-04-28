@@ -67,7 +67,7 @@ bool SetupWindow::teePelaajat()
 
             for (int i = 0; i < 3; ++i)
             {
-                shared_ptr<Agent> agentti = make_shared<Agent>("agentti" + QString::number(i+1),true);
+                shared_ptr<Agent> agentti = make_shared<Agent>(pelaaja + QString::number(i+1),true);
                 player->addCard(agentti);
 
             }

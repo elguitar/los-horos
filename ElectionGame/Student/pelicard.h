@@ -28,6 +28,7 @@ public:
     std::weak_ptr<Interface::Player> getOwner();
     void setConnections(int maara);
 
+    void setColour();
 public slots:
     void discard();
 

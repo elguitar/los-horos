@@ -74,30 +74,5 @@ void Agent::setConnections(unsigned short connections)
 
 void Agent::modifyConnections(short amount)
 {
-    unsigned short oldcon = connections_;
-    try{
-        connections_ += amount;
-        if(!invariantti()){
-            const QString msg = "moi";
-            Interface::GameException* geimiexc = new Interface::GameException(msg);
-            //Interface::StateException exc;
-            //throw exc;
-        }
-    }
-    catch(Interface::StateException const& virhe){
-        this->setConnections(oldcon);
-    }
-}
-
-bool Agent::invariantti()
-{
-    if(this->placement().lock() != nullptr){
-        if(this->connections() > 0){
-            return true;
-        } else{
-            return false;
-        }
-    } else{
-        return true;
-    }
+    connections_ = amount;
 }
