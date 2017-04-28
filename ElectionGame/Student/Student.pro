@@ -32,7 +32,6 @@ SOURCES +=\
     akkuna.cpp \
     setupwindow.cpp \
     kaupunginosa.cpp \
-    aicontrol.cpp \
     actionasetaagentti.cpp \
     actionnostakortti.cpp \
     actionnostaagentti.cpp \
@@ -46,7 +45,6 @@ HEADERS  += \
     akkuna.h \
     setupwindow.h \
     kaupunginosa.h \
-    aicontrol.h \
     actionasetaagentti.h\
     actionnostakortti.h \
     actionnostaagentti.h \
