@@ -157,10 +157,9 @@ void Akkuna::laskeVoittaja()
 void Akkuna::refreshUI()
 {
     ++usedTurns;
-    QString akkunakierroskyltti = "Kierros: " + QString::number((usedTurns+4)/4) + "/10";
+    QString akkunakierroskyltti = "Kierros: " + QString::number((usedTurns+peli_->players().size())/peli_->players().size()) + "/15";
     ui->kierroslaskuri->setText(akkunakierroskyltti);
-    //if (usedTurns == 10){laskeVoittaja();}
-    if (usedTurns/4 >= 5)
+    if (usedTurns/peli_->players().size() >= 15)
     {
         laskeVoittaja();
     }

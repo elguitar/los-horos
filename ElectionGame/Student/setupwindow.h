@@ -22,6 +22,7 @@ public:
 public slots:
     void aloita_peli();
 
+    void sulje_peli();
 private:
     Ui::SetupWindow *ui;
     int pelaajat;

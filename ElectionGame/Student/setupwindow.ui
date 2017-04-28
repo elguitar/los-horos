@@ -129,24 +129,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>Suljebutton</tabstop>
  </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>Suljebutton</sender>
-   <signal>clicked()</signal>
-   <receiver>SetupWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>344</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>273</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>aloita_peli()</slot>
  </slots>
