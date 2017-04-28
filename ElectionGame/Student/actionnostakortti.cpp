@@ -28,7 +28,4 @@ void ActionNostaKortti::perform()
     {
         peli_->currentPlayer()->addCard(location_->deck()->draw());
     }
-    else
-    {
-    }
 }

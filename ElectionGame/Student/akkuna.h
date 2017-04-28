@@ -30,7 +30,6 @@ public slots:
 public:
     explicit Akkuna(QWidget *parent = 0);
     explicit Akkuna(shared_ptr<Interface::Game> peli, QWidget *parent=0);
-    void addPlayer(shared_ptr<Interface::Player> pelaaja);
     void kaupunginosat();
     ~Akkuna();
 
