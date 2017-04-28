@@ -53,8 +53,8 @@ void ActionNostaAgentti::perform()
         if (agentinOmistaja == peli_->currentPlayer())
         {
             peli_->currentPlayer()->addCard(agentti);
-            agentti->setConnections(0);
             location_->removeAgent(agentti);
+            agentti->setConnections(0);
             qDebug() << "Agentti poistettu";
         }
     }
