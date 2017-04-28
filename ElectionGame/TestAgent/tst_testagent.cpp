@@ -35,6 +35,7 @@ private:
     std::shared_ptr<Interface::Game> peli_;
     std::vector<std::shared_ptr<Interface::Player> > nimet_;
     std::vector<std::shared_ptr <Interface::Location> > loka2_;
+    bool invariantti(Agent* agentti);
 };
 
 TestAgent::TestAgent()
@@ -57,6 +58,7 @@ void TestAgent::commonTest()
     QFETCH(bool, common);
     QFETCH(bool, result);
     Agent* agentti = new Agent(nimi, common);
+    QVERIFY(invariantti(agentti));
     QCOMPARE(agentti->isCommon(), result);
     delete agentti;
 
@@ -84,12 +86,16 @@ void TestAgent::connectionTest()
 
     Agent* agentti = new Agent(Nimi, 0);
     QCOMPARE(agentti->connections(), nolla);
+    QVERIFY(invariantti(agentti));
     agentti->setConnections(Konnektiot);
     QCOMPARE(agentti->connections(), Result);
+    QVERIFY(invariantti(agentti));
     agentti->setConnections(0);
     QCOMPARE(agentti->connections(), nolla);
+    QVERIFY(invariantti(agentti));
     agentti->modifyConnections(Konnektiot);
     QCOMPARE(agentti->connections(), Result);
+    QVERIFY(invariantti(agentti));
 }
 void TestAgent::nameTest_data(){
     QTest::addColumn<QString>("input");
@@ -105,6 +111,7 @@ void TestAgent::nameTest(){
     QFETCH(QString, result);
     Agent* agentti = new Agent(input,0);
     QCOMPARE(agentti->name(), result);
+    QVERIFY(invariantti(agentti));
     delete agentti;
 }
 
@@ -139,8 +146,10 @@ void TestAgent::locationTest()
     //std::shared_ptr<Interface::Location> location = std::make_shared<Interface::Location>(*lokaatio);
     QVERIFY(agentti->location().expired()); // Eli location null
     QVERIFY(agentti->placement().expired());
+    QVERIFY(invariantti(agentti));
     agentti->setPlacement(Lokaatio);
     QCOMPARE(agentti->placement().lock(), Lokaatio);
+    QVERIFY(invariantti(agentti));
     delete agentti;
 }
 
@@ -174,8 +183,10 @@ void TestAgent::ownerTest()
     Agent* agentti = new Agent(agentinnimi,false);
     //std::shared_ptr<Interface::Location> location = std::make_shared<Interface::Location>(*lokaatio);
     QVERIFY(agentti->owner().expired()); // Eli owner null
+    QVERIFY(invariantti(agentti));
     agentti->setOwner(Pelaaja);
     QVERIFY(!agentti->owner().expired());
+    QVERIFY(invariantti(agentti));
     QCOMPARE(agentti->owner().lock(), Pelaaja);
     delete agentti;
 }
@@ -185,8 +196,22 @@ void TestAgent::typeTest()
     Agent* agentti  = new Agent(QString {"Apina"},0);
     QString* tyyppi = new QString("Agent");
     QCOMPARE(agentti->typeName(), *tyyppi);
+    QVERIFY(invariantti(agentti));
     delete agentti;
     delete tyyppi;
+}
+
+bool TestAgent::invariantti(Agent* agentti)
+{
+    if(agentti->placement().lock() != nullptr){
+        if(agentti->connections() > 0){
+            return true;
+        } else{
+            return false;
+        }
+    } else{
+        return true;
+    }
 }
 
 
